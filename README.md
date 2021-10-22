@@ -1,4 +1,4 @@
-# Grupo10
+# BAFTA
 
 ## RESUMEN
 ```sh
