@@ -1,3 +1,72 @@
-h1 {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.all
+{
+    width: 100vw;
+    height: 100vh;
+    background-color: dimgrey;
+    color: #fff;
+}
+
+.navbar
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+}
+
+.brand
+{
+    margin-top: -5px;
+}
+
+.menu
+{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.menu .active
+{
+    color: burlywood;
+}
+
+.menu :active{
+    color:coral
+}
+
+.menu a
+{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.menu a:hover
+{
+    background-color: #000;
+    transition: ease-in-out .5s;
+}
+
+.menu li
+{
+    list-style: none;
+}
+
+.canvas
+{
+    margin-top: 10px;
+    margin-left: 7em;
 }
