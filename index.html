@@ -5,17 +5,47 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="assets/sprites/player.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
-    <link rel="stylesheet" href="./css/game.css">
+    <link rel="stylesheet" href="game.css">
     <script src="./lib/phaser.min.js"></script>
 
-    <title>¡Juego con Phaser!</title>
+    <title>BAFTA</title>
 </head>
 
 <body>
-    <h1>Juego con Phaser</h1>
-    <a href="https://www.pivotaltracker.com/n/projects/2535325">Enlace a Pivotal</a>
-    <a href="https://github.com/asegar01/Grupo10">Enlace a Github</a>
-    <script src="./src/game.js" type="module"></script>
+    <!--<h1>BAFTA</h1><a href="https://www.pivotaltracker.com/n/projects/2535325">Enlace a Pivotalr</a>
+    <a href="https://github.com/asegar01/Grupo10">Enlace a Github</a>-->
+    
+    <div class="all">
+        <header>
+            <nav class ="navbar">
+                <div class="brand">
+                    <h2>BAFTA</h2>
+                </div>
+                <ul class="menu">
+                    <li><a class="active" href="#">Juego</a></li>
+                    <li><a href="#">Descripción</a></li>
+                    <li><a href="#">Social</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            <canvas class="canvas" width="1300" height="600" style="border:3px solid #ffffff;">
+            </canvas>
+                <!--img src="src\AH.jpg" height="50%" width="50%" alt="" id="Alfred"/>
+                <script>
+                let ctx = document.querySelector('myCanvas').getContext('2d');
+                let img = document.getElementById('Alfred');
+                ctx.drawImage(img, 0, 0);
+                </script>-->    
+        </main>
+        
+    </div>
+
+    <script src="./src/game.js" type="module">
+
+    </script>
+    
 </body>
 
 </html>
