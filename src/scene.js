@@ -21,6 +21,8 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
+    let cinema = this.add.image(500,250,'cinema');
+    cinema.setScale(.5);
     this.stars = 10;
     this.bases = this.add.group();
     this.player = new Player(this, 200, 300);
