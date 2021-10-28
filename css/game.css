@@ -14,7 +14,7 @@ body
 .all
 {
     width: 100vw;
-    height: 100vh;
+    height: 20vh;
     background-color: dimgrey;
     color: #fff;
 }
@@ -43,7 +43,8 @@ body
     color: burlywood;
 }
 
-.menu :active{
+.menu :active
+{
     color:coral
 }
 

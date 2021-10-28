@@ -5,6 +5,7 @@
  * @see {@link https://gamedevacademy.org/creating-a-preloading-screen-in-phaser-3/} como ejemplo
  * sobre cómo hacer una barra de progreso.
  */
+
 export default class Boot extends Phaser.Scene {
   /**
    * Constructor de la escena
@@ -18,12 +19,65 @@ export default class Boot extends Phaser.Scene {
    */
   preload() {
     // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
+    var progressBar = this.add.graphics();
+    var progressBox = this.add.graphics();
+    progressBox.fillStyle(0x222222, 0.8);
+    progressBox.fillRect(340, 230, 320, 50);
+
+    this.load.on('progress', function (value) {
+      console.log(value);
+      percentText.setText(parseInt(value * 100) + '%');
+      progressBar.clear();
+      progressBar.fillStyle(0xffffff, 1);
+      progressBar.fillRect(350, 240, 300 * value, 30);
+    });
+
     this.load.setPath('assets/sprites/');
+    this.load.image('logo', 'AH_LOGO.png');
+    for (var i = 0; i < 2000; i++) {
+      this.load.image('logo'+ i, 'AH_LOGO.png');
+    }
     this.load.image('platform', 'platform.png');
     this.load.image('base', 'base.png');
     this.load.image('star', 'star.png');
     this.load.image('player', 'player.png');
-    this.load.image('cinema','cinema.png');
+    this.load.image('cinema', 'cinema.png');
+
+              
+    this.load.on('fileprogress', function (file) {
+      console.log(file.src);
+    });
+    this.load.on('complete', function () {
+      console.log('complete');
+      progressBar.destroy();
+      progressBox.destroy();
+      loadingText.destroy();
+      percentText.destroy();
+    });
+    
+    var width = this.cameras.main.width;
+    var height = this.cameras.main.height;
+    var loadingText = this.make.text({
+      x: width / 2,
+      y: height / 2 - 50,
+      text: 'Loading...',
+      style: {
+        font: '20px monospace',
+        fill: '#ffffff'
+      }
+    });
+    loadingText.setOrigin(0.5, 0.5);
+
+    var percentText = this.make.text({
+      x: width / 2,
+      y: height / 2 - 5,
+      text: '0%',
+      style: {
+        font: '18px monospace',
+        fill: '#ffffff'
+      }
+    });
+    percentText.setOrigin(0.5, 0);
   }
 
   /**
@@ -31,6 +85,7 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {
+    let logo = this.add.image(500, 250, 'logo');
     this.scene.start('level');
   }
 }

@@ -4,6 +4,7 @@
  * una nueva estrella en otra posición, si el juego no ha terminado.
  * @extends Phaser.GameObjects.Sprite
  */
+
 export default class Star extends Phaser.GameObjects.Sprite {
   
   /**
