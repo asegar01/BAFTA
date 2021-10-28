@@ -43,6 +43,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('player', 'player.png');
     this.load.image('cinema', 'cinema.png');
 
+    this.load.setPath('assets/audio/')
+    this.load.audio('theme', 'theme.mp3')
               
     this.load.on('fileprogress', function (file) {
       console.log(file.src);
@@ -87,5 +89,6 @@ export default class Boot extends Phaser.Scene {
   create() {
     let logo = this.add.image(500, 250, 'logo');
     this.scene.start('level');
+    let theme = this.add.sound('theme', { loop: true });
   }
 }
