@@ -14,7 +14,8 @@ body
 .all
 {
     width: 100vw;
-    height: 20vh;
+    height: 11.5vh;
+    margin-bottom: 5em;
     background-color: dimgrey;
     color: #fff;
 }
@@ -29,6 +30,25 @@ body
 .brand
 {
     margin-top: -5px;
+}
+
+.button
+{
+    color: #fff;
+    text-decoration: none;
+    margin-left: 2em;
+}
+
+.canvas
+{
+    margin-top: 10px;
+    margin-left: 7em;
+}
+
+.main
+{
+    margin-top: 2em;
+    margin-left: 2em;
 }
 
 .menu
@@ -64,18 +84,4 @@ body
 .menu li
 {
     list-style: none;
-}
-
-.canvas
-{
-    margin-top: 10px;
-    margin-left: 7em;
-}
-
-.button
-{
-    color: #fff;
-    background-color:sienna;
-    text-decoration: none;
-    margin-left: 3em;
 }
