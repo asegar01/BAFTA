@@ -33,6 +33,27 @@ export default class Level extends Phaser.Scene {
     new Platform(this, this.player, this.bases, 150, 100);
     new Platform(this, this.player, this.bases, 850, 100);
     this.spawn();
+
+    // UI
+    let next_act_button = this.add.sprite(900,400,'next-act-button').setInteractive();
+    next_act_button.setScale(.4);
+    let act_counter=this.add.sprite(930,50,'act-counter');
+    act_counter.setScale(.5);
+    let numActo=1;
+    next_act_button.on('pointerdown',pointer=>{
+      if(numActo<5){
+        numActo++;
+      let act_counter=this.add.sprite(930,50,'act-counter');
+      act_counter.setScale(.5);
+      this.label = this.add.text(915, 20, "ACTO");
+      this.label = this.add.text(930, 40, numActo);
+      console.log('Acto '+ numActo);
+      }
+      else console.log('Fin de la partida');
+      
+    })
+    this.label = this.add.text(915, 20, "ACTO");
+    this.label = this.add.text(930, 40, numActo);
   }
 
   /**

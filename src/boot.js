@@ -42,6 +42,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('star', 'star.png');
     this.load.image('player', 'player.png');
     this.load.image('cinema', 'cinema.png');
+    this.load.image('next-act-button','next-act-button.png');
+    this.load.image('act-counter','act-counter.png');
 
     this.load.setPath('assets/audio/')
     this.load.audio('theme', 'theme.mp3')
