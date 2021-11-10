@@ -1,5 +1,6 @@
 import Player from './player.js';
 import Platform from './platform.js';
+import Card from './card.js';
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas 
@@ -23,9 +24,12 @@ export default class Level extends Phaser.Scene {
   create() {
     let cinema = this.add.image(500, 250, 'cinema');
     cinema.setScale(.5);
+    this.audienceFocus = 5;
     this.stars = 10;
     this.bases = this.add.group();
     this.player = new Player(this, 200, 300);
+    let pruebacarta = new Card(this,0,0,"",'card',"",1,function hola() {console.log("hola")
+    });
 
     new Platform(this, this.player, this.bases, 150, 350);
     new Platform(this, this.player, this.bases, 850, 350);
@@ -33,6 +37,9 @@ export default class Level extends Phaser.Scene {
     new Platform(this, this.player, this.bases, 150, 100);
     new Platform(this, this.player, this.bases, 850, 100);
     this.spawn();
+
+    pruebacarta.onplayed();
+    console.log(this.audienceFocus);
 
     // UI
     let next_act_button = this.add.sprite(900,400,'next-act-button').setInteractive();
