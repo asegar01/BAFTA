@@ -34,7 +34,7 @@ export default class Boot extends Phaser.Scene {
 
     this.load.setPath('assets/sprites/');
     this.load.image('logo', 'AH_LOGO.png');
-    for (var i = 0; i < 2000; i++) {
+    for (var i = 0; i < 1; i++) {
       this.load.image('logo'+ i, 'AH_LOGO.png');
     }
     this.load.image('platform', 'platform.png');
@@ -44,6 +44,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('cinema', 'cinema.png');
     this.load.image('next-act-button','next-act-button.png');
     this.load.image('act-counter','act-counter.png');
+    this.load.image('card', 'cardTemplate.png');
 
     this.load.setPath('assets/audio/')
     this.load.audio('theme', 'theme.mp3')
@@ -89,7 +90,6 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {
-    let logo = this.add.image(500, 250, 'logo');
     this.scene.start('level');
     let theme = this.add.sound('theme', { loop: true });
   }

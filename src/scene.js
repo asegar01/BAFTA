@@ -21,22 +21,14 @@ export default class Level extends Phaser.Scene {
   /**
    * Creación de los elementos de la escena principal de juego
    */
-  create() {
+  create() 
+  {
+    this.scale.updateBounds();
     let cinema = this.add.image(500, 250, 'cinema');
     cinema.setScale(.5);
     this.audienceFocus = 5;
-    this.stars = 10;
-    this.bases = this.add.group();
-    this.player = new Player(this, 200, 300);
     let pruebacarta = new Card(this,0,0,"",'card',"",1,function hola() {console.log("hola")
     });
-
-    new Platform(this, this.player, this.bases, 150, 350);
-    new Platform(this, this.player, this.bases, 850, 350);
-    new Platform(this, this.player, this.bases, 500, 200);
-    new Platform(this, this.player, this.bases, 150, 100);
-    new Platform(this, this.player, this.bases, 850, 100);
-    this.spawn();
 
     pruebacarta.onplayed();
     console.log(this.audienceFocus);
@@ -61,31 +53,33 @@ export default class Level extends Phaser.Scene {
     })
     this.label = this.add.text(915, 20, "ACTO");
     this.label = this.add.text(930, 40, numActo);
+
+    let card = this.add.image(500, 350, 'card').setInteractive();
+    card.setScale(.3);
+    this.input.on('pointerdown', this.startDrag, this);
   }
 
-  /**
-   * Genera una estrella en una de las bases del escenario
-   * @param {Array<Base>} from Lista de bases sobre las que se puede crear una estrella
-   * Si es null, entonces se crea aleatoriamente sobre cualquiera de las bases existentes
-   */
-  spawn(from = null) {
-    Phaser.Math.RND.pick(from || this.bases.children.entries).spawn();
+  // La carta se encuentra pulsada
+  startDrag(pointer, targets)
+  {
+    this.input.off('pointerdown', this.startDrag, this);
+    this.dragObj = targets[0];
+    this.input.on('pointermove', this.onDrag, this);
+    this.input.on('pointerup', this.endDrag, this);
   }
 
-  /**
-   * Método que se ejecuta al coger una estrella. Se pasa la base
-   * sobre la que estaba la estrella cogida para evitar repeticiones
-   * @param {Base} base La base sobre la que estaba la estrella que se ha cogido
-   */
-  starPickt (base) {
-    this.player.point();
-      if (this.player.score == this.stars) {
-        this.scene.start('end');
-      }
-      else {
-        let s = this.bases.children.entries;
-        this.spawn(s.filter(o => o !== base));
+  // La carta se encuentra en movimiento
+  onDrag(pointer)
+  {
+    this.dragObj.x = pointer.x;
+    this.dragObj.y = pointer.y;
+  }
 
-      }
+  // La carta ha dejado de ser pulsada
+  endDrag()
+  {
+    this.input.on('pointerdown', this.startDrag, this);
+    this.input.off('pointermove', this.onDrag, this);
+    this.input.off('pointerup', this.endDrag, this);
   }
 }
