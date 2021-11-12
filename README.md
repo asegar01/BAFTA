@@ -38,7 +38,8 @@ El juego comienza con cinco cartas aleatorias a disposición del jugador, el cua
   - Atención de la audiencia: La atención de la audiencia se representa con un número comprendido entre 0 y 10. Si la atención está entre 8 y 10, ambos incluidos, el número de trofeos generados aumenta en +2 cada vez que se genere una cantidad de trofeos mayor o igual a uno. Si la atención está entre 1 y 3, ambos incluidos, el número de trofeos generados disminuye en -2 cada vez que se genere una cantidad de trofeos mayor o igual a uno. Si la atención de la audiencia llega en algún momento a 0 la partida se termina y se considera que el jugador ha perdido.
   - Robar: Distintas situaciones o efectos pueden hacer que se robe, tales como pasar de acto y jugar determinadas cartas. Al robar, el jugador obtiene un número X de cartas aleatorias, dependiendo de la situación detonante. No se pueden tener más de cinco cartas en la mano al final del acto. Si se tienen más al final del acto se deben descartar tantas cartas como haga falta para llegar a cinco. Las cartas a descartar las selecciona el jugador.
   - Interacción entre recursos: Los recursos -drama, suspense y comedia- se afectan entre sí. Cuando se genera un recurso de un tipo se modifica la cantidad de otro en una medida igual a la jugada siguiendo el siguiente esquema:
-!(readmeimages/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/62616911/141502231-e04b0f7f-2a15-4995-aaf6-f95a8584c334.png)
+
 > Aclaración: la modificación solo se da cuando los recursos son creados por primera vez. Esto quiere decir que es posible tener comedia y suspense al mismo tiempo en el tablero, por ejemplo, siempre y cuando la comedia hubiese ido primero y luego el suspense.
 #### MECÁNICAS GENERALES
   - Pasar de Acto: Cada acto termina cuando el jugador quiere. Se pasa de acto pulsando el botón asociado a esta acción. Cuando se pasa de acto se detonan ciertos eventos:
@@ -79,25 +80,34 @@ Las cartas de acción son muy variadas y sirven para controlar la generación de
 Las cartas de acción pueden interaccionar con los otros dos tipos de cartas. De forma indirecta ocurre al generar recursos o transformarlos; de forma directa al poner o quitar cartas del tablero, cambiarlas a otras, etc.
 ### ESTETICA
 #### LISTA DE PELICULAS
-!(readmeimages/listapelis.png)
+![listapelis](https://user-images.githubusercontent.com/62616911/141502405-4d3e7d89-590e-4fb5-9e54-1c0c425a1462.png)
+
 Los cuadrados morados representan las carátulas (imagen + nombre) de las películas de Hitchcock que se pueden llegar a completar.
 #### INTERFAZ Y CONTROL
-!(readmeimages/interfaz.png)
+![interfaz](https://user-images.githubusercontent.com/62616911/141502460-ace6b549-00f2-4ec8-a504-8c4618df90ac.png)
+
 La parte marrón oscuro es la mesa donde se juegan las cartas. El rectángulo rojo oscuro representa el mazo y los rectángulos rojos más claros representan cartas que tendría el jugador en la mano (es decir, sin jugar). El visor del medio de la pantalla es la audiencia viendo la película, en algunos momentos la pantalla pondrá el recurso que la audiencia quiere en este acto.
-!(readmeimages/1.png)
+![1](https://user-images.githubusercontent.com/62616911/141502525-ddeaeb2e-5ab0-4013-b3df-b17916d1305b.png)
+
 1- Impacto en la audiencia: aquí está la cantidad (ej: +1, -1) en la que la carta modifica la atención de la audiencia cuando es puesta en juego.
 2- Imagen de la carta: imagen representante de la carta. Ya sea una escena o un personaje emblemático de Hitchcock.
 3- Nombre de la carta: el nombre identificador de la carta. Útil por si algún efecto llama a este nombre, por ejemplo.
 4- Descripción de la carta: texto que indica el efecto que tiene lugar al poner la carta en juego.
 5- Icono de tipo de carta: un icono gráfico que indica si la carta es una ACCIÓN, un PERSONAJE, o un ESCENARIO.
 #### CARTAS
-!(readmeimages/1.png)
-!(readmeimages/2.png)
-!(readmeimages/3.png)
-!(readmeimages/4.png)
-!(readmeimages/5.png)
+![1](https://user-images.githubusercontent.com/62616911/141502525-ddeaeb2e-5ab0-4013-b3df-b17916d1305b.png)
+
+![2](https://user-images.githubusercontent.com/62616911/141502621-a438ec12-17b4-43d3-85e5-846df164e8b9.png)
+
+![3](https://user-images.githubusercontent.com/62616911/141502676-9af24c73-b837-4c09-8332-dced1b71983a.png)
+
+![4](https://user-images.githubusercontent.com/62616911/141502724-929ffb2f-7ec5-40ab-9491-1db062f10211.png)
+
+![5](https://user-images.githubusercontent.com/62616911/141502772-404785db-e2b6-4840-9977-39d989f1fcbf.png)
+
 #### DIAGRAMA DE HERENCIA
-!(readmeimages/uml.png)
+![uml](https://user-images.githubusercontent.com/62616911/141502824-ddf6233c-330d-4bf4-93e7-d4c9d545c412.png)
+
 Aparte de estas clases hay una clase Director que se encarga de:
 - Puntuación
 - Recursos en juego 
