@@ -36,10 +36,9 @@ El juego comienza con cinco cartas aleatorias a disposición del jugador, el cua
   - Seleccionar cartas y ponerlas en juego: Las cartas se seleccionan dando click sobre ellas. Para ponerlas en juego solo habrá que cumplir con los requisitos -si los hay- y arrastrar la misma hasta el tablero de juego. En el momento en el que se suelta la carta se considera jugada.
   - Puntuación de trofeos de distintos tipos: Hay un contador que informa en todo momento de cuántos trofeos se han generado y de qué tipo.
   - Atención de la audiencia: La atención de la audiencia se representa con un número comprendido entre 0 y 10. Si la atención está entre 8 y 10, ambos incluidos, el número de trofeos generados aumenta en +2 cada vez que se genere una cantidad de trofeos mayor o igual a uno. Si la atención está entre 1 y 3, ambos incluidos, el número de trofeos generados disminuye en -2 cada vez que se genere una cantidad de trofeos mayor o igual a uno. Si la atención de la audiencia llega en algún momento a 0 la partida se termina y se considera que el jugador ha perdido.
-   
   - Robar: Distintas situaciones o efectos pueden hacer que se robe, tales como pasar de acto y jugar determinadas cartas. Al robar, el jugador obtiene un número X de cartas aleatorias, dependiendo de la situación detonante. No se pueden tener más de cinco cartas en la mano al final del acto. Si se tienen más al final del acto se deben descartar tantas cartas como haga falta para llegar a cinco. Las cartas a descartar las selecciona el jugador.
   - Interacción entre recursos: Los recursos -drama, suspense y comedia- se afectan entre sí. Cuando se genera un recurso de un tipo se modifica la cantidad de otro en una medida igual a la jugada siguiendo el siguiente esquema:
-
+!(readmeimages/Untitled.png)
 > Aclaración: la modificación solo se da cuando los recursos son creados por primera vez. Esto quiere decir que es posible tener comedia y suspense al mismo tiempo en el tablero, por ejemplo, siempre y cuando la comedia hubiese ido primero y luego el suspense.
 #### MECÁNICAS GENERALES
   - Pasar de Acto: Cada acto termina cuando el jugador quiere. Se pasa de acto pulsando el botón asociado a esta acción. Cuando se pasa de acto se detonan ciertos eventos:
@@ -80,21 +79,25 @@ Las cartas de acción son muy variadas y sirven para controlar la generación de
 Las cartas de acción pueden interaccionar con los otros dos tipos de cartas. De forma indirecta ocurre al generar recursos o transformarlos; de forma directa al poner o quitar cartas del tablero, cambiarlas a otras, etc.
 ### ESTETICA
 #### LISTA DE PELICULAS
-
+!(readmeimages/listapelis.png)
 Los cuadrados morados representan las carátulas (imagen + nombre) de las películas de Hitchcock que se pueden llegar a completar.
 #### INTERFAZ Y CONTROL
-
+!(readmeimages/interfaz.png)
 La parte marrón oscuro es la mesa donde se juegan las cartas. El rectángulo rojo oscuro representa el mazo y los rectángulos rojos más claros representan cartas que tendría el jugador en la mano (es decir, sin jugar). El visor del medio de la pantalla es la audiencia viendo la película, en algunos momentos la pantalla pondrá el recurso que la audiencia quiere en este acto.
-
+!(readmeimages/1.png)
 1- Impacto en la audiencia: aquí está la cantidad (ej: +1, -1) en la que la carta modifica la atención de la audiencia cuando es puesta en juego.
 2- Imagen de la carta: imagen representante de la carta. Ya sea una escena o un personaje emblemático de Hitchcock.
 3- Nombre de la carta: el nombre identificador de la carta. Útil por si algún efecto llama a este nombre, por ejemplo.
 4- Descripción de la carta: texto que indica el efecto que tiene lugar al poner la carta en juego.
 5- Icono de tipo de carta: un icono gráfico que indica si la carta es una ACCIÓN, un PERSONAJE, o un ESCENARIO.
 #### CARTAS
-
+!(readmeimages/1.png)
+!(readmeimages/2.png)
+!(readmeimages/3.png)
+!(readmeimages/4.png)
+!(readmeimages/5.png)
 #### DIAGRAMA DE HERENCIA
-
+!(readmeimages/uml.png)
 Aparte de estas clases hay una clase Director que se encarga de:
 - Puntuación
 - Recursos en juego 
