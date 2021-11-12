@@ -17,6 +17,16 @@
   - Sexo: Cualquiera
   - Región: Europa
   - Idioma: Español
+## DESCRIPCION
+Juego de cartas y gestión de recursos donde, dadas unas cartas que representan escenarios, personajes o acciones, deberás aguantar hasta el final del quinto acto haciendo una película con las cartas que tengas sin aburrir a la audiencia. Si la audiencia se aburre en algún momento pierdes la partida. 
+Comienzas en el primero de cinco actos. Los actos se suceden uno detrás de otro teniendo tres fases diferenciadas cada uno de ellos:
+
+- Capricho de la audiencia (a partir del segundo acto): la audiencia te hace saber que emoción quiere sentir en este acto. Si eres capaz de satisfacerla conseguirás aumentar su atención, pero si el siguiente acto comienza sin haberlo conseguido se aburrirán.
+- Fase de robo: si es el primer acto roba cinco cartas de la parte superior del mazo, si estás en cualquier otro acto roba dos cartas.
+- Fase de juego: juegas tantas cartas como quieras, dependiendo de los efectos de cada una pasarán unas cosas u otras. Para jugar una carta ponla boca arriba sobre la mesa.
+
+Cuando estés satisfecho con lo que has jugado simplemente pulsa en el botón de pasar de acto.
+Después de estas fases un nuevo acto comienza siguiendo el mismo esquema. Si consigues llegar al final del quinto acto sin aburrir a la audiencia tu película termina y consigues trofeos.
 ## ASPECTOS GENERALES
 ### RELATO BREVE Y PARCIAL DE UNA PARTIDA TÍPICA
 El juego comienza con cinco cartas aleatorias a disposición del jugador, el cual podrá poner en juego las que considere oportunas. Tras esto, pasará al segundo acto y el jugador robará dos cartas aleatorias. A partir de este acto, la audiencia demandará un tipo de recurso en concreto -drama, suspense o comedia-, de manera que si al finalizar el acto no se han puesto en juego cartas correspondientes a ese recurso, el nivel de atención de la audiencia disminuirá. De nuevo, el jugador podrá poner en juego las cartas que quiera y pasará de acto. Existe un tipo de cartas las cuales, al ponerlas en juego, transforman la cantidad de recursos actual de un tipo en concreto en trofeos, los cuales determinan la puntuación final de la partida. La partida termina si el jugador logra completar el quinto acto, ganando y obteniendo una puntuación específica, o si la atención de la audiencia llega a cero, en cuyo caso se ha perdido.
@@ -29,7 +39,7 @@ El juego comienza con cinco cartas aleatorias a disposición del jugador, el cua
    
   - Robar: Distintas situaciones o efectos pueden hacer que se robe, tales como pasar de acto y jugar determinadas cartas. Al robar, el jugador obtiene un número X de cartas aleatorias, dependiendo de la situación detonante. No se pueden tener más de cinco cartas en la mano al final del acto. Si se tienen más al final del acto se deben descartar tantas cartas como haga falta para llegar a cinco. Las cartas a descartar las selecciona el jugador.
   - Interacción entre recursos: Los recursos -drama, suspense y comedia- se afectan entre sí. Cuando se genera un recurso de un tipo se modifica la cantidad de otro en una medida igual a la jugada siguiendo el siguiente esquema:
-![alt text](http://url/to/img.png)
+
 > Aclaración: la modificación solo se da cuando los recursos son creados por primera vez. Esto quiere decir que es posible tener comedia y suspense al mismo tiempo en el tablero, por ejemplo, siempre y cuando la comedia hubiese ido primero y luego el suspense.
 #### MECÁNICAS GENERALES
   - Pasar de Acto: Cada acto termina cuando el jugador quiere. Se pasa de acto pulsando el botón asociado a esta acción. Cuando se pasa de acto se detonan ciertos eventos:
@@ -68,5 +78,27 @@ Los personajes más codiciados serán aquellos que tengan efectos “fuertes” 
 Los personajes interaccionan con las cartas de acción de forma directa, produciendo un efecto cada vez que se asocia una a un personaje en juego. Habrá que tener cuidado con a quien ligar según qué acciones para sacar el mayor provecho a los diferentes efectos.
 Las cartas de acción son muy variadas y sirven para controlar la generación de recursos y su transformación en puntos de victoria -trofeos- u otros recursos. La estrategia idónea es jugar acciones que nos den trofeos al mismo tiempo que intentamos mantener la atención del público alta.
 Las cartas de acción pueden interaccionar con los otros dos tipos de cartas. De forma indirecta ocurre al generar recursos o transformarlos; de forma directa al poner o quitar cartas del tablero, cambiarlas a otras, etc.
+### ESTETICA
+#### LISTA DE PELICULAS
+
+Los cuadrados morados representan las carátulas (imagen + nombre) de las películas de Hitchcock que se pueden llegar a completar.
+#### INTERFAZ Y CONTROL
+
+La parte marrón oscuro es la mesa donde se juegan las cartas. El rectángulo rojo oscuro representa el mazo y los rectángulos rojos más claros representan cartas que tendría el jugador en la mano (es decir, sin jugar). El visor del medio de la pantalla es la audiencia viendo la película, en algunos momentos la pantalla pondrá el recurso que la audiencia quiere en este acto.
+
+1- Impacto en la audiencia: aquí está la cantidad (ej: +1, -1) en la que la carta modifica la atención de la audiencia cuando es puesta en juego.
+2- Imagen de la carta: imagen representante de la carta. Ya sea una escena o un personaje emblemático de Hitchcock.
+3- Nombre de la carta: el nombre identificador de la carta. Útil por si algún efecto llama a este nombre, por ejemplo.
+4- Descripción de la carta: texto que indica el efecto que tiene lugar al poner la carta en juego.
+5- Icono de tipo de carta: un icono gráfico que indica si la carta es una ACCIÓN, un PERSONAJE, o un ESCENARIO.
+#### CARTAS
+
+#### DIAGRAMA DE HERENCIA
+
+Aparte de estas clases hay una clase Director que se encarga de:
+- Puntuación
+- Recursos en juego 
+- Atención de la audiencia
+- Familias de cartas jugadas (así como número de cartas de esas familias que se han jugado)
 ## REFERENCIAS
 - Cultist Simulator: cartas de acción asociadas a personajes y su forma de interactuar debido a esto.
