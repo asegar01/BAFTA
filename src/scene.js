@@ -1,5 +1,3 @@
-import Player from './player.js';
-import Platform from './platform.js';
 import Card from './card.js';
 
 /**
