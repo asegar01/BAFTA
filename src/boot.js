@@ -37,14 +37,10 @@ export default class Boot extends Phaser.Scene {
     for (var i = 0; i < 1; i++) {
       this.load.image('logo'+ i, 'AH_LOGO.png');
     }
-    this.load.image('platform', 'platform.png');
-    this.load.image('base', 'base.png');
-    this.load.image('star', 'star.png');
-    this.load.image('player', 'player.png');
     this.load.image('cinema', 'cinema.png');
     this.load.image('next-act-button','next-act-button.png');
     this.load.image('act-counter','act-counter.png');
-    this.load.image('card', 'cardTemplate.png');
+    this.load.image('card', 'CardTemplate.png');
 
     this.load.setPath('assets/audio/')
     this.load.audio('theme', 'theme.mp3')
