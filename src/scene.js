@@ -51,10 +51,6 @@ export default class Level extends Phaser.Scene {
     })
     this.label = this.add.text(915, 20, "ACTO");
     this.label = this.add.text(930, 40, numActo);
-
-    let card = this.add.image(500, 350, 'card').setInteractive();
-    card.setScale(.3);
-    this.input.on('pointerdown', this.startDrag, this);
   }
 
   // La carta se encuentra pulsada

@@ -4,6 +4,9 @@ constructor(scene, x, y, name, sprite, family, audiencemod, effect){
     super(scene,x,y,sprite);
     this.scene.add.existing(this);
 
+    this.scene.add.image(500,350,sprite).setInteractive().setScale(.3);
+    this.scene.input.on('pointerdown', this.scene.startDrag, this.scene);
+
     this._name=name;
     this._enjuego = false;
     this._family=family;
