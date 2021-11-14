@@ -1,5 +1,4 @@
 import Card from './card.js';
-
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas 
  * sobre las que se sitúan las bases en las podrán aparecer las estrellas. 
@@ -15,6 +14,7 @@ export default class Level extends Phaser.Scene {
   constructor() {
     super({ key: 'level' });
   }
+  
 
   /**
    * Creación de los elementos de la escena principal de juego
@@ -25,7 +25,7 @@ export default class Level extends Phaser.Scene {
     let cinema = this.add.image(500, 250, 'cinema');
     cinema.setScale(.5);
     this.audienceFocus = 5;
-    let pruebacarta = new Card(this,0,0,"",'card',"",1,function hola() {console.log("hola")
+    let pruebacarta = new Card(this,500,400,"",'card',"",1,function hola() {console.log("hola")
     });
 
     pruebacarta.onplayed();
@@ -39,7 +39,7 @@ export default class Level extends Phaser.Scene {
     let numActo=1;
     next_act_button.on('pointerdown',pointer=>{
       if(numActo<5){
-        numActo++;
+      numActo++;
       let act_counter=this.add.sprite(930,50,'act-counter');
       act_counter.setScale(.5);
       this.label = this.add.text(915, 20, "ACTO");
@@ -48,16 +48,26 @@ export default class Level extends Phaser.Scene {
       }
       else console.log('Fin de la partida');
       
-    })
+    });
     this.label = this.add.text(915, 20, "ACTO");
     this.label = this.add.text(930, 40, numActo);
+
+    // Mover objectos que sean draggable
+    this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+
+      gameObject.x = dragX;
+      gameObject.y = dragY;
+
+  });
   }
 
   // La carta se encuentra pulsada
-  startDrag(pointer, targets)
+  /* startDrag(pointer, targets)
   {
+    //if(this.dragObj.constructor.name=="Card")console.log("Es Card");
     this.input.off('pointerdown', this.startDrag, this);
     this.dragObj = targets[0];
+    //console.log(this.dragObj.constructor.name);
     this.input.on('pointermove', this.onDrag, this);
     this.input.on('pointerup', this.endDrag, this);
   }
@@ -65,6 +75,7 @@ export default class Level extends Phaser.Scene {
   // La carta se encuentra en movimiento
   onDrag(pointer)
   {
+    if(this.constructor.name=="Card")console.log("Es Card");
     this.dragObj.x = pointer.x;
     this.dragObj.y = pointer.y;
   }
@@ -72,8 +83,9 @@ export default class Level extends Phaser.Scene {
   // La carta ha dejado de ser pulsada
   endDrag()
   {
+    if(this.constructor.name=="Card")console.log("Es Card");
     this.input.on('pointerdown', this.startDrag, this);
     this.input.off('pointermove', this.onDrag, this);
     this.input.off('pointerup', this.endDrag, this);
-  }
+  } */
 }
