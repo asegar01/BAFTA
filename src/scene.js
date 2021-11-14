@@ -66,7 +66,7 @@ export default class Level extends Phaser.Scene {
       cartas_en_mano++;
       posX+=100;
     }
-    
+    if(cartas_en_mano<=5)trash_can.setTint(0x707070);
     console.log("cartas en mano: "+cartas_en_mano);
 
     
@@ -77,19 +77,25 @@ export default class Level extends Phaser.Scene {
 
       gameObject.x = dragX;
       gameObject.y = dragY;
-      if(gameObject.x<(trash_can.x+320*trash_can_scale/2)&&gameObject.y>trash_can.y-400*trash_can_scale/2)
+      if(cartas_en_mano>5){
+        if(gameObject.x<(trash_can.x+320*trash_can_scale/2)&&gameObject.y>trash_can.y-400*trash_can_scale/2)
         gameObject.setTint(0xff0000);
       else gameObject.clearTint();
+      }
+      
 
     });
     
     this.input.on('dragend', function (pointer, gameObject) {
-
-      if(gameObject.x<(trash_can.x+320*trash_can_scale/2)&&gameObject.y>trash_can.y-400*trash_can_scale/2){
-        cartas_en_mano--;
-        gameObject.setActive(false).setVisible(false);
-        console.log("cartas en mano: "+cartas_en_mano);
+      if(cartas_en_mano>5){
+        if(gameObject.x<(trash_can.x+320*trash_can_scale/2)&&gameObject.y>trash_can.y-400*trash_can_scale/2){
+          cartas_en_mano--;
+          gameObject.setActive(false).setVisible(false);
+          console.log("cartas en mano: "+cartas_en_mano);
+          if(cartas_en_mano<=5)trash_can.setTint(0x707070);
+        }
       }
+      
     });
     
   }
