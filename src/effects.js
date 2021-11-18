@@ -12,6 +12,6 @@ export default class Effect{
                 break;
         }
         if(scene.capricho===type)scene.capricho=-1;
-            }
+    }
 }
 
