@@ -21,7 +21,7 @@ ondrawn(){
 }
 
 onplayed(){
-    this._effect();
+    this._effect;
     this.scene.audienceFocus += this._audiencemod;
     this._enjuego=true;
 }
