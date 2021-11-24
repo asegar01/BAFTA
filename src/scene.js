@@ -106,7 +106,7 @@ export default class Level extends Phaser.Scene {
       gameObject.x = dragX;
       gameObject.y = dragY;
       if(this.scene.hand.length>5){
-        if(gameObject.x<(this.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.trash_can.y-400*trash_can_scale/2)
+        if(gameObject.x<(this.scene.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.scene.trash_can.y-400*trash_can_scale/2)
         gameObject.setTint(0xff0000);
       else gameObject.clearTint();
       }
@@ -116,10 +116,10 @@ export default class Level extends Phaser.Scene {
     
     this.input.on('dragend', function (pointer, gameObject) {
       if(this.scene.hand.length>5){
-        if(gameObject.x<(this.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.trash_can.y-400*trash_can_scale/2){
+        if(gameObject.x<(this.scene.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.scene.trash_can.y-400*trash_can_scale/2){
           gameObject.setActive(false).setVisible(false);
           console.log("cartas en mano: "+this.scene.hand.length);
-          if(this.scene.hand.length<=5)this.trash_can.setTint(0x707070);
+          if(this.scene.hand.length<=5)this.scene.trash_can.setTint(0x707070);
         }
       }
       
