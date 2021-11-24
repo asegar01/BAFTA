@@ -1,5 +1,5 @@
 import Card from './card.js';
-import Effect from './effects.js';
+import Effect, { GenerateEffect } from './effects.js';
 import Deck from './deck.js';
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas 
@@ -42,10 +42,10 @@ export default class Level extends Phaser.Scene {
     //------------------
     
     //construccion de deck
-    let effectforcard = new Effect();
+    let effectforcard = new GenerateEffect(this);
     this.deck=new Deck(this,0,0,'');
     for(let i = 0; i < 5; i++){
-      this.deck.addCard(new Card(this,0,0,"",'card',"",1,effectforcard.generate(this,0,1)));
+      this.deck.addCard(new Card(this,0,0,"",'card',"",1,effectforcard));
     }
     //---------------------
 
@@ -105,7 +105,7 @@ export default class Level extends Phaser.Scene {
 
       gameObject.x = dragX;
       gameObject.y = dragY;
-      if(this.hand.length>5){
+      if(this.scene.hand.length>5){
         if(gameObject.x<(this.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.trash_can.y-400*trash_can_scale/2)
         gameObject.setTint(0xff0000);
       else gameObject.clearTint();
@@ -115,11 +115,11 @@ export default class Level extends Phaser.Scene {
     });
     
     this.input.on('dragend', function (pointer, gameObject) {
-      if(this.hand.length>5){
+      if(this.scene.hand.length>5){
         if(gameObject.x<(this.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.trash_can.y-400*trash_can_scale/2){
           gameObject.setActive(false).setVisible(false);
-          console.log("cartas en mano: "+this.hand.length);
-          if(this.hand.length<=5)this.trash_can.setTint(0x707070);
+          console.log("cartas en mano: "+this.scene.hand.length);
+          if(this.scene.hand.length<=5)this.trash_can.setTint(0x707070);
         }
       }
       
