@@ -53,11 +53,11 @@ export default class Level extends Phaser.Scene {
     this.hand=[];
     this.deck.dealNcard(5,this.hand);
 
-    let trash_can=this.add.sprite(55,420,'trash-can');
+    this.trash_can=this.add.sprite(55,420,'trash-can');
     let trash_can_scale=.3;
-    trash_can.setScale(trash_can_scale);
-if(this.hand.length<=5)trash_can.setTint(0x707070);
-//---------------
+    this.trash_can.setScale(trash_can_scale);
+    if(this.hand.length<=5)this.trash_can.setTint(0x707070);
+    //---------------
 
     // UI
     let next_act_button = this.add.sprite(900,400,'next-act-button').setInteractive();
@@ -106,7 +106,7 @@ if(this.hand.length<=5)trash_can.setTint(0x707070);
       gameObject.x = dragX;
       gameObject.y = dragY;
       if(this.hand.length>5){
-        if(gameObject.x<(trash_can.x+320*trash_can_scale/2)&&gameObject.y>trash_can.y-400*trash_can_scale/2)
+        if(gameObject.x<(this.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.trash_can.y-400*trash_can_scale/2)
         gameObject.setTint(0xff0000);
       else gameObject.clearTint();
       }
@@ -116,10 +116,10 @@ if(this.hand.length<=5)trash_can.setTint(0x707070);
     
     this.input.on('dragend', function (pointer, gameObject) {
       if(this.hand.length>5){
-        if(gameObject.x<(trash_can.x+320*trash_can_scale/2)&&gameObject.y>trash_can.y-400*trash_can_scale/2){
+        if(gameObject.x<(this.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.trash_can.y-400*trash_can_scale/2){
           gameObject.setActive(false).setVisible(false);
           console.log("cartas en mano: "+this.hand.length);
-          if(this.hand.length<=5)trash_can.setTint(0x707070);
+          if(this.hand.length<=5)this.trash_can.setTint(0x707070);
         }
       }
       
@@ -133,7 +133,7 @@ if(this.hand.length<=5)trash_can.setTint(0x707070);
       //console.log("END: " + this.gameover);
     }
     if(this.gameover!==-1);//hacer el cambio de escena a la de gameover aqui
-    
+    if(this.hand.length<=5)this.trash_can.setTint(0x707070);
   }
   
   // La carta se encuentra pulsada
