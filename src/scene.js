@@ -16,7 +16,6 @@ export default class Level extends Phaser.Scene {
   constructor() {
     super({ key: 'level' });
   }
-  
 
   /**
    * Creación de los elementos de la escena principal de juego
@@ -24,10 +23,9 @@ export default class Level extends Phaser.Scene {
   create() 
   {
     //medidores de recursos
-    this.comedy=0;
-    this.drama=0;
-    this.suspense=0;
-
+    this.comedy = 0;
+    this.drama = 0;
+    this.suspense = 0;
 
     this.scale.updateBounds();
     let cinema = this.add.image(500, 250, 'cinema');
@@ -38,7 +36,7 @@ export default class Level extends Phaser.Scene {
     this.screen.setScale(screen_scale);
     
     // cosas importantes
-    this.gameover=-1;
+    this.gameover = -1;
     this.audienceFocus = 5;
 
     //capricho de la audiencia
@@ -47,44 +45,44 @@ export default class Level extends Phaser.Scene {
     
     //construccion de deck
     let effectforcard = new GenerateEffect(this);
-    this.deck=new Deck(this,0,0,'');
+    this.deck = new Deck(this, 0, 0,'');
     for(let i = 0; i < 5; i++){
-      this.deck.addCard(new Card(this,0,0,"",'card',"",1,effectforcard));
+      this.deck.addCard(new Card(this, 0, 0,"",'card',"", 1, effectforcard));
     }
     //---------------------
 
     //construccion de mano
-    this.hand=[];
+    this.hand = [];
     this.deck.dealNcard(5,this.hand);
 
-    this.trash_can=this.add.sprite(55,420,'trash-can');
-    let trash_can_scale=.3;
+    this.trash_can = this.add.sprite(55,420,'trash-can');
+    let trash_can_scale = .3;
     this.trash_can.setScale(trash_can_scale);
-    if(this.hand.length<=5)this.trash_can.setTint(0x707070);
+    if(this.hand.length <= 5) this.trash_can.setTint(0x707070);
     //---------------
 
     // UI
-    let next_act_button = this.add.sprite(900,400,'next-act-button').setInteractive();
+    let next_act_button = this.add.sprite(900, 400, 'next-act-button').setInteractive();
     next_act_button.setScale(.4);
-    let act_counter=this.add.sprite(930,50,'act-counter');
+    let act_counter = this.add.sprite(930, 50, 'act-counter');
     act_counter.setScale(.5);
     
-    let numActo=1;
-    next_act_button.on('pointerdown',pointer=>{
-      if(numActo<5){
+    let numActo = 1;
+    next_act_button.on('pointerdown', pointer=>{
+      if(numActo < 5){
         if(this.hand.length<=5){
           //capricho de la audiencia
-          if(this.capricho!==-1)this.audienceFocus -= 2;
-          this.capricho=Math.floor((Math.random()*2)+0); 
+          if(this.capricho != -1) this.audienceFocus -= 2;
+          this.capricho = Math.floor((Math.random() * 2) + 0); 
           console.log("capricho: " + this.capricho);
           console.log("focus: " + this.audienceFocus);
           console.log("end: " + this.gameover);
           //------------------
           //robo de cartas
-          this.deck.dealNcard(2,this.hand);
+          this.deck.dealNcard(2, this.hand);
           //------------------
           numActo++;
-          let act_counter=this.add.sprite(930,50,'act-counter');
+          let act_counter = this.add.sprite(930,50,'act-counter');
           act_counter.setScale(.5);
           this.label = this.add.text(915, 20, "ACTO");
           this.label = this.add.text(930, 40, numActo);
@@ -94,7 +92,7 @@ export default class Level extends Phaser.Scene {
         
       }
       else {
-        this.gameover=1;
+        this.gameover = 1;
         console.log('Fin de la partida');
       }
       
@@ -109,7 +107,8 @@ export default class Level extends Phaser.Scene {
       gameObject.x = dragX;
       gameObject.y = dragY;
       
-      if(gameObject.x<(this.scene.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.scene.trash_can.y-400*trash_can_scale/2)
+      if(gameObject.x < (this.scene.trash_can.x + 320 * trash_can_scale / 2) && gameObject.y > (this.scene.trash_can.y - 400 * trash_can_scale / 2) 
+        && gameObject.x > (this.scene.trash_can.x - 320 * trash_can_scale / 2) && gameObject.y < (this.scene.trash_can.y + 400 * trash_can_scale / 2))
         {
           if(this.scene.hand.length > 5)
           {
@@ -126,11 +125,14 @@ export default class Level extends Phaser.Scene {
 
 
     this.input.on('dragend', function (pointer, gameObject) {
-      if(this.scene.hand.length>5){
-        if(gameObject.x<(this.scene.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.scene.trash_can.y-400*trash_can_scale/2){
+      if(this.scene.hand.length > 5)
+      {
+        if(gameObject.x < (this.scene.trash_can.x + 320 * trash_can_scale / 2) 
+          && gameObject.y > this.scene.trash_can.y - 400 * trash_can_scale / 2)
+        {
           gameObject.setActive(false).setVisible(false);
           console.log("cartas en mano: "+this.scene.hand.length);
-          if(this.scene.hand.length<=5)this.scene.trash_can.setTint(0x707070);
+          if(this.scene.hand.length <= 5) this.scene.trash_can.setTint(0x707070);
         }
       }
     });
@@ -142,34 +144,7 @@ export default class Level extends Phaser.Scene {
       //console.log("END: " + this.gameover);
     }
     if(this.gameover!==-1);//hacer el cambio de escena a la de gameover aqui
-    if(this.hand.length<=5)this.trash_can.setTint(0x707070);
+    if(this.hand.length <= 5) this.trash_can.setTint(0x707070);
+    else this.trash_can.setTint(0xffffff);
   }
-  
-  // La carta se encuentra pulsada
-  /* startDrag(pointer, targets)
-  {
-    //if(this.dragObj.constructor.name=="Card")console.log("Es Card");
-    this.input.off('pointerdown', this.startDrag, this);
-    this.dragObj = targets[0];
-    //console.log(this.dragObj.constructor.name);
-    this.input.on('pointermove', this.onDrag, this);
-    this.input.on('pointerup', this.endDrag, this);
-  }
-
-  // La carta se encuentra en movimiento
-  onDrag(pointer)
-  {
-    if(this.constructor.name=="Card")console.log("Es Card");
-    this.dragObj.x = pointer.x;
-    this.dragObj.y = pointer.y;
-  }
-
-  // La carta ha dejado de ser pulsada
-  endDrag()
-  {
-    if(this.constructor.name=="Card")console.log("Es Card");
-    this.input.on('pointerdown', this.startDrag, this);
-    this.input.off('pointermove', this.onDrag, this);
-    this.input.off('pointerup', this.endDrag, this);
-  } */
 }
