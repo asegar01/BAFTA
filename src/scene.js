@@ -114,11 +114,10 @@ export default class Level extends Phaser.Scene {
           gameObject.setTint(0xff0000);
       else gameObject.clearTint();
 
-      if(gameObject.x < (this.scene.screen.x + 580 * screen_scale / 2) 
-        && gameObject.y < (this.scene.screen.y - 450 * screen_scale / 2))
+      if(gameObject.x < (this.scene.screen.x + 580 * screen_scale / 2) && gameObject.x > (this.scene.screen.x - 580 * screen_scale / 2)
+        && gameObject.y > (this.scene.screen.y - 450 * screen_scale / 2) && gameObject.y < (this.scene.screen.y + 450 * screen_scale / 2))
         {
-          gameObject.setTint(0x707070);
-          console.log("a");
+          gameObject.setTint(0x32CD32);
         }
       else gameObject.clearTint();
     });
