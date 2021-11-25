@@ -146,5 +146,12 @@ export default class Level extends Phaser.Scene {
     if(this.gameover!==-1);//hacer el cambio de escena a la de gameover aqui
     if(this.hand.length <= 5) this.trash_can.setTint(0x707070);
     else this.trash_can.setTint(0xffffff);
+
+    let i = 0;
+    while(i<this.hand.length){
+      if(this.hand[i].active===false)
+      this.hand.splice(i,1);
+      i++;
+    }
   }
 }

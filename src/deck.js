@@ -14,11 +14,10 @@ dealNcard(n, hand){
 for(let i = 0; i < n; i++){
     //habria que borrar de cardlist?
     let carta = this.cardlist[Math.floor((Math.random()*this.cardlist.length)+0)];
-    //no funca el cambio de posicion y tengo que ver por que
-    carta.x=200+(100*hand.length);
-    carta.y=400;
-    carta.scene.add.image(carta.x,carta.y,'card').setInteractive({ draggable: true }).setScale(.3);
-    hand.push(carta);
+    let imagen = carta.scene.add.image(200+(100*hand.length),400,'card');
+    imagen.setInteractive({ draggable: true }).setScale(.3);
+    imagen.objetopadre = carta;
+    hand.push(imagen);
 }
 }
 
