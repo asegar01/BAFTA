@@ -125,6 +125,7 @@ export default class Level extends Phaser.Scene {
 
 
     this.input.on('dragend', function (pointer, gameObject) {
+      // Tirar cartas
       if(this.scene.hand.length > 5)
       {
         if(gameObject.x < (this.scene.trash_can.x + 320 * trash_can_scale / 2) 
@@ -134,6 +135,14 @@ export default class Level extends Phaser.Scene {
           console.log("cartas en mano: "+this.scene.hand.length);
           if(this.scene.hand.length <= 5) this.scene.trash_can.setTint(0x707070);
         }
+      }
+      // Poner cartas en juego
+      if((gameObject.x < (this.scene.screen.x + 580 * screen_scale / 2) && gameObject.x > (this.scene.screen.x - 580 * screen_scale / 2)
+      && gameObject.y > (this.scene.screen.y - 450 * screen_scale / 2) && gameObject.y < (this.scene.screen.y + 450 * screen_scale / 2)))
+      {
+        this.scene.input.setDraggable(gameObject,false);
+        gameObject.setActive(false);
+        console.log("cartas en mano: "+this.scene.hand.length);
       }
     });
   }
