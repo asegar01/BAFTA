@@ -32,6 +32,10 @@ export default class Level extends Phaser.Scene {
     this.scale.updateBounds();
     let cinema = this.add.image(500, 250, 'cinema');
     cinema.setScale(.5);
+
+    this.screen = this.add.sprite(490, 170, 'screen').setInteractive();
+    let screen_scale = .5;
+    this.screen.setScale(screen_scale);
     
     // cosas importantes
     this.gameover=-1;
@@ -98,22 +102,28 @@ export default class Level extends Phaser.Scene {
     this.label = this.add.text(915, 20, "ACTO");
     this.label = this.add.text(930, 40, numActo);
 
-    
-
     // Mover objectos que sean draggable
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+      this.scene.children.bringToTop(gameObject);
 
       gameObject.x = dragX;
       gameObject.y = dragY;
-      if(this.scene.hand.length>5){
-        if(gameObject.x<(this.scene.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.scene.trash_can.y-400*trash_can_scale/2)
-        gameObject.setTint(0xff0000);
-      else gameObject.clearTint();
-      }
       
+      if(this.scene.hand.length > 5)
+        if(gameObject.x<(this.scene.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.scene.trash_can.y-400*trash_can_scale/2)
+          gameObject.setTint(0xff0000);
+      else gameObject.clearTint();
 
+      if(gameObject.x < (this.scene.screen.x + 580 * screen_scale / 2) 
+        && gameObject.y < (this.scene.screen.y - 450 * screen_scale / 2))
+        {
+          gameObject.setTint(0x707070);
+          console.log("a");
+        }
+      else gameObject.clearTint();
     });
-    
+
+
     this.input.on('dragend', function (pointer, gameObject) {
       if(this.scene.hand.length>5){
         if(gameObject.x<(this.scene.trash_can.x+320*trash_can_scale/2)&&gameObject.y>this.scene.trash_can.y-400*trash_can_scale/2){
@@ -122,9 +132,7 @@ export default class Level extends Phaser.Scene {
           if(this.scene.hand.length<=5)this.scene.trash_can.setTint(0x707070);
         }
       }
-      
     });
-    
   }
 
   update(){
