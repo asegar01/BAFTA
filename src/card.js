@@ -19,9 +19,9 @@ ondrawn(){
 }
 
 onplayed(){
-    this._effect.execute();
     this.scene.audienceFocus += this._audiencemod;
     this._enjuego=true;
+    this._effect.execute();
 }
 
 

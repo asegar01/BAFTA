@@ -14,7 +14,7 @@ dealNcard(n, hand){
 for(let i = 0; i < n; i++){
     //habria que borrar de cardlist?
     let carta = this.cardlist[Math.floor((Math.random()*this.cardlist.length)+0)];
-    let imagen = carta.scene.add.image(200+(100*hand.length),400,'card');
+    let imagen = carta.scene.add.image(200+(100*hand.length),400,carta.texture);
     imagen.setInteractive({ draggable: true }).setScale(.3);
     imagen.objetopadre = carta;
     hand.push(imagen);

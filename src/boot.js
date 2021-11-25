@@ -41,6 +41,14 @@ export default class Boot extends Phaser.Scene {
     this.load.image('trash-can','trash-can.png');
     this.load.image('screen', 'screen.png');
 
+    this.load.setPath('assets/sprites/cards/')
+    this.load.image('card1','test1.png');
+    this.load.image('card2','test2.png');
+    this.load.image('card3','test3.png');
+    this.load.image('card4','test4.png');
+    this.load.image('card5','test5.png');
+    this.load.image('card6','test6.png');
+
     this.load.setPath('assets/audio/')
     this.load.audio('theme', 'theme.mp3')
               
@@ -86,6 +94,6 @@ export default class Boot extends Phaser.Scene {
    */
   create() {
     this.scene.start('level');
-    let theme = this.add.sound('theme', { loop: true });
+    this.scene.add.sound('theme', { loop: true });
   }
 }
