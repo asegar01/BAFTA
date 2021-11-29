@@ -56,18 +56,18 @@ export default class Level extends Phaser.Scene {
     this.deck = new Deck(this, 0, 0,'');
 
     let comedy1up = new GenerateEffect(this,0,1);
-    this.deck.addCard(new Card(this,0,0,"",'card1',"",1,comedy1up));
+    this.deck.addCard(new Card(this,0,0,"",'card1',"STAGE",1,comedy1up));
     let drama1up = new GenerateEffect(this,1,1);
-    this.deck.addCard(new Card(this,0,0,"",'card2',"",0,drama1up));
+    this.deck.addCard(new Card(this,0,0,"",'card2',"STAGE",0,drama1up));
     let suspense1up = new GenerateEffect(this,2,1);
-    this.deck.addCard(new Card(this,0,0,"",'card3',"",-1,suspense1up));
+    this.deck.addCard(new Card(this,0,0,"",'card3',"STAGE",-1,suspense1up));
 
     let comedy2t = new TrophyEffect(this,0,1);
-    this.deck.addCard(new Card(this,0,0,"",'card4',"",-1,comedy2t));
+    this.deck.addCard(new Card(this,0,0,"",'card4',"ACTION",-1,comedy2t));
     let drama2t = new TrophyEffect(this,1,1);
-    this.deck.addCard(new Card(this,0,0,"",'card5',"",0,drama2t));
+    this.deck.addCard(new Card(this,0,0,"",'card5',"ACTION",0,drama2t));
     let suspense2t = new TrophyEffect(this,2,1);
-    this.deck.addCard(new Card(this,0,0,"",'card6',"",1,suspense2t));
+    this.deck.addCard(new Card(this,0,0,"",'card6',"CHARACTER",1,suspense2t));
     
     //---------------------
 
@@ -162,10 +162,10 @@ export default class Level extends Phaser.Scene {
       if((gameObject.x < (this.scene.screen.x + 580 * screen_scale / 2) && gameObject.x > (this.scene.screen.x - 580 * screen_scale / 2)
       && gameObject.y > (this.scene.screen.y - 450 * screen_scale / 2) && gameObject.y < (this.scene.screen.y + 450 * screen_scale / 2)))
       {
-        this.scene.input.setDraggable(gameObject,false);
+        this.scene.input.setDraggable(gameObject, false);
         gameObject.setActive(false);
         gameObject.objetopadre.onplayed();
-        console.log("cartas en mano: "+this.scene.hand.length);
+        console.log("cartas en mano: "+ this.scene.hand.length);
       }
     });
   }
