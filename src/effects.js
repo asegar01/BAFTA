@@ -1,13 +1,26 @@
 export default class Effect{
     execute(){}
     updatetexts(){
-        this.scene.comedylabel.text = "Comedy: " + this.scene.comedy;
-        this.scene.dramalabel.text ="Drama: " + this.scene.drama;
-        this.scene.suspenselabel.text = "Suspense: " + this.scene.suspense;
-        this.scene.trophieslabel.text ="Trophies: " + this.scene.trophies;
-        this.scene.focuslabel.text = "Focus: " + this.scene.audienceFocus;
-        this.scene.capricholabel.text ="Capricho: " + this.scene.capricho;
+        this.scene.comedylabel.text = this.scene.comedy;
+        this.scene.dramalabel.text =this.scene.drama;
+        this.scene.suspenselabel.text =  this.scene.suspense;
+        this.scene.trophieslabel.text = this.scene.trophies;
+        this.scene.focuslabel.text = this.scene.audienceFocus;
+        if(this.scene.numActo>1){
+            if(this.scene.capricho==0){ // Comedy
+                this.scene.capricholabel.text ="Comedy";
+            }
+            else if(this.scene.capricho==1){ // Drama
+                this.scene.capricholabel.text ="Drama";
+            }
+            else if(this.scene.capricho==2){ // Suspense
+                this.scene.capricholabel.text ="Suspense";
+            }
+            else this.scene.capricholabel.text ="Completado";
+        }
+        else this.scene.capricholabel.text="";
     }
+        
 }
 
 export class GenerateEffect extends Effect{

@@ -40,8 +40,15 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card', 'CardTemplate.png');
     this.load.image('trash-can','trash-can.png');
     this.load.image('screen', 'screen.png');
+    this.load.image('hud-background','hud-background.png');
+    this.load.image('hud-drama','hud-drama.png');
+    this.load.image('hud-comedy','hud-comedy.png');
+    this.load.image('hud-suspense','hud-suspense.png');
+    this.load.image('hud-trophy','hud-trophy.png');
+    this.load.image('hud-audience','hud-audience.png');
+    this.load.image('hud-capricho','hud-capricho.png');
 
-    this.load.setPath('assets/sprites/cards/')
+    this.load.setPath('assets/sprites/cards/');
     this.load.image('card1','test1.png');
     this.load.image('card2','test2.png');
     this.load.image('card3','test3.png');
@@ -94,6 +101,6 @@ export default class Boot extends Phaser.Scene {
    */
   create() {
     this.scene.start('level');
-    this.scene.add.sound('theme', { loop: true });
+    //this.scene.add.sound('theme', { loop: true });
   }
 }

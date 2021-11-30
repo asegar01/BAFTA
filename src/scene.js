@@ -23,21 +23,22 @@ export default class Level extends Phaser.Scene {
   create() 
   {
     this.scale.updateBounds();
-    let cinema = this.add.image(500, 250, 'cinema');
+    let cinema = this.add.image(500, 260, 'cinema');
     cinema.setScale(.5);
 
-    this.screen = this.add.sprite(490, 170, 'screen').setInteractive();
+    this.screen = this.add.sprite(490, 180, 'screen').setInteractive();
     let screen_scale = .5;
     this.screen.setScale(screen_scale);
+    this.screen.setVisible(false);
 
     //medidores de recursos
     this.comedy = 0;
     this.drama = 0;
     this.suspense = 0;
 
-    this.comedylabel = this.add.text(50,50,"Comedy: " + this.comedy);
-    this.dramalabel = this.add.text(50,70,"Drama: " + this.drama);
-    this.suspenselabel = this.add.text(50,90,"Suspense: " + this.suspense);
+    //this.comedylabel = this.add.text(50,50,"Comedy: " + this.comedy);
+    //this.dramalabel = this.add.text(50,70,"Drama: " + this.drama);
+    //this.suspenselabel = this.add.text(50,90,"Suspense: " + this.suspense);
     
     
     // cosas importantes
@@ -45,11 +46,11 @@ export default class Level extends Phaser.Scene {
     this.audienceFocus = 5;
     this.focuslabel = this.add.text(200,50,"Focus: " + this.audienceFocus);
     this.trophies = 0;
-    this.trophieslabel = this.add.text(50,130,"Trophies: " + this.trophies);
+    //this.trophieslabel = this.add.text(50,130,"Trophies: " + this.trophies);
 
     //capricho de la audiencia
     this.capricho = -1;
-    this.capricholabel = this.add.text(200, 70, "Capricho: " + this.capricho);
+    //this.capricholabel = this.add.text(200, 70, "Capricho: " + this.capricho);
     //------------------
     
     //construccion de deck
@@ -81,19 +82,52 @@ export default class Level extends Phaser.Scene {
     if(this.hand.length <= 5) this.trash_can.setTint(0x707070);
     //---------------
 
-    // UI
+    // HUD
+    this.add.image(500,35,'hud-background');
+
+    let emotions_scale=.2;
+
+    let hud_drama=this.add.sprite(40,35,'hud-drama');
+    hud_drama.setScale(emotions_scale);
+    this.dramalabel = this.add.text(70,25,this.drama,{fontSize:'40px'});
+
+    this.hud_comedy=this.add.sprite(140,35,'hud-comedy');
+    this.hud_comedy.setScale(emotions_scale);
+    this.comedylabel=this.add.text(170,25,this.comedy,{fontSize:'40px'});
+
+    this.hud_suspense=this.add.sprite(240,35,'hud-suspense');
+    this.hud_suspense.setScale(emotions_scale);
+    this.suspenselabel = this.add.text(270,25,this.suspense,{fontSize:'40px'});
+
+    this.hud_trophy=this.add.sprite(380,25,'hud-trophy');
+    this.hud_trophy.setScale(.14);
+    this.trophieslabel=this.add.text(405,13,this.trophies,{fontSize:'40px'});
+
+    this.hud_audience=this.add.sprite(500,25,'hud-audience');
+    this.hud_audience.setScale(.2);
+    this.focuslabel=this.add.text(540,13,this.audienceFocus,{fontSize:'40px'});
+
+    this.hud_capricho=this.add.sprite(620,25,'hud-capricho');
+    this.hud_capricho.setScale(.18);
+    this.capricholabel=this.add.text(650,13,'',{fontSize: '40px'});
+    
+
     let next_act_button = this.add.sprite(900, 400, 'next-act-button').setInteractive();
     next_act_button.setScale(.4);
+
     let act_counter = this.add.sprite(930, 50, 'act-counter');
     act_counter.setScale(.5);
     
-    let numActo = 1;
+    // Pasar de acto
+
+    this.numActo = 1;
+    let ultActo = 5;
     next_act_button.on('pointerdown', pointer=>{
-      if(numActo < 5){
+      if(this.numActo < 5){
         if(this.hand.length<=5){
           //capricho de la audiencia
           if(this.capricho != -1) this.audienceFocus -= 2;
-          this.capricho = Math.floor((Math.random() * 2) + 0); 
+          this.capricho = Math.floor((Math.random() * 3) + 0); 
           console.log("capricho: " + this.capricho);
           console.log("focus: " + this.audienceFocus);
           console.log("end: " + this.gameover);
@@ -101,14 +135,24 @@ export default class Level extends Phaser.Scene {
           //robo de cartas
           this.deck.dealNcard(2, this.hand);
           //------------------
-          numActo++;
+          this.numActo++;
           let act_counter = this.add.sprite(930,50,'act-counter');
           act_counter.setScale(.5);
           this.label = this.add.text(915, 20, "ACTO");
-          this.label = this.add.text(930, 40, numActo);
-          this.focuslabel.text = "Focus: " + this.audienceFocus;
-          this.capricholabel.text ="Capricho: " + this.capricho;
-          console.log('Acto '+ numActo);
+          this.label = this.add.text(920, 40, this.numActo + '/' + ultActo);
+          this.focuslabel.text = this.audienceFocus;
+          //this.capricholabel.text =this.capricho;
+          if(this.capricho==0){ // Comedy
+            this.capricholabel.text ="Comedy";
+          }
+          else if(this.capricho==1){ // Drama
+            this.capricholabel.text ="Drama";
+          }
+          else if(this.capricho==2){ // Suspense
+            this.capricholabel.text ="Suspense";
+          }
+          else this.capricholabel.text ="Completado";
+          console.log('Acto '+ this.numActo);
         }
         else console.log("No puedes tener mas de 5 cartas al pasar de acto");
         
@@ -120,7 +164,7 @@ export default class Level extends Phaser.Scene {
       
     });
     this.label = this.add.text(915, 20, "ACTO");
-    this.label = this.add.text(930, 40, numActo);
+    this.label = this.add.text(920, 40, this.numActo + '/' + ultActo);
 
     // Mover objectos que sean draggable
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
