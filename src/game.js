@@ -17,9 +17,9 @@ let config = {
     pixelArt: true,
     scene: [Boot, Level, End],
     physics: { 
-        default: 'arcade', 
+        default: 'arcade',
         arcade: { 
-            gravity: { y: 400 }, 
+            gravity: { y: 400 },
             debug: false 
         } 
     }

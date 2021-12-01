@@ -47,6 +47,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('hud-trophy','hud-trophy.png');
     this.load.image('hud-audience','hud-audience.png');
     this.load.image('hud-capricho','hud-capricho.png');
+    this.load.image('finalScreen', 'finalScreen.png');
 
     this.load.setPath('assets/sprites/cards/');
     this.load.image('card1','test1.png');

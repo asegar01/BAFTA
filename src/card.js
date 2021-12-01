@@ -39,17 +39,18 @@ export default class Card extends Phaser.GameObjects.Sprite{
             {
                 console.log("Escenario cambiado");
             }
-            onGenerate(this._effect);
+            this.onGenerate();
         }
+
+        this._effect.execute();
         this.scene.audienceFocus += this._audiencemod;
         this._enjuego = true;
-        this._effect.execute();
-    }  
-}
-
-function onGenerate(e)
-{
-    let stageEffect = e;
-    console.log(stageEffect);
-    let stage = new GenerateEffect(this, 1, 1);
+    }
+    
+    onGenerate()
+    {
+        let stageEffect = new GenerateEffect(this, this._audiencemod, this._effect);
+        console.log(stageEffect);
+        // stageEffect.execute();
+    }
 }
