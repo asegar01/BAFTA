@@ -40,6 +40,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card', 'CardTemplate.png');
     this.load.image('trash-can','trash-can.png');
     this.load.image('screen', 'screen.png');
+    // HUD
     this.load.image('hud-background','hud-background.png');
     this.load.image('hud-drama','hud-drama.png');
     this.load.image('hud-comedy','hud-comedy.png');
@@ -47,6 +48,14 @@ export default class Boot extends Phaser.Scene {
     this.load.image('hud-trophy','hud-trophy.png');
     this.load.image('hud-audience','hud-audience.png');
     this.load.image('hud-capricho','hud-capricho.png');
+    this.load.image('cartel-drama','cartel-drama.png');
+    this.load.image('cartel-comedy','cartel-comedy.png');
+    this.load.image('cartel-suspense','cartel-suspense.png');
+    this.load.image('cartel-trophies','cartel-trophies.png');
+    this.load.image('cartel-audience','cartel-audience.png');
+    this.load.image('cartel-capricho','cartel-capricho.png');
+    this.load.image('cartel-demasiadas-cartas','cartel-demasiadas-cartas.png');
+
     this.load.image('finalScreen', 'finalScreen.png');
 
     this.load.setPath('assets/sprites/cards/');

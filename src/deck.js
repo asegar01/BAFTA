@@ -22,7 +22,7 @@ export default class Deck extends Phaser.GameObjects.Sprite
             let imagen = carta.scene.add.image(200+(100*hand.length),400,carta.texture);
             imagen.setInteractive({ draggable: true }).setScale(.3);
             imagen.objetopadre = carta;
-            hand[i] = imagen;
+            hand.push(imagen);
         }
     }
 }

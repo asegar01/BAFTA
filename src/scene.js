@@ -23,6 +23,7 @@ export default class Level extends Phaser.Scene {
    */
   create() 
   {
+    this.input.mouse.disableContextMenu();
     this.scale.updateBounds();
 
     // Escenario de juego
@@ -44,7 +45,7 @@ export default class Level extends Phaser.Scene {
     this.audienceFocus = 5;
     this.trophies = 0;
 
-    this.focuslabel = this.add.text(200,50,"Focus: " + this.audienceFocus);
+    //this.focuslabel = this.add.text(200,50,"Focus: " + this.audienceFocus);
     //this.trophieslabel = this.add.text(50,130,"Trophies: " + this.trophies);
 
     // Capricho de la audiencia
@@ -83,41 +84,125 @@ export default class Level extends Phaser.Scene {
 
     let emotions_scale = .2;
 
-    let hud_drama = this.add.sprite(40, 35, 'hud-drama');
-    hud_drama.setScale(emotions_scale);
+    this.hud_drama = this.add.sprite(40, 35, 'hud-drama').setInteractive();
+    this.hud_drama.setScale(emotions_scale);
     this.dramalabel = this.add.text(70, 25, this.drama, {fontSize:'40px'});
+    
 
-    this.hud_comedy = this.add.sprite(140, 35, 'hud-comedy');
+    this.hud_comedy = this.add.sprite(140, 35, 'hud-comedy').setInteractive();
     this.hud_comedy.setScale(emotions_scale);
     this.comedylabel = this.add.text(170, 25, this.comedy, {fontSize:'40px'});
 
-    this.hud_suspense = this.add.sprite(240, 35, 'hud-suspense');
+    this.hud_suspense = this.add.sprite(240, 35, 'hud-suspense').setInteractive();
     this.hud_suspense.setScale(emotions_scale);
     this.suspenselabel = this.add.text(270, 25, this.suspense, {fontSize:'40px'});
 
-    this.hud_trophy = this.add.sprite(380, 25, 'hud-trophy');
+    this.hud_trophy = this.add.sprite(380, 25, 'hud-trophy').setInteractive();
     this.hud_trophy.setScale(.14);
     this.trophieslabel = this.add.text(405, 13, this.trophies, {fontSize:'40px'});
 
-    this.hud_audience = this.add.sprite(500, 25, 'hud-audience');
+    this.hud_audience = this.add.sprite(500, 25, 'hud-audience').setInteractive();
     this.hud_audience.setScale(.2);
     this.focuslabel = this.add.text(540, 13, this.audienceFocus, {fontSize:'40px'});
 
     this.hud_capricho = this.add.sprite(620, 25, 'hud-capricho');
-    this.hud_capricho.setScale(.18);
-    this.capricholabel = this.add.text(650, 13, '', {fontSize: '40px'});
+    this.hud_capricho.setScale(.18).setVisible(false);
+    this.capricholabel = this.add.text(650, 15, '', {fontSize: '35px'});
     
     let next_act_button = this.add.sprite(900, 400, 'next-act-button').setInteractive();
     next_act_button.setScale(.4);
 
     let act_counter = this.add.sprite(930, 50, 'act-counter');
     act_counter.setScale(.5);
+
+    // Informacion al poner el raton sobre el HUD
+    // Drama
+    this.cartel_drama=this.add.sprite(0,0,'cartel-drama').setVisible(false);
+    let cartel_alpha=.85;
+    let cartel_dX=150;
+    let cartel_dY=80;
+    let cartel_grande_dy=120;
+    this.cartel_drama.alpha=cartel_alpha;
+    this.cartel_drama.setDepth(1);
+    this.hud_drama.on('pointermove',pointer=>{
+      this.cartel_drama.setVisible(true);
+      this.cartel_drama.x=pointer.x+cartel_dX;
+      this.cartel_drama.y=pointer.y+cartel_dY;
+    })
+    this.hud_drama.on('pointerout',pointer=>{
+      this.cartel_drama.setVisible(false);
+    })
+    // Comedy
+    this.cartel_comedy=this.add.sprite(0,0,'cartel-comedy').setVisible(false);
+    this.cartel_comedy.alpha=cartel_alpha;
+    this.cartel_comedy.setDepth(1);
+    this.hud_comedy.on('pointermove',pointer=>{
+      this.cartel_comedy.setVisible(true);
+      this.cartel_comedy.x=pointer.x+cartel_dX;
+      this.cartel_comedy.y=pointer.y+cartel_dY;
+    })
+    this.hud_comedy.on('pointerout',pointer=>{
+      this.cartel_comedy.setVisible(false);
+    })
+    // Suspense
+    this.cartel_suspense=this.add.sprite(0,0,'cartel-suspense').setVisible(false);
+    this.cartel_suspense.setDepth(1);
+    this.cartel_suspense.alpha=cartel_alpha;
+    this.hud_suspense.on('pointermove',pointer=>{
+      this.cartel_suspense.setVisible(true);
+      this.cartel_suspense.x=pointer.x+cartel_dX;
+      this.cartel_suspense.y=pointer.y+cartel_dY;
+    })
+    this.hud_suspense.on('pointerout',pointer=>{
+      this.cartel_suspense.setVisible(false);
+    })
+    // Trofeos
+    this.cartel_trophies=this.add.sprite(0,0,'cartel-trophies').setVisible(false);
+    this.cartel_trophies.setDepth(1);
+    this.cartel_trophies.alpha=cartel_alpha;
+    this.hud_trophy.on('pointermove',pointer=>{
+      this.cartel_trophies.setVisible(true);
+      this.cartel_trophies.x=pointer.x+cartel_dX;
+      this.cartel_trophies.y=pointer.y+cartel_grande_dy;
+    })
+    this.hud_trophy.on('pointerout',pointer=>{
+      this.cartel_trophies.setVisible(false);
+    })
+    // Atencion de la audiencia
+    this.cartel_audience=this.add.sprite(0,0,'cartel-audience').setVisible(false);
+    this.cartel_audience.setDepth(1);
+    this.cartel_audience.alpha=cartel_alpha;
+    this.hud_audience.on('pointermove',pointer=>{
+      this.cartel_audience.setVisible(true);
+      this.cartel_audience.x=pointer.x+cartel_dX;
+      this.cartel_audience.y=pointer.y+cartel_grande_dy;
+    })
+    this.hud_audience.on('pointerout',pointer=>{
+      this.cartel_audience.setVisible(false);
+    })
+    // Capricho de la audiencia
+    this.cartel_capricho=this.add.sprite(0,0,'cartel-capricho').setVisible(false);
+    this.cartel_capricho.setDepth(1);
+    this.cartel_capricho.alpha=cartel_alpha;
+    this.hud_capricho.on('pointermove',pointer=>{
+      this.cartel_capricho.setVisible(true);
+      this.cartel_capricho.x=pointer.x+cartel_dX;
+      this.cartel_capricho.y=pointer.y+cartel_grande_dy;
+    })
+    this.hud_capricho.on('pointerout',pointer=>{
+      this.cartel_capricho.setVisible(false);
+    })
     
     // Pasar de acto
     this.numActo = 1;
     let ultActo = 5;
+    // Cartel no puedes pasar de acto
+    this.cartel_demasiadas_cartas=this.add.sprite(0,0,'cartel-demasiadas-cartas').setVisible(false);
+    this.cartel_demasiadas_cartas.setDepth(1);
+    this.cartel_demasiadas_cartas.alpha=cartel_alpha;
     next_act_button.on('pointerdown', pointer=>
     {
+      console.log(this.hand.length);
       if(this.numActo < 5)
       {
         if(this.hand.length <= 5)
@@ -140,8 +225,8 @@ export default class Level extends Phaser.Scene {
           this.label = this.add.text(915, 20, "ACTO");
           this.label = this.add.text(920, 40, this.numActo + '/' + ultActo);
           this.focuslabel.text = this.audienceFocus;
-          //this.capricholabel.text =this.capricho;
-
+          
+          this.hud_capricho.setVisible(true).setInteractive();
           if(this.capricho == 0)
           { // Comedy
             this.capricholabel.text = "Comedy";
@@ -157,14 +242,31 @@ export default class Level extends Phaser.Scene {
           else this.capricholabel.text = "Completado";
           console.log('Acto '+ this.numActo);
         }
-        else console.log("No puedes tener mas de 5 cartas al pasar de acto");
+        else{
+          this.cartel_demasiadas_cartas.setVisible(true);
+          this.cartel_demasiadas_cartas.x=850;
+          this.cartel_demasiadas_cartas.y=250;
+          console.log("No puedes tener mas de 5 cartas al pasar de acto");
+        } 
       }
       else 
       {
-        this.gameover = 1;
-        console.log('Fin de la partida');
+        if(this.hand.length<=5){
+          this.gameover = 1;
+          console.log('Fin de la partida');
+        }
+        else{
+          this.cartel_demasiadas_cartas.setVisible(true);
+          this.cartel_demasiadas_cartas.x=850;
+          this.cartel_demasiadas_cartas.y=250;
+          console.log("No puedes tener mas de 5 cartas al pasar de acto");
+        }
       }
     });
+    next_act_button.on('pointerout',pointer=>{
+      this.cartel_demasiadas_cartas.setVisible(false);
+    })
+
     this.label = this.add.text(915, 20, "ACTO");
     this.label = this.add.text(920, 40, this.numActo + '/' + ultActo);
 
@@ -175,6 +277,7 @@ export default class Level extends Phaser.Scene {
 
       gameObject.x = dragX;
       gameObject.y = dragY;
+      gameObject.setDepth(0);
       
       if(gameObject.x < (this.scene.trash_can.x + 320 * trash_can_scale / 2) && gameObject.y > (this.scene.trash_can.y - 400 * trash_can_scale / 2) 
         && gameObject.x > (this.scene.trash_can.x - 320 * trash_can_scale / 2) && gameObject.y < (this.scene.trash_can.y + 400 * trash_can_scale / 2))
@@ -215,6 +318,8 @@ export default class Level extends Phaser.Scene {
         gameObject.setActive(false);
         gameObject.objetopadre.onplayed();
         gameObject.setScale(.2);
+        gameObject.clearTint();
+        gameObject.setDepth(0);
 
         console.log("cartas en mano: "+ this.scene.hand.length);
       }

@@ -44,6 +44,7 @@ export default class Card extends Phaser.GameObjects.Sprite{
 
         this._effect.execute();
         this.scene.audienceFocus += this._audiencemod;
+        this.scene.focuslabel.text=this.scene.audienceFocus;
         this._enjuego = true;
     }
     
