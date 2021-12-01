@@ -229,7 +229,7 @@ export default class Level extends Phaser.Scene {
           this.hud_capricho.setVisible(true).setInteractive();
           if(this.capricho == 0)
           { // Comedy
-            this.capricholabel.text = "Comedy";
+            this.capricholabel.text = "Comedia";
           }
           else if(this.capricho == 1)
           { // Drama
