@@ -332,6 +332,9 @@ export default class Level extends Phaser.Scene {
         gameObject.clearTint();
         gameObject.setDepth(0);
 
+        // Carta eliminada de la mano
+        this.scene.deck.onCardPlay();
+
         // Ordenar cartas jugadas
         for(let i = 1; i <= occupied.length; i++)
         {
