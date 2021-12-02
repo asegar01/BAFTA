@@ -55,6 +55,8 @@ export default class Level extends Phaser.Scene {
     // Construcción de Deck
     this.deck = new Deck(this, 0, 0, '');
 
+    this.card = new Card(this, 0, 0, "", '', "", 0, console.log(""));
+
     let comedy1up = new GenerateEffect(this,0,1);
     this.deck.addCard(new Card(this,0,0,"",'card1',"STAGE",1,comedy1up));
     let drama1up = new GenerateEffect(this,1,1);
@@ -207,6 +209,8 @@ export default class Level extends Phaser.Scene {
       {
         if(this.hand.length <= 5)
         {
+          
+
           // Capricho de la audiencia
           if(this.capricho != -1) this.audienceFocus -= 2;
           this.capricho = Math.floor((Math.random() * 3) + 0);
@@ -217,6 +221,8 @@ export default class Level extends Phaser.Scene {
 
           // Robo de cartas
           this.deck.dealNcard(2, this.hand);
+
+          this.card.onGenerate();
 
           //Acto siguiente
           this.numActo++;
@@ -351,4 +357,5 @@ export default class Level extends Phaser.Scene {
       i++;
     }
   }
+
 }
