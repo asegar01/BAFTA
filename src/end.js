@@ -1,3 +1,5 @@
+import Scene from './scene.js';
+
 /**
  * Escena de fin de juego. Cuando se llega al último acto o la atención de la audiencia llega a cero, 
  * se presenta un texto de fin de juego, indicando si has ganado o perdido.
@@ -19,8 +21,9 @@ export default class End extends Phaser.Scene {
   create() 
   {    
     this.add.image(500, 250, 'finalScreen');
+    console.log(this.scene.gameover);
 
-    if(this.scene.gameover === 1)
+    if(this.scene.gameover !== 1)
     {
       this.victory = this.add.text(600, 50, "VICTORY", {fontSize: '80px'}).setTint(0xADFF2F);
     }
@@ -35,8 +38,8 @@ export default class End extends Phaser.Scene {
 
 
     // Añadimos el listener para cuando se haya pulsado una tecla.
-    this.input.keyboard.on('keydown', function (event) { 
-      this.scene.start('level');
-    }, this);
+    // this.input.keyboard.on('keydown', function (event) { 
+    //   this.scene.start('level');
+    // }, this);
   }
 }

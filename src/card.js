@@ -3,7 +3,11 @@ import Effect, { GenerateEffect } from './effects.js';
 const CARD_TYPE = ["STAGE", "CHARACTER", "ACTION"]
 const CARD_MOVIE = ["1", "2", "3", "4", "5"]
 
+// Escenario en juego
 let stage = false;
+
+// Efecto del escenario en juego
+let stageEffect;
 
 export default class Card extends Phaser.GameObjects.Sprite{
 
@@ -24,6 +28,7 @@ export default class Card extends Phaser.GameObjects.Sprite{
         this.drawn = true;
     }
 
+    // Carta jugada
     onplayed()
     {
         console.log(this.CARD_TYPE);
@@ -38,20 +43,20 @@ export default class Card extends Phaser.GameObjects.Sprite{
             else
             {
                 console.log("Escenario cambiado");
+                this.onGenerate();
             }
-            this.onGenerate();
+            stageEffect = this._effect;
         }
+        else this._effect.execute();
 
-        this._effect.execute();
         this.scene.audienceFocus += this._audiencemod;
         this.scene.focuslabel.text=this.scene.audienceFocus;
         this._enjuego = true;
     }
     
+    // Generar efecto del escenario
     onGenerate()
     {
-        let stageEffect = new GenerateEffect(this, this._audiencemod, this._effect);
-        console.log(stageEffect);
-        // stageEffect.execute();
+        stageEffect.execute();
     }
 }
