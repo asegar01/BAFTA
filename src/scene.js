@@ -226,9 +226,6 @@ export default class Level extends Phaser.Scene {
           // Robo de cartas
           this.deck.dealNcard(2, this.hand);
 
-          // Generar recurso de escenario activo
-          this.card.onGenerate();
-
           //Acto siguiente
           this.numActo++;
           let act_counter = this.add.sprite(930,50,'act-counter');
@@ -252,6 +249,9 @@ export default class Level extends Phaser.Scene {
           }
           else this.capricholabel.text = "Completado";
           console.log('Acto '+ this.numActo);
+
+          // Generar recurso de escenario activo
+          this.card.onGenerate();
         }
         else{
           this.cartel_demasiadas_cartas.setVisible(true);
