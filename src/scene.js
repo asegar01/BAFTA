@@ -23,6 +23,12 @@ export default class Level extends Phaser.Scene {
    */
   create() 
   {
+    // Creación del array para administrar el orden de las cartas jugadas
+    let occupied = Array(8).fill(false);
+
+    // Variable auxiliar
+    let j = 0;
+
     this.input.mouse.disableContextMenu();
     this.scale.updateBounds();
 
@@ -209,8 +215,6 @@ export default class Level extends Phaser.Scene {
       {
         if(this.hand.length <= 5)
         {
-          
-
           // Capricho de la audiencia
           if(this.capricho != -1) this.audienceFocus -= 2;
           this.capricho = Math.floor((Math.random() * 3) + 0);
@@ -222,6 +226,7 @@ export default class Level extends Phaser.Scene {
           // Robo de cartas
           this.deck.dealNcard(2, this.hand);
 
+          // Generar recurso de escenario activo
           this.card.onGenerate();
 
           //Acto siguiente
@@ -326,6 +331,27 @@ export default class Level extends Phaser.Scene {
         gameObject.setScale(.2);
         gameObject.clearTint();
         gameObject.setDepth(0);
+
+        // Ordenar cartas jugadas
+        for(let i = 1; i <= occupied.length; i++)
+        {
+          if(occupied[i] != true)
+          {
+            if(i <= occupied.length / 2)
+            {
+              gameObject.x = i * 75 + 305;
+              gameObject.y = 120;
+            }
+            else
+            {
+              j++;
+              gameObject.x = j * 75 + 305;
+              gameObject.y = 230;
+            }
+            occupied[i] = true;
+            break;
+          }
+        }
 
         console.log("cartas en mano: "+ this.scene.hand.length);
       }
