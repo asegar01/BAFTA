@@ -40,6 +40,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card', 'CardTemplate.png');
     this.load.image('trash-can','trash-can.png');
     this.load.image('screen', 'screen.png');
+
     // HUD
     this.load.image('hud-background','hud-background.png');
     this.load.image('hud-drama','hud-drama.png');
@@ -65,9 +66,10 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card4','test4.png');
     this.load.image('card5','test5.png');
     this.load.image('card6','test6.png');
-
-    this.load.setPath('assets/audio/')
-    this.load.audio('theme', 'theme.mp3')
+        
+    this.audio = new Audio('./assets/audio/theme.mp3');
+    this.audio.volume = .2;
+    this.audio.play();
               
     this.load.on('fileprogress', function (file) {
       console.log(file.src);
@@ -111,6 +113,5 @@ export default class Boot extends Phaser.Scene {
    */
   create() {
     this.scene.start('level');
-    //this.scene.add.sound('theme', { loop: true });
   }
 }

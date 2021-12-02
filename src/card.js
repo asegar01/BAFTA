@@ -34,18 +34,8 @@ export default class Card extends Phaser.GameObjects.Sprite{
         console.log(this.CARD_TYPE);
         if(this.CARD_TYPE == 'STAGE')
         {
-            if(stage != true)
-            {
-                stage = true;
-
-                console.log("Escenario utilizado");
-            }
-            else
-            {
-                console.log("Escenario cambiado");
-                this.onGenerate();
-            }
             stageEffect = this._effect;
+            this.onGenerate();
         }
         else this._effect.execute();
 
