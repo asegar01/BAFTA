@@ -366,13 +366,13 @@ export default class Level extends Phaser.Scene {
     // Si la atención de la audiencia llega a cero
     if(this.audienceFocus <= 0)
     {
-      this.gameover = 1;
+      this.gameover = -1;
     }
 
     // Pantalla de fin de juego
     if(this.gameover !== 0)
     {
-      this.scene.start('end');
+      this.scene.start('end', this.gameover);
     }
 
     if(this.hand.length <= 5) this.trash_can.setTint(0x707070);
