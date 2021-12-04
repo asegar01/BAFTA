@@ -1,14 +1,3 @@
-import Effect, { GenerateEffect } from './effects.js';
-
-const CARD_TYPE = ["STAGE", "CHARACTER", "ACTION"]
-const CARD_MOVIE = ["1", "2", "3", "4", "5"]
-
-// Escenario en juego
-let stage = false;
-
-// Efecto del escenario en juego
-let stageEffect;
-
 export default class Card extends Phaser.GameObjects.Sprite{
 
     constructor(scene, x, y, name, sprite, family, audiencemod, effect){

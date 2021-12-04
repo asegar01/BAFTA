@@ -1,45 +1,25 @@
-// Array de cartas en la mano
-let occupiedHand = Array(7).fill(false);
-
-export default class Deck extends Phaser.GameObjects.Sprite
+export default class Deck
 {
-    constructor(scene, x, y, sprite)
+    constructor(juego)
     {
-        super(scene, x, y, sprite);
-
-        // Dibujar el deck
+        this.juego = juego;
         this.cardlist = [];
     }
 
-    addCard(card)
-    {
-        this.cardlist.push(card);
-        card.active = false;
+    //toda la creacion de cartas aqui
+    createdeck(){
+
     }
 
     dealNcard(n, hand)
     {
-        for(let i = 0; i < n; i++)
-        {
-            for(let j = 0; j < occupiedHand.length; j++)
-            {
-                //habria que borrar de cardlist?
-                let carta = this.cardlist[Math.floor((Math.random() * this.cardlist.length) + 0)];
-                if(occupiedHand[j] != true)
-                {
-                    let imagen = carta.scene.add.image(180 + (100 * j), 400, carta.texture);
-                    occupiedHand[j] = true;
-                    imagen.setInteractive({ draggable: true }).setScale(.3);
-                    imagen.objetopadre = carta;
-                    hand.push(imagen);
-                    break;
-                }
-            }
+        if(this.cardlist.length>0)
+        for(let i = 0; i < n; i++){
+            let imagen = this.juego.scene.add.image(180 + (100 * i), 400, this.cardlist[this.cardlist.length - 1].texture);
+            imagen.setInteractive({ draggable: true }).setScale(.3);
+            imagen.objetopadre = carta;
+            hand.push(imagen);
+            this.cardlist.pop();
         }
-    }
-
-    onCardPlay()
-    {
-        occupiedHand[0] = false;
     }
 }

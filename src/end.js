@@ -1,5 +1,3 @@
-import Scene from './scene.js';
-
 /**
  * Escena de fin de juego. Cuando se llega al último acto o la atención de la audiencia llega a cero, 
  * se presenta un texto de fin de juego, indicando si has ganado o perdido.
