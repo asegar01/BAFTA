@@ -42,12 +42,17 @@ export default class HudManager {
         this.trash_can = this.scene.add.sprite(55, 420, 'trash-can');
         let trash_can_scale = .3;
         this.trash_can.setScale(trash_can_scale);
+        this.trash_rect = new Phaser.Geom.Rectangle(55,420,100,100); //vigilar por si no se borra en el paso de escena also numeros magicos
         
         // texto de acto
         let act_counter = this.scene.add.sprite(930, 50, 'act-counter');
         act_counter.setScale(.5);
         this.scene.label[6] = this.scene.add.text(915, 20, "ACTO");
         this.scene.label[6].text = this.scene.add.text(920, 40, '');
+
+        // area de juego (numeros magicos sry)
+        this.gamearea = new Phaser.Geom.Rectangle(400,150,400,280);
+        this.juego.scene.add.rectangle(550,220,400,280,1,1);
         
         // update general para estar acuerdo con el comeienzo de la partida
         this.updatetexts();
@@ -100,82 +105,9 @@ export default class HudManager {
         }
         this.scene.label[6].text = this.juego.numActo + '/5';
     }
+
+    updatehud(){
+        if (this.juego.hand.length <= 5) this.trash_can.setTint(0x707070);
+        else this.trash_can.setTint(0xffffff);
+    }
 }
-
-
-
-       // Pasar de acto
-/*
-        
-       
-        
-
-        // Mover objectos que sean draggable
-        this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-            this.scene.children.bringToTop(gameObject);
-
-            gameObject.x = dragX;
-            gameObject.y = dragY;
-            gameObject.setDepth(0);
-
-            if (gameObject.x < (this.scene.trash_can.x + 320 * trash_can_scale / 2) && gameObject.y > (this.scene.trash_can.y - 400 * trash_can_scale / 2)
-                && gameObject.x > (this.scene.trash_can.x - 320 * trash_can_scale / 2) && gameObject.y < (this.scene.trash_can.y + 400 * trash_can_scale / 2)) {
-                if (this.scene.hand.length > 5) {
-                    gameObject.setTint(0xff0000);
-                }
-            }
-            else if (gameObject.x < (this.scene.screen.x + 580 * screen_scale / 2) && gameObject.x > (this.scene.screen.x - 580 * screen_scale / 2)
-                && gameObject.y > (this.scene.screen.y - 450 * screen_scale / 2) && gameObject.y < (this.scene.screen.y + 450 * screen_scale / 2)) {
-                gameObject.setTint(0x32CD32);
-            }
-            else gameObject.clearTint();
-        });
-
-
-        this.input.on('dragend', function (pointer, gameObject) {
-            // Tirar cartas
-            if (this.scene.hand.length > 5) {
-                if (gameObject.x < (this.scene.trash_can.x + 320 * trash_can_scale / 2) && gameObject.y > (this.scene.trash_can.y - 400 * trash_can_scale / 2)
-                    && gameObject.x > (this.scene.trash_can.x - 320 * trash_can_scale / 2) && gameObject.y < (this.scene.trash_can.y + 400 * trash_can_scale / 2)) {
-                    gameObject.setActive(false).setVisible(false);
-                    console.log("cartas en mano: " + this.scene.hand.length);
-                    if (this.scene.hand.length <= 5) this.scene.trash_can.setTint(0x707070);
-                }
-            }
-
-
-
-
-            // Poner cartas en juego
-            if ((gameObject.x < (this.scene.screen.x + 580 * screen_scale / 2) && gameObject.x > (this.scene.screen.x - 580 * screen_scale / 2)
-                && gameObject.y > (this.scene.screen.y - 450 * screen_scale / 2) && gameObject.y < (this.scene.screen.y + 450 * screen_scale / 2))) {
-                this.scene.input.setDraggable(gameObject, false);
-                gameObject.setActive(false);
-                gameObject.objetopadre.onplayed();
-                gameObject.setScale(.2);
-                gameObject.clearTint();
-                gameObject.setDepth(0);
-
-                // Carta eliminada de la mano
-                this.scene.deck.onCardPlay();
-
-                // Ordenar cartas jugadas
-                for (let i = 1; i <= occupied.length; i++) {
-                    if (occupied[i] != true) {
-                        if (i <= occupied.length / 2) {
-                            gameObject.x = i * 75 + 305;
-                            gameObject.y = 120;
-                        }
-                        else {
-                            j++;
-                            gameObject.x = j * 75 + 305;
-                            gameObject.y = 230;
-                        }
-                        occupied[i] = true;
-                        break;
-                    }
-                }
-
-                console.log("cartas en mano: " + this.scene.hand.length);
-            }
-        });*/

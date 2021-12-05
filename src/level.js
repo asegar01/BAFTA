@@ -27,14 +27,15 @@ export default class Level extends Phaser.Scene {
     //Contruccion del juego
     this.juego.create();
 
-
-    //this.input.mouse.disableContextMenu();
-   // this.scale.updateBounds();
+    this.input.on('drag', function (pointer, gameObject, dragX, dragY) {gameObject.x = dragX;gameObject.y = dragY; gameObject.objetopadre.x=dragX;gameObject.objetopadre.y=dragY;  });
+    this.input.on('dragend', function (pointer, gameObject) {      gameObject.objetopadre.onplayed();  });
   }
 
   update()
   {
     this.juego.update();
   }
+
+  
 
 }

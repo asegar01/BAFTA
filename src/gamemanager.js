@@ -68,14 +68,13 @@ export default class GameManager{
             this.scene.scene.start('end', this.gameover);
         }
 
-        if (this.hand.length <= 5) this.hud.trash_can.setTint(0x707070);
-        else this.hud.trash_can.setTint(0xffffff);
-
         let i = 0;
         while (i < this.hand.length) {
             if (this.hand[i].active === false)
                 this.hand.splice(i, 1);
             i++;
         }
+
+        this.hud.updatehud();
     }
 }
