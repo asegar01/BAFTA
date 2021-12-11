@@ -1,5 +1,5 @@
-export default class Card extends Phaser.GameObjects.Sprite {
 
+export default class Card extends Phaser.GameObjects.Sprite {
     constructor(juego, scene, x, y, name, sprite, family, audiencemod, effect) {
         super(scene, x, y, sprite);
         this._name = name;
@@ -11,12 +11,9 @@ export default class Card extends Phaser.GameObjects.Sprite {
         this._juego = juego;
     }
 
-    ondrawn() {
-        this.drawn = true;
-    }
-
     // Carta jugada
-    onplayed() {
+    onplayed() 
+    {
         if (this.checktrash() && this._juego.hand.length > 5) {
             this.imagenjuego.setActive(false).setVisible(false); //un poco chapuza pero bueno por imagenjuego
         }
@@ -25,18 +22,25 @@ export default class Card extends Phaser.GameObjects.Sprite {
             this.imagenjuego.setActive(false);
             this.imagenjuego.setScale(.2);
 
-            this._effect.execute();
+            this._juego.setCardScreen(this.imagenjuego);
+
+            //this._effect.execute();
             this.scene.audienceFocus += this._audiencemod;
             this._enjuego = true;
             this._juego.hud.updatetexts();
         }
+        else
+        {
+            this.imagenjuego.x = this.iniX;
+            this.imagenjuego.y = this.iniY;
+        }
     }
 
     checktrash() {
-        if (this._juego.hud.trash_rect.contains(this.x, this.y)) return true;
+        return this._juego.hud.trash_rect.contains(this.x, this.y);
     }
 
     checkboard() {
-        if (this._juego.hud.gamearea.contains(this.x, this.y)) return true;
+        return this._juego.hud.gamearea.contains(this.x, this.y);
     }
 }

@@ -1,3 +1,4 @@
+import Card from "./card.js";
 import GameManager from "./gamemanager.js";
 
 /**
@@ -27,7 +28,15 @@ export default class Level extends Phaser.Scene {
     //Contruccion del juego
     this.juego.create();
 
-    this.input.on('drag', function (pointer, gameObject, dragX, dragY) {gameObject.x = dragX;gameObject.y = dragY; gameObject.objetopadre.x=dragX;gameObject.objetopadre.y=dragY;  });
+    this.input.on('drag', function (pointer, gameObject, dragX, dragY) 
+    {
+      gameObject.x = dragX;
+      gameObject.y = dragY; 
+      gameObject.objetopadre.x=dragX;
+      gameObject.objetopadre.y=dragY;
+
+      this.scene.children.bringToTop(gameObject);
+    });
     this.input.on('dragend', function (pointer, gameObject) {      gameObject.objetopadre.onplayed();  });
   }
 

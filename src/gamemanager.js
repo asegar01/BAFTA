@@ -28,8 +28,31 @@ export default class GameManager{
         // Construcción de mano
         this.hand = [];
         this.deck.dealNcard(5,this.hand);
+
+        // Creación del array para administrar el orden de las cartas jugadas
+        this.occupied = Array(8).fill(false);
     }
 
+    setCardScreen(card)
+    {
+        let i = 0;
+        while(i < this.occupied.length && this.occupied[i]) i++;
+
+        if(i < this.occupied.length)
+        {
+            if(i < this.occupied.length / 2)
+            {
+                card.x = 75 * i + 380;
+                card.y = 120;
+            }
+            else
+            {
+                card.x =  (i - this.occupied.length / 2) * 75 + 380;
+                card.y = 240;
+            }
+            this.occupied[i] = true;
+        }
+    }
 
     nextact(){
         if (this.numActo < 5 && this.hand.length <= 5) {
@@ -51,14 +74,16 @@ export default class GameManager{
                 this.gameover = 1;
             }
             else {
-                this.cartel_demasiadas_cartas.setVisible(true);
-                this.cartel_demasiadas_cartas.x = 850;
-                this.cartel_demasiadas_cartas.y = 250;
+                hud.cartel_demasiadas_cartas.setVisible(true);
+                this.hud.cartel_demasiadas_cartas.x = 850;
+                this.hud.cartel_demasiadas_cartas.y = 250;
             }
         }
     }
 
     update(){
+        console.log(this.hand.length);
+
         if (this.audienceFocus <= 0) {
             this.gameover = -1;
         }

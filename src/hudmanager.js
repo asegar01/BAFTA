@@ -28,7 +28,7 @@ export default class HudManager {
         // paso de acto
         this.scene.cartel[6] = this.scene.add.sprite(0, 0, 'cartel-demasiadas-cartas').setVisible(false);
         this.scene.cartel[6].setDepth(1);
-        this.scene.cartel[6].alpha = .85;
+        this.scene.cartel[6].alpha = .85;1
 
         let next_act_button = this.scene.add.sprite(900, 400, 'next-act-button').setInteractive();
         next_act_button.setScale(.4);
@@ -51,8 +51,9 @@ export default class HudManager {
         this.scene.label[6].text = this.scene.add.text(920, 40, '');
 
         // area de juego (numeros magicos sry)
-        this.gamearea = new Phaser.Geom.Rectangle(400,150,400,280);
-        this.juego.scene.add.rectangle(550,220,400,280,1,1);
+        this.gamearea = new Phaser.Geom.Rectangle(340, 50, 290, 240);
+        // this.juego.scene.add.rectangle(490, 180, 330, 230, 1, 1);
+        //this.juego.scene.add.rectangle(490, 180, 330, 230, 1, 1);
         
         // update general para estar acuerdo con el comeienzo de la partida
         this.updatetexts();

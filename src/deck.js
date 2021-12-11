@@ -11,18 +11,27 @@ export default class Deck
 
     //toda la creacion de cartas aqui
     createdeck(){
-        this.cardlist.push(new Card(this.juego,this.juego.scene,0,0,'','card','',0,''));
+        for(let i = 0; i < 10; i++){
+            this.cardlist.push(new Card(this.juego,this.juego.scene,0,0,'','card','',0,''));
+        }
     }
 
     dealNcard(n, hand)
     {
         for(let i = 0; i < n; i++){
             if(this.cardlist.length>0){
-                let imagen = this.juego.scene.add.image(180 + (100 * i), 400, this.cardlist[this.cardlist.length - 1].texture);
+                let posX = 180 + (100 * i);
+                let posY = 400;
+
+                let imagen = this.juego.scene.add.image(posX, posY, this.cardlist[this.cardlist.length - 1].texture);
                 imagen.setInteractive().setScale(.3);
                 this.juego.scene.input.setDraggable(imagen);
                 imagen.objetopadre = this.cardlist[this.cardlist.length - 1];
                 this.cardlist[this.cardlist.length - 1].imagenjuego = imagen;
+
+                imagen.objetopadre.iniX = posX;
+                imagen.objetopadre.iniY = posY;
+
                 hand.push(imagen);
                 this.cardlist.pop();
             }
