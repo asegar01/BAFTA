@@ -68,16 +68,13 @@ export default class GameManager{
 
             // actualizacion del hud
             this.hud.updatetexts();
+            this.hud.caprichoSetVisible();
         }
         else {
             if (this.hand.length <= 5) {
                 this.gameover = 1;
             }
-            else {
-                hud.cartel_demasiadas_cartas.setVisible(true);
-                this.hud.cartel_demasiadas_cartas.x = 850;
-                this.hud.cartel_demasiadas_cartas.y = 250;
-            }
+            else this.hud.demasiadasCartasSetVisible();
         }
     }
 

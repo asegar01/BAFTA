@@ -17,13 +17,14 @@ export default class HudManager {
         this.scene.add.image(500, 35, 'hud-background');
 
         // emociones
-        this.makehud(this.juego.drama,0,'hud-drama','cartel-drama');
-        this.makehud(this.juego.comedy,1,'hud-comedy','cartel-comedy');
-        this.makehud(this.juego.suspense,2,'hud-suspense','cartel-suspense');
+        this.makehud(this.juego.drama,0,true,'hud-drama','cartel-drama');
+        this.makehud(this.juego.comedy,1,true,'hud-comedy','cartel-comedy');
+        this.makehud(this.juego.suspense,2,true,'hud-suspense','cartel-suspense');
         // puntuacion y audiencia
-        this.makehud(this.juego.trophies,3,'hud-trophy','cartel-trophies');
-        this.makehud(this.juego.audienceFocus,4,'hud-audience','cartel-audience');
-        this.makehud('',5,'hud-capricho','cartel-capricho');
+        this.makehud(this.juego.trophies,3,false,'hud-trophy','cartel-trophies');
+        this.makehud(this.juego.audienceFocus,4,false,'hud-audience','cartel-audience');
+        this.makehud('',5,false,'hud-capricho','cartel-capricho');
+        this.scene.hud[5].setVisible(false);
         // botones
         // paso de acto
         this.scene.cartel[6] = this.scene.add.sprite(0, 0, 'cartel-demasiadas-cartas').setVisible(false);
@@ -47,8 +48,8 @@ export default class HudManager {
         // texto de acto
         let act_counter = this.scene.add.sprite(930, 50, 'act-counter');
         act_counter.setScale(.5);
-        this.scene.label[6] = this.scene.add.text(915, 20, "ACTO");
-        this.scene.label[6].text = this.scene.add.text(920, 40, '');
+        this.scene.label[6] = this.scene.add.text(915, 25, "ACTO");
+        this.scene.label[7] = this.scene.add.text(920, 45, '');
 
         // area de juego (numeros magicos sry)
         this.gamearea = new Phaser.Geom.Rectangle(340, 50, 290, 240);
@@ -59,10 +60,27 @@ export default class HudManager {
         this.updatetexts();
     }
 
-    makehud(variable1, i, string1, string2) {
-        this.scene.hud[i] = this.scene.add.sprite(40 + (i * 100), 35, string1).setInteractive();
-        this.scene.hud[i].setScale(.2);
-        this.scene.label[i] = this.scene.add.text(70 + (i * 100), 25, variable1, { fontSize: '40px' });
+    makehud(variable1, i, isMainResource, string1, string2) { // isMainResource es true para drama, comedia y suspense
+        let icon_x0,icon_dx,text_x0,icon_y,text_y,scale;
+        if(isMainResource){
+            icon_x0=40;
+            icon_dx=100;
+            text_x0=70;
+            icon_y=35;
+            text_y=25;
+            scale=.2;
+        }
+        else{
+            icon_x0=20;
+            icon_dx=120;
+            text_x0=50;
+            icon_y=25;
+            text_y=15;
+            scale=.15;
+        }
+        this.scene.hud[i] = this.scene.add.sprite(icon_x0 + (i * icon_dx), icon_y, string1).setInteractive();
+        this.scene.hud[i].setScale(scale);
+        this.scene.label[i] = this.scene.add.text(text_x0 + (i * icon_dx), text_y, variable1, { fontSize: '40px' });
 
         this.scene.cartel[i] = this.scene.add.sprite(0, 0, string2).setVisible(false);
         let cartel_alpha = .85;
@@ -104,11 +122,20 @@ export default class HudManager {
                 this.scene.label[5].text = "Completado";
                 break;
         }
-        this.scene.label[6].text = this.juego.numActo + '/5';
+        this.scene.label[7].text = this.juego.numActo + '/5';
     }
 
     updatehud(){
         if (this.juego.hand.length <= 5) this.trash_can.setTint(0x707070);
         else this.trash_can.setTint(0xffffff);
+    }
+
+    caprichoSetVisible(){
+        this.scene.hud[5].setVisible(true);
+    }
+    demasiadasCartasSetVisible(){
+        this.scene.cartel[6].setVisible(true);
+        this.scene.cartel[6].x=850;
+        this.scene.cartel[6].y=250;
     }
 }
