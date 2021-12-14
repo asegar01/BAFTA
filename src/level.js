@@ -25,6 +25,7 @@ export default class Level extends Phaser.Scene {
   {
     // Variables donde guardar los distintos elementos del hud
     this.hud = []; this.label = []; this.cartel = [];
+
     //Contruccion del juego
     this.juego.create();
 
@@ -35,16 +36,15 @@ export default class Level extends Phaser.Scene {
       gameObject.objetopadre.x=dragX;
       gameObject.objetopadre.y=dragY;
 
+      // Desplazamiento de la carta seleccionada a la primera capa de visualización
       this.scene.children.bringToTop(gameObject);
     });
-    this.input.on('dragend', function (pointer, gameObject) {      gameObject.objetopadre.onplayed();  });
+    
+    this.input.on('dragend', function (pointer, gameObject) {gameObject.objetopadre.onplayed();});
   }
 
   update()
   {
     this.juego.update();
   }
-
-  
-
 }

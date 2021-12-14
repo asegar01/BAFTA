@@ -1,10 +1,12 @@
 import HudManager from "./hudmanager.js";
 import Deck from "./deck.js";
+import Escenario from "./escenario.js";
 
 export default class GameManager{
     constructor(scene){
         this.scene = scene;
         this.hud = new HudManager(this.scene, this);
+
     }
     create(){
         // Medidores de recursos
@@ -24,6 +26,8 @@ export default class GameManager{
 
         // Construcción de Deck
         this.deck = new Deck(this);
+
+        this.stage = new Escenario(this, this.scene, 0, 0, '', '', '', 0, '');
     
         // Construcción de mano
         this.hand = [];
@@ -69,8 +73,11 @@ export default class GameManager{
             this.numActo++;
 
             // actualizacion del hud
-            this.hud.updatetexts();
+            this.hud.updateTexts();
             this.hud.caprichoSetVisible();
+
+            // Generar recurso de escenario
+            this.stage.onNextAct();
         }
         else {
             if (this.hand.length <= 5) {
@@ -98,5 +105,10 @@ export default class GameManager{
         }
 
         this.hud.updatehud();
+        //this.hud.updateTexts();
+
+        //console.log(this.comedy);
+        //console.log(this.drama);
+        //console.log(this.suspense);
     }
 }

@@ -3,6 +3,7 @@ export default class HudManager {
         this.scene = scene;
         this.juego = juego;
     }
+
     create() {
         // Escenario de juego
         let cinema = this.scene.add.image(500, 260, 'cinema');
@@ -52,7 +53,7 @@ export default class HudManager {
         this.scene.label[7] = this.scene.add.text(920, 45, '');
 
         // update general para estar acuerdo con el comeienzo de la partida
-        this.updatetexts();
+        this.updateTexts();
     }
 
     makehud(variable1, i, isMainResource, string1, string2) { // isMainResource es true para drama, comedia y suspense
@@ -94,7 +95,7 @@ export default class HudManager {
         });
     }
 
-    updatetexts(){
+    updateTexts(){
         this.scene.label[0].text = this.juego.drama;
         this.scene.label[1].text = this.juego.comedy;
         this.scene.label[2].text = this.juego.suspense;

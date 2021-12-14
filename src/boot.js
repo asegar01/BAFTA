@@ -18,13 +18,13 @@ export default class Boot extends Phaser.Scene {
    * Carga de los assets del juego
    */
   preload() {
-    // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
-    var progressBar = this.add.graphics();
-    var progressBox = this.add.graphics();
+    let progressBar = this.add.graphics();
+    let progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(340, 230, 320, 50);
 
-    this.load.on('progress', function (value) {
+    this.load.on('progress', function (value) 
+    {
       console.log(value);
       percentText.setText(parseInt(value * 100) + '%');
       progressBar.clear();
@@ -32,6 +32,7 @@ export default class Boot extends Phaser.Scene {
       progressBar.fillRect(350, 240, 300 * value, 30);
     });
 
+    // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
     this.load.setPath('assets/sprites/');
     this.load.image('logo', 'AH_LOGO.png');
     this.load.image('cinema', 'cinema.png');
@@ -40,6 +41,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card', 'CardTemplate.png');
     this.load.image('trash-can','trash-can.png');
     this.load.image('screen', 'screen.png');
+    this.load.image('finalScreen', 'finalScreen.png');
 
     // HUD
     this.load.image('hud-background','hud-background.png');
@@ -57,8 +59,6 @@ export default class Boot extends Phaser.Scene {
     this.load.image('cartel-capricho','cartel-capricho.png');
     this.load.image('cartel-demasiadas-cartas','cartel-demasiadas-cartas.png');
 
-    this.load.image('finalScreen', 'finalScreen.png');
-
     this.load.setPath('assets/sprites/cards/');
     this.load.image('card1','test1.png');
     this.load.image('card2','test2.png');
@@ -66,7 +66,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card4','test4.png');
     this.load.image('card5','test5.png');
     this.load.image('card6','test6.png');
-        
+
+    // Banda sonora del juego
     this.audio = new Audio('./assets/audio/theme.mp3');
     this.audio.volume = .2;
     this.audio.play();
@@ -82,9 +83,9 @@ export default class Boot extends Phaser.Scene {
       percentText.destroy();
     });
     
-    var width = this.cameras.main.width;
-    var height = this.cameras.main.height;
-    var loadingText = this.make.text({
+    let width = this.cameras.main.width;
+    let height = this.cameras.main.height;
+    let loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
       text: 'Loading...',
@@ -95,7 +96,7 @@ export default class Boot extends Phaser.Scene {
     });
     loadingText.setOrigin(0.5, 0.5);
 
-    var percentText = this.make.text({
+    let percentText = this.make.text({
       x: width / 2,
       y: height / 2 - 5,
       text: '0%',

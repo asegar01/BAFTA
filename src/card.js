@@ -1,4 +1,3 @@
-
 export default class Card extends Phaser.GameObjects.Sprite {
     constructor(juego, scene, x, y, name, sprite, family, audiencemod, effect) {
         super(scene, x, y, sprite);
@@ -25,10 +24,12 @@ export default class Card extends Phaser.GameObjects.Sprite {
 
             this._juego.setCardScreen(this.imagenjuego);
 
-            //this._effect.execute();
+            // Ejecuta el efecto de la carta utilizada
+            this._effect.execute();
+
             this.scene.audienceFocus += this._audiencemod;
             this._enjuego = true;
-            this._juego.hud.updatetexts();
+            this._juego.hud.updateTexts();
         }
         else
         {

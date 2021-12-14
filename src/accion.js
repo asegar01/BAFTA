@@ -16,7 +16,7 @@ export default class Accion extends Card{
             //this._effect.execute();
             this.scene.audienceFocus += this._audiencemod;
             this._enjuego = true;
-            this._juego.hud.updatetexts();
+            this._juego.hud.updateTexts();
         }
         else
         {
