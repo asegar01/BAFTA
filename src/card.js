@@ -14,10 +14,11 @@ export default class Card extends Phaser.GameObjects.Sprite {
     // Carta jugada
     onplayed() 
     {
-        if (this.checktrash() && this._juego.hand.length > 5) {
+        let auxrec = new Phaser.Geom.Rectangle(this.x,this.y,this.imagenjuego.displayWidth,this.imagenjuego.displayHeight);
+        if (this.checktrash(auxrec) && this._juego.hand.length > 5) {
             this.imagenjuego.setActive(false).setVisible(false); //un poco chapuza pero bueno por imagenjuego
         }
-        else if (this.checkboard()) {
+        else if (this.checkboard(auxrec)) {
             this._juego.scene.input.setDraggable(this.imagenjuego, false);
             this.imagenjuego.setActive(false);
             this.imagenjuego.setScale(.2);
@@ -36,11 +37,11 @@ export default class Card extends Phaser.GameObjects.Sprite {
         }
     }
 
-    checktrash() {
-        return this._juego.hud.trash_rect.contains(this.x, this.y);
+    checktrash(auxrec) {
+        return Phaser.Geom.Rectangle.Overlaps(this._juego.hud.trash_rect, auxrec);
     }
 
-    checkboard() {
-        return this._juego.hud.gamearea.contains(this.x, this.y);
+    checkboard(auxrec) {
+        return Phaser.Geom.Rectangle.Overlaps(this._juego.hud.gamearea, auxrec);
     }
 }

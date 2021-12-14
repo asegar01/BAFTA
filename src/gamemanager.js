@@ -79,8 +79,6 @@ export default class GameManager{
     }
 
     update(){
-        console.log(this.hand.length);
-
         if (this.audienceFocus <= 0) {
             this.gameover = -1;
         }

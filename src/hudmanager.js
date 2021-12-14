@@ -9,9 +9,9 @@ export default class HudManager {
         cinema.setScale(.5);
 
         // Escenario para jugar cartas
-        this.scene.screen = this.scene.add.sprite(490, 180, 'screen').setInteractive();
-        let screen_scale = .5;
-        this.scene.screen.setScale(screen_scale).setVisible(false);
+        let screen = this.scene.add.image(490, 180, 'screen');
+        screen.setScale(.5);
+        this.gamearea = new Phaser.Geom.Rectangle(400, 180, screen.displayWidth, screen.displayHeight);
 
         // HUD
         this.scene.add.image(500, 35, 'hud-background');
@@ -43,7 +43,7 @@ export default class HudManager {
         this.trash_can = this.scene.add.sprite(55, 420, 'trash-can');
         let trash_can_scale = .3;
         this.trash_can.setScale(trash_can_scale);
-        this.trash_rect = new Phaser.Geom.Rectangle(55,420,100,100); //vigilar por si no se borra en el paso de escena also numeros magicos
+        this.trash_rect = new Phaser.Geom.Rectangle(this.trash_can.x, this.trash_can.y, this.trash_can.displayWidth, this.trash_can.displayHeight); //vigilar por si no se borra en el paso de escena also numeros magicos
         
         // texto de acto
         let act_counter = this.scene.add.sprite(930, 50, 'act-counter');
@@ -51,11 +51,6 @@ export default class HudManager {
         this.scene.label[6] = this.scene.add.text(915, 25, "ACTO");
         this.scene.label[7] = this.scene.add.text(920, 45, '');
 
-        // area de juego (numeros magicos sry)
-        this.gamearea = new Phaser.Geom.Rectangle(340, 50, 290, 240);
-        // this.juego.scene.add.rectangle(490, 180, 330, 230, 1, 1);
-        //this.juego.scene.add.rectangle(490, 180, 330, 230, 1, 1);
-        
         // update general para estar acuerdo con el comeienzo de la partida
         this.updatetexts();
     }
