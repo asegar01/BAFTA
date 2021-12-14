@@ -58,6 +58,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('cartel-audience','cartel-audience.png');
     this.load.image('cartel-capricho','cartel-capricho.png');
     this.load.image('cartel-demasiadas-cartas','cartel-demasiadas-cartas.png');
+    this.load.image('marco-escenario','marco-escenario.png');
+    this.load.image('no-escenario','no-escenario.png');
 
     this.load.setPath('assets/sprites/cards/');
     this.load.image('card1','test1.png');

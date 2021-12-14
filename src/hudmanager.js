@@ -52,6 +52,14 @@ export default class HudManager {
         this.scene.label[6] = this.scene.add.text(915, 25, "ACTO");
         this.scene.label[7] = this.scene.add.text(920, 45, '');
 
+        // marco donde se situa la carta escenario puesta en juego
+        this.no_stage=this.scene.add.sprite(70,187,'no-escenario');
+        let no_stage_scale=.4;
+        this.no_stage.setScale(no_stage_scale);
+        this.stage_hud=this.scene.add.sprite(70,220,'marco-escenario');
+        let stage_hud_scale=.25;
+        this.stage_hud.setScale(stage_hud_scale);
+        
         // update general para estar acuerdo con el comeienzo de la partida
         this.updateTexts();
     }

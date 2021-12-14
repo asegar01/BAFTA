@@ -20,8 +20,7 @@ export default class Card extends Phaser.GameObjects.Sprite {
         else if (this.checkboard(auxrec)) {
             this._juego.scene.input.setDraggable(this.imagenjuego, false);
             this.imagenjuego.setActive(false);
-            this.imagenjuego.setScale(.2);
-
+            this.imagenjuego.setScale(.2).setDepth(0);
             this._juego.setCardScreen(this.imagenjuego);
 
             // Ejecuta el efecto de la carta utilizada

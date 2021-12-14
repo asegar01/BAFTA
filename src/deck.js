@@ -17,16 +17,16 @@ export default class Deck
     createDeck(){
         for(let i = 0; i < 3; i++){
             let comedyUp = new GenerateEffect(this.juego, 0, 1);
-            this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'','card','',1,comedyUp));
+            this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'','card1','',1,comedyUp));
         }
         for(let i = 0; i < 3; i++){
             let comedyUp = new GenerateEffect(this.juego, 0, 1);
-            this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'','card','',1,comedyUp,''));
+            this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'','card2','',1,comedyUp,''));
         }
         for(let i = 0; i < 3; i++)
         {
             let comedyUp = new GenerateEffect(this.juego, 0, 1);
-            this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, '', 'card', '', 1, comedyUp));
+            this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, '', 'card3', '', 1, comedyUp));
         }
     }
     dealNcard(n, hand)
