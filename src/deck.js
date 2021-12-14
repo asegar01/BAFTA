@@ -1,4 +1,6 @@
 import Card from "./card.js";
+import Accion from "./accion.js";
+import Personaje from "./personaje.js";
 
 export default class Deck
 {
@@ -11,8 +13,11 @@ export default class Deck
 
     //toda la creacion de cartas aqui
     createdeck(){
-        for(let i = 0; i < 10; i++){
-            this.cardlist.push(new Card(this.juego,this.juego.scene,0,0,'','card','',0,''));
+        for(let i = 0; i < 3; i++){
+            this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'','card','',0,''));
+        }
+        for(let i = 0; i < 3; i++){
+            this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'','card','',0,'',''));
         }
     }
 

@@ -31,6 +31,7 @@ export default class GameManager{
 
         // Creación del array para administrar el orden de las cartas jugadas
         this.occupied = Array(8).fill(false);
+        this.table = [];
     }
 
     setCardScreen(card)
@@ -51,6 +52,7 @@ export default class GameManager{
                 card.y = 240;
             }
             this.occupied[i] = true;
+            this.table.push(card);
         }
     }
 
