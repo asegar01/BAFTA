@@ -23,6 +23,19 @@ export default class Level extends Phaser.Scene {
    */
   create() 
   {
+    // Configuración de la banda sonora
+    const config = {
+      mute: false,
+      volume: 1,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0,
+    };
+    this.soundtrack = this.sound.add("theme", config);
+    this.soundtrack.play();
+
     // Variables donde guardar los distintos elementos del hud
     this.hud = []; this.label = []; this.cartel = [];
 

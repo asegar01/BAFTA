@@ -68,9 +68,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card6','test6.png');
 
     // Banda sonora del juego
-    this.audio = new Audio('./assets/audio/theme.mp3');
-    this.audio.volume = .2;
-    this.audio.play();
+    this.load.setPath('./assets/audio')
+    this.load.audio('theme', 'theme.mp3');
               
     this.load.on('fileprogress', function (file) {
       console.log(file.src);
