@@ -26,9 +26,12 @@ export default class Accion extends Card{
         }
     } */
     onplayed(){
-        for(let i=0;i<this._juego.table.length;i++){
+        let i=0;
+        let found=false;
+        while(!found&&i<this._juego.table.length){
             let pointer=this.scene.input.activePointer;
             if(Phaser.Geom.Rectangle.Contains(this._juego.table[i].getBounds(),pointer.worldX,pointer.worldY)){
+                found=true;
                 // Ejecutar effecto
                 this.actionEffect.execute(i);
                 // Eliminar carta
@@ -47,8 +50,9 @@ export default class Accion extends Card{
             
                 this._juego.hud.updateTexts();
             }
+            i++;
         }
-        if(!this._enjuego){
+        if(!found){
             this.imagenjuego.x = this.iniX;
             this.imagenjuego.y = this.iniY;
         }

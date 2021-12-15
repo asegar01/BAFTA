@@ -75,6 +75,10 @@ export default class Boot extends Phaser.Scene {
     this.load.image('marion-crane','marion-crane.png');
     this.load.image('matar','matar.png');
     this.load.image('norman-bates','norman-bates.png');
+    this.load.image('cameo-hitchcock','cameo-hitchcock.png');
+    this.load.image('cotillear','cotillear.png');
+    this.load.image('jeff','jeff.png');
+    this.load.image('bloque-vecinos','bloque-vecinos.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -82,6 +86,10 @@ export default class Boot extends Phaser.Scene {
     this.load.image('marion-crane-info','marion-crane-info.png');
     this.load.image('matar-info','matar-info.png');
     this.load.image('norman-bates-info','norman-bates-info.png');
+    this.load.image('cameo-hitchcock-info','cameo-hitchcock-info.png');
+    this.load.image('cotillear-info','cotillear-info.png');
+    this.load.image('jeff-info','jeff-info.png');
+    this.load.image('bloque-vecinos-info','bloque-vecinos-info.png');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')

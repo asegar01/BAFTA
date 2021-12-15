@@ -92,17 +92,31 @@ export class KillEffect extends Effect{
     }
     execute(i){
         if(this.isNormanBates){
-            this.scene.suspense+=3;
-            this.scene.comedy-=3;
+            let resourceGener=new GenerateEffect(this.scene,2,3,0);
+            resourceGener.execute();
         } 
         else{
-            this.scene.drama++;
-            this.scene.suspense--;
+            let resourceGener=new GenerateEffect(this.scene,1,1,0);
+            resourceGener.execute();
         } 
         this.scene.onDead(this.scene.cardsOnTableNames[i]);
         this.scene.table[i].setVisible(false);
         this.scene.occupied[i]=false;
         this.scene.table.splice(i,1);
         this.scene.cardsOnTableNames.splice(i,1);
+    }
+}
+
+export class CotillearEffect extends Effect{
+    constructor(scene){
+        super();
+        this.scene=scene;
+    }
+    execute(i){
+        // Numero personajes en la mesa
+        let persEnMesa=this.scene.table.length;
+        this.scene.onCotillear(this.scene.cardsOnTableNames[i]);
+        let effect=new GenerateEffect(this.scene,2,persEnMesa-1,0);
+        effect.execute();
     }
 }

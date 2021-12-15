@@ -64,7 +64,6 @@ export default class GameManager{
                 this.table.push(card);
                 this.cardsOnTableNames.push(cardName);
             }
-            console.log(i);
         }
         else {
             card.x=70;
@@ -99,9 +98,14 @@ export default class GameManager{
         }
     }
 
-    // Emite el evento cuando alguna carta muere con su nombre
+    // Emite el evento cuando alguna carta muere con el nombre como parametro
     onDead(victimName){
         this.emitter.emit("someone_died",victimName);
+    }
+
+    // Emite el evento con el nombre de la carta a la que se asocia "Cotillear"
+    onCotillear(name){
+        this.emitter.emit("cotillear_played",name);
     }
 
     update(){

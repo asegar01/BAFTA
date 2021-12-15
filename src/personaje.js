@@ -8,6 +8,7 @@ export default class Personaje extends Card{
         this.alive=true;
         this.emitter=EventDispatcher.getInstance();
         this.emitter.on("someone_died",this.onDead.bind(this));
+        this.emitter.on("cotillear_played",this.onCotillear.bind(this));
     }
 
     executeChaEffect(){
@@ -19,5 +20,11 @@ export default class Personaje extends Card{
             this._enjuego=false;
         }
         
+    }
+    // Funcion para cuando se le asocia "Cotillear" a "Jeff"
+    onCotillear(characterName){
+        if(characterName=='jeff'&&this._name=='jeff'){
+            this._chaEffect.execute();
+        }
     }
 }
