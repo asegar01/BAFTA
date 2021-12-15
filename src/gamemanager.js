@@ -1,6 +1,7 @@
 import HudManager from "./hudmanager.js";
 import Deck from "./deck.js";
 import Escenario from "./escenario.js";
+import EventDispatcher from "./eventdispatcher.js";
 
 export default class GameManager{
     constructor(scene){
@@ -9,6 +10,7 @@ export default class GameManager{
 
     }
     create(){
+        this.emitter=EventDispatcher.getInstance();
         // Medidores de recursos
         this.comedy = 0;
         this.drama = 0;
@@ -27,7 +29,7 @@ export default class GameManager{
         // Construcción de Deck
         this.deck = new Deck(this);
 
-        this.stage = new Escenario(this, this.scene, 0, 0, '', '', '', 0, '');
+        this.stage=null;
     
         // Construcción de mano
         this.hand = [];
@@ -38,32 +40,41 @@ export default class GameManager{
         this.table = [];
     }
 
-    setCardScreen(card)
+    setCardOnScreen(card, isStage)
     {
-        let i = 0;
-        while(i < this.occupied.length && this.occupied[i]) i++;
+        if(!isStage){
+            let i = 0;
+            while(i < this.occupied.length && this.occupied[i]) i++;
 
-        if(i < this.occupied.length)
-        {
-            if(i < this.occupied.length / 2)
+            if(i < this.occupied.length)
             {
-                card.x = 75 * i + 380;
-                card.y = 120;
+                if(i < this.occupied.length / 2)
+                {
+                    card.x = 75 * i + 380;
+                    card.y = 120;
+                }
+                else
+                {
+                    card.x =  (i - this.occupied.length / 2) * 75 + 380;
+                    card.y = 240;
+                }
+                this.occupied[i] = true;
+                this.table.push(card);
             }
-            else
-            {
-                card.x =  (i - this.occupied.length / 2) * 75 + 380;
-                card.y = 240;
-            }
-            this.occupied[i] = true;
-            this.table.push(card);
+        }
+        else {
+            card.x=70;
+            card.y=185;
+            card.setScale(.4);
         }
     }
 
     nextact(){
         if (this.numActo < 5 && this.hand.length <= 5) {
+            // Emision del evento pasar de acto
+            this.emitter.emit("next_act");
             // Capricho de la audiencia
-            if (this.capricho != -1) this.audienceFocus -= 2;
+            if (this.capricho != -1 && this.capricho != 3) this.audienceFocus -= 2;
             this.capricho = Math.floor((Math.random() * 3) + 0);
 
             // Robo de cartas
@@ -75,9 +86,6 @@ export default class GameManager{
             // actualizacion del hud
             this.hud.updateTexts();
             this.hud.caprichoSetVisible();
-
-            // Generar recurso de escenario
-            this.stage.onNextAct();
         }
         else {
             if (this.hand.length <= 5) {
@@ -103,7 +111,6 @@ export default class GameManager{
                 this.hand.splice(i, 1);
             i++;
         }
-
         this.hud.updatehud();
         //this.hud.updateTexts();
 

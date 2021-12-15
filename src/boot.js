@@ -69,6 +69,14 @@ export default class Boot extends Phaser.Scene {
     this.load.image('card5','test5.png');
     this.load.image('card6','test6.png');
 
+    // Carga de los sprites de las cartas
+    this.load.setPath('assets/sprites/cartas/');
+    this.load.image('bates-motel','bates-motel.png');
+
+    // Carga de los carteles de info de las cartas
+    this.load.setPath('assets/sprites/info-cartas/');
+    this.load.image('bates-motel-info','bates-motel-info.png');
+
     // Banda sonora del juego
     this.load.setPath('./assets/audio')
     this.load.audio('theme', 'theme.mp3');

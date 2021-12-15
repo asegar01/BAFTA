@@ -33,7 +33,7 @@ export class GenerateEffect extends Effect{
                 if(this.scene.comedy < 0) this.scene.comedy = 0;
                 break;
         }
-        if(this.scene.capricho === this.type) this.scene.capricho = -1;
+        if(this.scene.capricho === this.type) this.scene.capricho = 3;
 
         // this.updateTexts();
     }

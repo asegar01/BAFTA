@@ -59,7 +59,7 @@ export default class HudManager {
         this.stage_hud=this.scene.add.sprite(70,220,'marco-escenario');
         let stage_hud_scale=.25;
         this.stage_hud.setScale(stage_hud_scale);
-        
+
         // update general para estar acuerdo con el comeienzo de la partida
         this.updateTexts();
     }
@@ -122,7 +122,7 @@ export default class HudManager {
             case 2:
                 this.scene.label[5].text = "Suspense";
                 break;
-            default:
+            case 3:
                 this.scene.label[5].text = "Completado";
                 break;
         }

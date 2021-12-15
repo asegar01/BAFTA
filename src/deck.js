@@ -28,6 +28,7 @@ export default class Deck
             let comedyUp = new GenerateEffect(this.juego, 0, 1);
             this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, '', 'card3', '', 1, comedyUp));
         }
+        this.cardlist.push(new Escenario(this.juego,this.juego.scene,0,0,'bates-motel','bates-motel','Escenario',0,new GenerateEffect(this.juego,2,1)));
     }
     dealNcard(n, hand)
     {
