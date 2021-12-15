@@ -10,8 +10,6 @@ export default class Escenario extends Card
         this.emitter=EventDispatcher.getInstance();
         this._stageEffect = effect;
         this.emitter.on("next_act",this.onNextAct.bind(this));
-
-        
     }
     
 

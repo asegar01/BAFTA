@@ -7,35 +7,40 @@ export default class Effect{
 }
 
 export class GenerateEffect extends Effect{
-    constructor(scene, type, amount){
+    constructor(scene, type, amount, audienceFocusAmount){
         super();
         this.scene = scene;
         this.type = type;
         this.amount = amount;
+        this.audienceFocusAmount=audienceFocusAmount;
     }
 
     execute(){
-        switch(this.type)
-        {
-            case 0:
-                this.scene.comedy += this.amount;
-                this.scene.drama -= this.amount;
-                if(this.scene.drama < 0) this.scene.drama = 0;
-                break;
-            case 1:
-                this.scene.drama += this.amount;
-                this.scene.suspense -= this.amount;
-                if(this.scene.suspense < 0) this.scene.suspense = 0;
-                break;
-            case 2:
-                this.scene.suspense += this.amount;
-                this.scene.comedy -= this.amount;
-                if(this.scene.comedy < 0) this.scene.comedy = 0;
-                break;
-        }
-        if(this.scene.capricho === this.type) this.scene.capricho = 3;
+        if(this.type!=-1){ // -1 para no generar nada
+            switch(this.type)
+            {
+                case 0: // Comedy
+                    this.scene.comedy += this.amount;
+                    this.scene.drama -= this.amount;
+                    if(this.scene.drama < 0) this.scene.drama = 0;
+                    break;
+                case 1: // Drama
+                    this.scene.drama += this.amount;
+                    this.scene.suspense -= this.amount;
+                    if(this.scene.suspense < 0) this.scene.suspense = 0;
+                    break;
+                case 2: // Suspense
+                    this.scene.suspense += this.amount;
+                    this.scene.comedy -= this.amount;
+                    if(this.scene.comedy < 0) this.scene.comedy = 0;
+                    break;
+            }
+            if(this.scene.capricho === this.type) this.scene.capricho = 3;
+            this.scene.audienceFocus+=this.audienceFocusAmount;
 
-        // this.updateTexts();
+            // this.updateTexts();
+        }
+        
     }
 }
 
@@ -45,7 +50,9 @@ export class TrophyEffect extends Effect{
         this.scene = scene;
         this.type=type;
         this.amount=amount;
+        
     }
+    
     execute(){
         switch(this.type){
             case 0:
@@ -74,5 +81,28 @@ export class TrophyEffect extends Effect{
                 break;
         }
         // this.updateTexts();
+    }
+}
+
+export class KillEffect extends Effect{
+    constructor(scene, isNormanBates){
+        super();
+        this.scene=scene;
+        this.isNormanBates=isNormanBates;
+    }
+    execute(i){
+        if(this.isNormanBates){
+            this.scene.suspense+=3;
+            this.scene.comedy-=3;
+        } 
+        else{
+            this.scene.drama++;
+            this.scene.suspense--;
+        } 
+        this.scene.onDead(this.scene.cardsOnTableNames[i]);
+        this.scene.table[i].setVisible(false);
+        this.scene.occupied[i]=false;
+        this.scene.table.splice(i,1);
+        this.scene.cardsOnTableNames.splice(i,1);
     }
 }

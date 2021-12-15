@@ -72,10 +72,16 @@ export default class Boot extends Phaser.Scene {
     // Carga de los sprites de las cartas
     this.load.setPath('assets/sprites/cartas/');
     this.load.image('bates-motel','bates-motel.png');
+    this.load.image('marion-crane','marion-crane.png');
+    this.load.image('matar','matar.png');
+    this.load.image('norman-bates','norman-bates.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
     this.load.image('bates-motel-info','bates-motel-info.png');
+    this.load.image('marion-crane-info','marion-crane-info.png');
+    this.load.image('matar-info','matar-info.png');
+    this.load.image('norman-bates-info','norman-bates-info.png');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')

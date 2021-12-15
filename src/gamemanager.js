@@ -38,14 +38,16 @@ export default class GameManager{
         // Creación del array para administrar el orden de las cartas jugadas
         this.occupied = Array(8).fill(false);
         this.table = [];
+        this.cardsOnTableNames=[];
+        this.screenIsFull=false;
     }
 
-    setCardOnScreen(card, isStage)
+    setCardOnScreen(card, cardName, isStage)
     {
         if(!isStage){
             let i = 0;
             while(i < this.occupied.length && this.occupied[i]) i++;
-
+            this.screenIsFull=(i>=7);
             if(i < this.occupied.length)
             {
                 if(i < this.occupied.length / 2)
@@ -60,7 +62,9 @@ export default class GameManager{
                 }
                 this.occupied[i] = true;
                 this.table.push(card);
+                this.cardsOnTableNames.push(cardName);
             }
+            console.log(i);
         }
         else {
             card.x=70;
@@ -93,6 +97,11 @@ export default class GameManager{
             }
             else this.hud.demasiadasCartasSetVisible();
         }
+    }
+
+    // Emite el evento cuando alguna carta muere con su nombre
+    onDead(victimName){
+        this.emitter.emit("someone_died",victimName);
     }
 
     update(){
