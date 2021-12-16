@@ -79,6 +79,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('cotillear','cotillear.png');
     this.load.image('jeff','jeff.png');
     this.load.image('bloque-vecinos','bloque-vecinos.png');
+    this.load.image('circo', 'circo.png');
+    this.load.image('abuelo-tacataca', 'abuelo-tacataca.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -90,6 +92,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('cotillear-info','cotillear-info.png');
     this.load.image('jeff-info','jeff-info.png');
     this.load.image('bloque-vecinos-info','bloque-vecinos-info.png');
+    this.load.image('circo-info', 'circo-info.png');
+    this.load.image('abuelo-tacataca-info', 'abuelo-tacataca-info.png');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')

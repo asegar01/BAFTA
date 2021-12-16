@@ -38,6 +38,8 @@ export default class Deck
         this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'cotillear','cotillear','ventana-indiscreta',0,new CotillearEffect(this.juego)));
         this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'jeff','jeff','ventana-indiscreta',2,nullEffect,new GenerateEffect(this.juego,2,2,0)));
         this.cardlist.push(new Escenario(this.juego,this.juego.scene,0,0,'bloque-vecinos','bloque-vecinos','ventana-indiscreta',0,new GenerateEffect(this.juego,0,1,0)));
+        this.cardlist.push(new Escenario(this.juego,this.juego.scene,0,0,'circo','circo','sabotaje',0,new GenerateEffect(this.juego,0,1,0)));
+        this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'abuelo-tacataca','abuelo-tacataca','',-1,nullEffect));
     }
     dealNcard(n, hand)
     {
