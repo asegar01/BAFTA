@@ -81,6 +81,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('bloque-vecinos','bloque-vecinos.png');
     this.load.image('circo', 'circo.png');
     this.load.image('abuelo-tacataca', 'abuelo-tacataca.png');
+    this.load.image('vieja-visillo', 'vieja-visillo.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -94,6 +95,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('bloque-vecinos-info','bloque-vecinos-info.png');
     this.load.image('circo-info', 'circo-info.png');
     this.load.image('abuelo-tacataca-info', 'abuelo-tacataca-info.png');
+    this.load.image('vieja-visillo-info', 'vieja-visillo-info');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')
