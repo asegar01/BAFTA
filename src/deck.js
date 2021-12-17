@@ -4,6 +4,7 @@ import Personaje from "./personaje.js";
 import Escenario from "./escenario.js";
 import { CotillearEffect, GenerateEffect, MirarObraEffect } from "./effects.js";
 import { KillEffect } from "./effects.js";
+import { DeliveryEffect } from "./effects.js";
 
 export default class Deck {
     constructor(juego) {
@@ -40,6 +41,9 @@ export default class Deck {
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'vieja-visillo', 'vieja-visillo', 'none', 1, new GenerateEffect(this.juego, 0, 2, 0), new CotillearEffect(this.juego)));
         this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'mirar-obra','mirar-obra','none',-2, new MirarObraEffect(this.juego)));
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'caseron-abandonado', 'caseron-abandonado', 'none', 0, new GenerateEffect(this.juego, 2, 1, 0)));
+        this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'echar-loteria','echar-loteria','none',1,new GenerateEffect(this.juego,this.randomIntFromInterval(0,2),3,0)));
+        this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'entrega-paquete','entrega-paquete','none',1,new DeliveryEffect(this.juego)));
+        this.cardlist.push(new Escenario(this.juego,this.juego.scene,0,0,'cementerio','cementerio','none',0,new GenerateEffect(this.juego,1,1,0)));
     }
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {
@@ -61,4 +65,8 @@ export default class Deck {
             }
         }
     }
+    // Generar numero aleatorio
+    randomIntFromInterval(min, max) { // min y max incluidos 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+      }
 }

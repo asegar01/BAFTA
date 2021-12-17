@@ -6,6 +6,42 @@ export default class Accion extends Card {
         this.actionEffect = effect;
     }
 
+    onplayed() {
+        let i = 0;
+        let found = false;
+        while (!found && i < this._juego.table.length) {
+            let pointer = this.scene.input.activePointer;
+            if (Phaser.Geom.Rectangle.Contains(this._juego.table[i].getBounds(), pointer.worldX, pointer.worldY)) {
+                if(this._name!='entrega-paquete'||this._juego.hand.length<7){
+                    found = true;
+                    // Ejecutar effecto
+                    this.actionEffect.execute(i);
+                    // Eliminar carta
+                    this._enjuego = true;
+                    this._juego.scene.input.setDraggable(this.imagenjuego, false);
+                    this.imagenjuego.setActive(false);
+                    if (this._name == 'norman-bates') {
+                        this.imagenjuego.setScale(.2).setDepth(0);
+                        this._juego.setCardOnScreen(this.imagenjuego, this._name, false);
+                    }
+                    else {
+                        this.imagenjuego.setVisible(false);
+                    }
+                    this._juego.audienceFocus += this._audiencemod;
+                    if (this._juego.audienceFocus > 10) this._juego.audienceFocus = 10;
+
+                    this._juego.hud.updateTexts();
+                }
+                
+            }
+            i++;
+        }
+        if (!found) {
+            this.imagenjuego.x = this.iniX;
+            this.imagenjuego.y = this.iniY;
+        }
+    }
+
     /* onplayed(){
         let auxrec = new Phaser.Geom.Rectangle(this.x,this.y,this.imagenjuego.displayWidth,this.imagenjuego.displayHeight);
         if (this.checktrash(auxrec) && this._juego.hand.length > 5) {
@@ -25,40 +61,8 @@ export default class Accion extends Card {
             this.imagenjuego.y = this.iniY;
         }
     } */
-    onplayed() {
-        let i = 0;
-        let found = false;
-        while (!found && i < this._juego.table.length) {
-            let pointer = this.scene.input.activePointer;
-            if (Phaser.Geom.Rectangle.Contains(this._juego.table[i].getBounds(), pointer.worldX, pointer.worldY)) {
-                found = true;
-                // Ejecutar effecto
-                this.actionEffect.execute(i);
-                // Eliminar carta
-                this._enjuego = true;
-                this._juego.scene.input.setDraggable(this.imagenjuego, false);
-                this.imagenjuego.setActive(false);
-                if (this._name == 'norman-bates') {
-                    this.imagenjuego.setScale(.2).setDepth(0);
-                    this._juego.setCardOnScreen(this.imagenjuego, this._name, false);
-                }
-                else {
-                    this.imagenjuego.setVisible(false);
-                }
-                this._juego.audienceFocus += this._audiencemod;
-                if (this._juego.audienceFocus > 10) this._juego.audienceFocus = 10;
 
-                this._juego.hud.updateTexts();
-            }
-            i++;
-        }
-        if (!found) {
-            this.imagenjuego.x = this.iniX;
-            this.imagenjuego.y = this.iniY;
-        }
-    }
-
-    checkcharacter(auxrec) {
+    /* checkcharacter(auxrec) {
         let result = false;
         for (let i = 0; i < this._juego.occupied.length && !result; i++) {
             let auxrecOn = new Phaser.Geom.Rectangle(0, 0, this.imagenjuego.width * .2, this.imagenjuego.height * .2);
@@ -76,5 +80,5 @@ export default class Accion extends Card {
             }
         }
         return result;
-    }
+    } */
 }

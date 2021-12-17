@@ -122,7 +122,6 @@ export default class GameManager {
         }
         this.hud.updatehud();
         //this.hud.updateTexts();
-
         //console.log(this.comedy);
         //console.log(this.drama);
         //console.log(this.suspense);

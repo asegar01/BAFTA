@@ -22,7 +22,7 @@ export default class Personaje extends Card {
         }
 
     }
-    // Funcion para cuando se le asocia "Cotillear" a "Jeff"
+    // Funcion para cuando se le asocia "Cotillear" a "Jeff" o a "Vieja al visillo"
     onCotillear(characterName) {
         if (characterName == 'jeff' && this._name == 'jeff') {
             this._chaEffect.execute();

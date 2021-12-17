@@ -83,6 +83,9 @@ export default class Boot extends Phaser.Scene {
     this.load.image('vieja-visillo', 'vieja-visillo.png');
     this.load.image('mirar-obra', 'mirar-obra.png');
     this.load.image('caseron-abandonado', 'caseron-abandonado.png');
+    this.load.image('echar-loteria', 'echar-loteria.png');
+    this.load.image('entrega-paquete', 'entrega-paquete.png');
+    this.load.image('cementerio', 'cementerio.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -99,6 +102,9 @@ export default class Boot extends Phaser.Scene {
     this.load.image('vieja-visillo-info', 'vieja-visillo-info.png');
     this.load.image('mirar-obra-info', 'mirar-obra-info.png');
     this.load.image('caseron-abandonado-info', 'caseron-abandonado-info.png');
+    this.load.image('echar-loteria-info', 'echar-loteria-info.png');
+    this.load.image('entrega-paquete-info', 'entrega-paquete-info.png');
+    this.load.image('cementerio-info', 'cementerio-info.png');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')

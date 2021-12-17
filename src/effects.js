@@ -132,3 +132,14 @@ export class MirarObraEffect extends Effect {
     }
 }
 
+export class DeliveryEffect extends Effect{
+    constructor(scene){
+        super();
+        this.scene=scene;
+    }
+    execute(){
+        // Roba 2 cartas
+        this.scene.deck.dealNcard(2, this.scene.hand);
+    }
+}
+
