@@ -1,4 +1,5 @@
 import Card from "./card.js";
+import { GenerateEffect } from "./effects.js";
 import EventDispatcher from "./eventdispatcher.js";
 
 export default class Personaje extends Card {
@@ -24,6 +25,9 @@ export default class Personaje extends Card {
     // Funcion para cuando se le asocia "Cotillear" a "Jeff"
     onCotillear(characterName) {
         if (characterName == 'jeff' && this._name == 'jeff') {
+            this._chaEffect.execute();
+        }
+        else if(characterName == 'vieja-visillo' && this._name == 'vieja-visillo') {
             this._chaEffect.execute();
         }
     }

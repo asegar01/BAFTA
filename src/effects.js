@@ -118,3 +118,17 @@ export class CotillearEffect extends Effect {
         effect.execute();
     }
 }
+
+export class MirarObraEffect extends Effect {
+    constructor(scene){
+        super();
+        this.scene = scene;
+    }
+    execute(i){
+        let amount = 1;
+        if(this.scene.cardsOnTableNames[i] == 'vieja-visillo' || this.scene.cardsOnTableNames[i] == 'abuelo-tacataca') amount = 2;
+        let effect = new GenerateEffect(this.scene, 2, amount, 0);
+        effect.execute();
+    }
+}
+

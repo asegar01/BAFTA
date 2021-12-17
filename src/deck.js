@@ -2,7 +2,7 @@ import Card from "./card.js";
 import Accion from "./accion.js";
 import Personaje from "./personaje.js";
 import Escenario from "./escenario.js";
-import { CotillearEffect, GenerateEffect } from "./effects.js";
+import { CotillearEffect, GenerateEffect, MirarObraEffect } from "./effects.js";
 import { KillEffect } from "./effects.js";
 
 export default class Deck {
@@ -38,6 +38,7 @@ export default class Deck {
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'circo', 'circo', 'none', 0, new GenerateEffect(this.juego, 0, 1, 0)));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'abuelo-tacataca', 'abuelo-tacataca', 'none', -1, nullEffect, nullEffect));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'vieja-visillo', 'vieja-visillo', 'none', 1, new GenerateEffect(this.juego, 0, 2, 0), new CotillearEffect(this.juego)));
+        this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'mirar-obra','mirar-obra','none',-2, new MirarObraEffect(this.juego)));
     }
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {
