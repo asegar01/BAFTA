@@ -1,9 +1,9 @@
 import Card from "./card.js";
 
-export default class Accion extends Card{
-    constructor(juego, scene, x, y, name, sprite, family, audiencemod, effect){
+export default class Accion extends Card {
+    constructor(juego, scene, x, y, name, sprite, family, audiencemod, effect) {
         super(juego, scene, x, y, name, sprite, family, audiencemod, effect);
-        this.actionEffect=effect;
+        this.actionEffect = effect;
     }
 
     /* onplayed(){
@@ -25,40 +25,40 @@ export default class Accion extends Card{
             this.imagenjuego.y = this.iniY;
         }
     } */
-    onplayed(){
-        let i=0;
-        let found=false;
-        while(!found&&i<this._juego.table.length){
-            let pointer=this.scene.input.activePointer;
-            if(Phaser.Geom.Rectangle.Contains(this._juego.table[i].getBounds(),pointer.worldX,pointer.worldY)){
-                found=true;
+    onplayed() {
+        let i = 0;
+        let found = false;
+        while (!found && i < this._juego.table.length) {
+            let pointer = this.scene.input.activePointer;
+            if (Phaser.Geom.Rectangle.Contains(this._juego.table[i].getBounds(), pointer.worldX, pointer.worldY)) {
+                found = true;
                 // Ejecutar effecto
                 this.actionEffect.execute(i);
                 // Eliminar carta
                 this._enjuego = true;
                 this._juego.scene.input.setDraggable(this.imagenjuego, false);
                 this.imagenjuego.setActive(false);
-                if(this._name=='norman-bates'){
+                if (this._name == 'norman-bates') {
                     this.imagenjuego.setScale(.2).setDepth(0);
-                    this._juego.setCardOnScreen(this.imagenjuego,this._name,false);
-                } 
-                else{
+                    this._juego.setCardOnScreen(this.imagenjuego, this._name, false);
+                }
+                else {
                     this.imagenjuego.setVisible(false);
                 }
                 this._juego.audienceFocus += this._audiencemod;
-                if(this._juego.audienceFocus>10)this._juego.audienceFocus=10;
-            
+                if (this._juego.audienceFocus > 10) this._juego.audienceFocus = 10;
+
                 this._juego.hud.updateTexts();
             }
             i++;
         }
-        if(!found){
+        if (!found) {
             this.imagenjuego.x = this.iniX;
             this.imagenjuego.y = this.iniY;
         }
     }
 
-    checkcharacter(auxrec){
+    checkcharacter(auxrec) {
         let result = false;
         for (let i = 0; i < this._juego.occupied.length && !result; i++) {
             let auxrecOn = new Phaser.Geom.Rectangle(0, 0, this.imagenjuego.width * .2, this.imagenjuego.height * .2);
@@ -70,8 +70,8 @@ export default class Accion extends Card{
                 auxrecOn.x = (i - this._juego.occupied.length / 2) * 75 + 380;
                 auxrecOn.y = 240;
             }
-            if(Phaser.Geom.Rectangle.Overlaps(auxrecOn, auxrec)) {
-                result=true;
+            if (Phaser.Geom.Rectangle.Overlaps(auxrecOn, auxrec)) {
+                result = true;
                 this.characterontable = i;
             }
         }

@@ -37,7 +37,7 @@ export default class Deck {
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'bloque-vecinos', 'bloque-vecinos', 'ventana-indiscreta', 0, new GenerateEffect(this.juego, 0, 1, 0)));
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'circo', 'circo', 'none', 0, new GenerateEffect(this.juego, 0, 1, 0)));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'abuelo-tacataca', 'abuelo-tacataca', 'none', -1, nullEffect, nullEffect));
-        //this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'vieja-visillo', 'vieja-visillo', 'none', 1, new GenerateEffect(this.juego, 0, 2, 0), ));
+        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'vieja-visillo', 'vieja-visillo', 'none', 1, new GenerateEffect(this.juego, 0, 2, 0), new CotillearEffect(this.juego)));
     }
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {

@@ -21,8 +21,7 @@ export default class Level extends Phaser.Scene {
   /**
    * Creación de los elementos de la escena principal de juego
    */
-  create() 
-  {
+  create() {
     // Configuración de la banda sonora
     const config = {
       mute: false,
@@ -42,22 +41,20 @@ export default class Level extends Phaser.Scene {
     //Contruccion del juego
     this.juego.create();
 
-    this.input.on('drag', function (pointer, gameObject, dragX, dragY) 
-    {
+    this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
       gameObject.x = dragX;
-      gameObject.y = dragY; 
-      gameObject.objetopadre.x=dragX;
-      gameObject.objetopadre.y=dragY;
+      gameObject.y = dragY;
+      gameObject.objetopadre.x = dragX;
+      gameObject.objetopadre.y = dragY;
 
       // Desplazamiento de la carta seleccionada a la primera capa de visualización
       this.scene.children.bringToTop(gameObject);
     });
-    
-    this.input.on('dragend', function (pointer, gameObject) {gameObject.objetopadre.onplayed();});
+
+    this.input.on('dragend', function (pointer, gameObject) { gameObject.objetopadre.onplayed(); });
   }
 
-  update()
-  {
+  update() {
     this.juego.update();
   }
 }

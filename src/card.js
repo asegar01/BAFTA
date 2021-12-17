@@ -27,38 +27,37 @@ export default class Card extends Phaser.GameObjects.Sprite {
     }
 
     // Carta jugada
-    onplayed() 
-    {
-        let auxrec = new Phaser.Geom.Rectangle(this.x,this.y,this.imagenjuego.displayWidth,this.imagenjuego.displayHeight);
+    onplayed() {
+        let auxrec = new Phaser.Geom.Rectangle(this.x, this.y, this.imagenjuego.displayWidth, this.imagenjuego.displayHeight);
         if (this.checktrash(auxrec) && this._juego.hand.length > 5) {
             this.imagenjuego.setActive(false).setVisible(false); //un poco chapuza pero bueno por imagenjuego
         }
         else if (this.checkboard(auxrec)) {
             // Si es un Personaje y hay 8 cartas en la mesa, la carta no se juega
-            if(this.constructor.name=="Personaje"&&this._juego.screenIsFull){
+            if (this.constructor.name == "Personaje" && this._juego.screenIsFull) {
                 this.imagenjuego.x = this.iniX;
                 this.imagenjuego.y = this.iniY;
             }
-            else{
+            else {
                 this._enjuego = true;
                 this._juego.scene.input.setDraggable(this.imagenjuego, false);
                 this.imagenjuego.setActive(false);
                 this.imagenjuego.setScale(.2).setDepth(0);
-                let isStage=(this.constructor.name=="Escenario");
-                this._juego.setCardOnScreen(this.imagenjuego,this._name,isStage);
-                if(isStage){
-                    if(this._juego.stage!=null){
-                        this._juego.stage._enjuego=false;
+                let isStage = (this.constructor.name == "Escenario");
+                this._juego.setCardOnScreen(this.imagenjuego, this._name, isStage);
+                if (isStage) {
+                    if (this._juego.stage != null) {
+                        this._juego.stage._enjuego = false;
                         this._juego.stage.setVisible(false);
                     }
-                    this._juego.stage=this;
+                    this._juego.stage = this;
                 }
                 // Ejecuta el efecto de la carta utilizada
                 this._effect.execute();
 
                 this._juego.audienceFocus += this._audiencemod;
-                if(this._juego.audienceFocus>10)this._juego.audienceFocus=10;
-            
+                if (this._juego.audienceFocus > 10) this._juego.audienceFocus = 10;
+
                 this._juego.hud.updateTexts();
             }
             /* this._enjuego = true;

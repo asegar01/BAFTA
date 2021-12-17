@@ -7,12 +7,11 @@ export default class End extends Phaser.Scene {
   /**
    * Constructor de la escena
    */
-  constructor() 
-  {
+  constructor() {
     super({ key: 'end' });
   }
 
-  init(gameover){
+  init(gameover) {
     console.log(gameover);
     this.gameover = gameover;
   }
@@ -21,18 +20,15 @@ export default class End extends Phaser.Scene {
    * Creación de la escena. Tan solo contiene el texto que indica que el juego se ha acabado
    * @override
    */
-  create() 
-  {    
+  create() {
     this.add.image(500, 250, 'finalScreen');
     console.log(this.gameover);
 
-    if(this.gameover !== -1)
-    {
-      this.victory = this.add.text(600, 50, "VICTORY", {fontSize: '80px'}).setTint(0xADFF2F);
+    if (this.gameover !== -1) {
+      this.victory = this.add.text(600, 50, "VICTORY", { fontSize: '80px' }).setTint(0xADFF2F);
     }
-    else 
-    {
-      this.defeat = this.add.text(600, 50, "DEFEAT", {fontSize: '80px'}).setTint(0xDC143C);
+    else {
+      this.defeat = this.add.text(600, 50, "DEFEAT", { fontSize: '80px' }).setTint(0xDC143C);
     }
 
     // this.add.text(500, 250, 'Se acabó!\nPulsa cualquier tecla para volver a jugar')

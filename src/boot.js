@@ -23,8 +23,7 @@ export default class Boot extends Phaser.Scene {
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(340, 230, 320, 50);
 
-    this.load.on('progress', function (value) 
-    {
+    this.load.on('progress', function (value) {
       console.log(value);
       percentText.setText(parseInt(value * 100) + '%');
       progressBar.clear();
@@ -36,63 +35,63 @@ export default class Boot extends Phaser.Scene {
     this.load.setPath('assets/sprites/');
     this.load.image('logo', 'AH_LOGO.png');
     this.load.image('cinema', 'cinema.png');
-    this.load.image('next-act-button','next-act-button.png');
-    this.load.image('act-counter','act-counter.png');
+    this.load.image('next-act-button', 'next-act-button.png');
+    this.load.image('act-counter', 'act-counter.png');
     this.load.image('card', 'CardTemplate.png');
-    this.load.image('trash-can','trash-can.png');
+    this.load.image('trash-can', 'trash-can.png');
     this.load.image('screen', 'screen.png');
     this.load.image('finalScreen', 'finalScreen.png');
 
     // HUD
-    this.load.image('hud-background','hud-background.png');
-    this.load.image('hud-drama','hud-drama.png');
-    this.load.image('hud-comedy','hud-comedy.png');
-    this.load.image('hud-suspense','hud-suspense.png');
-    this.load.image('hud-trophy','hud-trophy.png');
-    this.load.image('hud-audience','hud-audience.png');
-    this.load.image('hud-capricho','hud-capricho.png');
-    this.load.image('cartel-drama','cartel-drama.png');
-    this.load.image('cartel-comedy','cartel-comedy.png');
-    this.load.image('cartel-suspense','cartel-suspense.png');
-    this.load.image('cartel-trophies','cartel-trophies.png');
-    this.load.image('cartel-audience','cartel-audience.png');
-    this.load.image('cartel-capricho','cartel-capricho.png');
-    this.load.image('cartel-demasiadas-cartas','cartel-demasiadas-cartas.png');
-    this.load.image('marco-escenario','marco-escenario.png');
-    this.load.image('no-escenario','no-escenario.png');
+    this.load.image('hud-background', 'hud-background.png');
+    this.load.image('hud-drama', 'hud-drama.png');
+    this.load.image('hud-comedy', 'hud-comedy.png');
+    this.load.image('hud-suspense', 'hud-suspense.png');
+    this.load.image('hud-trophy', 'hud-trophy.png');
+    this.load.image('hud-audience', 'hud-audience.png');
+    this.load.image('hud-capricho', 'hud-capricho.png');
+    this.load.image('cartel-drama', 'cartel-drama.png');
+    this.load.image('cartel-comedy', 'cartel-comedy.png');
+    this.load.image('cartel-suspense', 'cartel-suspense.png');
+    this.load.image('cartel-trophies', 'cartel-trophies.png');
+    this.load.image('cartel-audience', 'cartel-audience.png');
+    this.load.image('cartel-capricho', 'cartel-capricho.png');
+    this.load.image('cartel-demasiadas-cartas', 'cartel-demasiadas-cartas.png');
+    this.load.image('marco-escenario', 'marco-escenario.png');
+    this.load.image('no-escenario', 'no-escenario.png');
 
     this.load.setPath('assets/sprites/cards/');
-    this.load.image('card1','test1.png');
-    this.load.image('card2','test2.png');
-    this.load.image('card3','test3.png');
-    this.load.image('card4','test4.png');
-    this.load.image('card5','test5.png');
-    this.load.image('card6','test6.png');
+    this.load.image('card1', 'test1.png');
+    this.load.image('card2', 'test2.png');
+    this.load.image('card3', 'test3.png');
+    this.load.image('card4', 'test4.png');
+    this.load.image('card5', 'test5.png');
+    this.load.image('card6', 'test6.png');
 
     // Carga de los sprites de las cartas
     this.load.setPath('assets/sprites/cartas/');
-    this.load.image('bates-motel','bates-motel.png');
-    this.load.image('marion-crane','marion-crane.png');
-    this.load.image('matar','matar.png');
-    this.load.image('norman-bates','norman-bates.png');
-    this.load.image('cameo-hitchcock','cameo-hitchcock.png');
-    this.load.image('cotillear','cotillear.png');
-    this.load.image('jeff','jeff.png');
-    this.load.image('bloque-vecinos','bloque-vecinos.png');
+    this.load.image('bates-motel', 'bates-motel.png');
+    this.load.image('marion-crane', 'marion-crane.png');
+    this.load.image('matar', 'matar.png');
+    this.load.image('norman-bates', 'norman-bates.png');
+    this.load.image('cameo-hitchcock', 'cameo-hitchcock.png');
+    this.load.image('cotillear', 'cotillear.png');
+    this.load.image('jeff', 'jeff.png');
+    this.load.image('bloque-vecinos', 'bloque-vecinos.png');
     this.load.image('circo', 'circo.png');
     this.load.image('abuelo-tacataca', 'abuelo-tacataca.png');
     this.load.image('vieja-visillo', 'vieja-visillo.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
-    this.load.image('bates-motel-info','bates-motel-info.png');
-    this.load.image('marion-crane-info','marion-crane-info.png');
-    this.load.image('matar-info','matar-info.png');
-    this.load.image('norman-bates-info','norman-bates-info.png');
-    this.load.image('cameo-hitchcock-info','cameo-hitchcock-info.png');
-    this.load.image('cotillear-info','cotillear-info.png');
-    this.load.image('jeff-info','jeff-info.png');
-    this.load.image('bloque-vecinos-info','bloque-vecinos-info.png');
+    this.load.image('bates-motel-info', 'bates-motel-info.png');
+    this.load.image('marion-crane-info', 'marion-crane-info.png');
+    this.load.image('matar-info', 'matar-info.png');
+    this.load.image('norman-bates-info', 'norman-bates-info.png');
+    this.load.image('cameo-hitchcock-info', 'cameo-hitchcock-info.png');
+    this.load.image('cotillear-info', 'cotillear-info.png');
+    this.load.image('jeff-info', 'jeff-info.png');
+    this.load.image('bloque-vecinos-info', 'bloque-vecinos-info.png');
     this.load.image('circo-info', 'circo-info.png');
     this.load.image('abuelo-tacataca-info', 'abuelo-tacataca-info.png');
     this.load.image('vieja-visillo-info', 'vieja-visillo-info');
@@ -100,7 +99,7 @@ export default class Boot extends Phaser.Scene {
     // Banda sonora del juego
     this.load.setPath('./assets/audio')
     this.load.audio('theme', 'theme.mp3');
-              
+
     this.load.on('fileprogress', function (file) {
       console.log(file.src);
     });
@@ -111,7 +110,7 @@ export default class Boot extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
     });
-    
+
     let width = this.cameras.main.width;
     let height = this.cameras.main.height;
     let loadingText = this.make.text({

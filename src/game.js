@@ -8,7 +8,7 @@ import Level from './level.js';
  */
 let config = {
     type: Phaser.AUTO,
-    width:  1000,
+    width: 1000,
     height: 500,
     scale: {
         // mode: Phaser.Scale.FIT,  
@@ -16,12 +16,12 @@ let config = {
     },
     pixelArt: true,
     scene: [Boot, Level, End],
-    physics: { 
+    physics: {
         default: 'arcade',
-        arcade: { 
+        arcade: {
             gravity: { y: 400 },
-            debug: false 
-        } 
+            debug: false
+        }
     }
 };
 
