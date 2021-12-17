@@ -31,14 +31,14 @@ export default class End extends Phaser.Scene {
       this.defeat = this.add.text(600, 50, "DEFEAT", { fontSize: '80px' }).setTint(0xDC143C);
     }
 
-    // this.add.text(500, 250, 'Se acabó!\nPulsa cualquier tecla para volver a jugar')
-    //     .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
-    //     .setAlign('center');  // Centramos el texto dentro del cuadro de texto
+    this.add.text(500, 250, 'Se acabó!\nPulsa cualquier tecla para volver a jugar')
+         .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
+         .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 
 
     // Añadimos el listener para cuando se haya pulsado una tecla.
-    // this.input.keyboard.on('keydown', function (event) { 
-    //   this.scene.start('level');
-    // }, this);
+     this.input.keyboard.on('keydown', function (event) { 
+     this.scene.start('level');
+     }, this);
   }
 }
