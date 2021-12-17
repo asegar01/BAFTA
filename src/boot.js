@@ -82,6 +82,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('abuelo-tacataca', 'abuelo-tacataca.png');
     this.load.image('vieja-visillo', 'vieja-visillo.png');
     this.load.image('mirar-obra', 'mirar-obra.png');
+    this.load.image('caseron-abandonado', 'caseron-abandonado.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -95,8 +96,9 @@ export default class Boot extends Phaser.Scene {
     this.load.image('bloque-vecinos-info', 'bloque-vecinos-info.png');
     this.load.image('circo-info', 'circo-info.png');
     this.load.image('abuelo-tacataca-info', 'abuelo-tacataca-info.png');
-    this.load.image('vieja-visillo-info', 'vieja-visillo-info');
-    this.load.image('mirar-obra-info', 'mirar-obra-info');
+    this.load.image('vieja-visillo-info', 'vieja-visillo-info.png');
+    this.load.image('mirar-obra-info', 'mirar-obra-info.png');
+    this.load.image('caseron-abandonado-info', 'caseron-abandonado-info.png');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')
