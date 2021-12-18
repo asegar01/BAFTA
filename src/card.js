@@ -27,7 +27,7 @@ export default class Card extends Phaser.GameObjects.Sprite {
         }
         else if (this.checkboard(auxrec)) {
             // Si es un Personaje y hay 8 cartas en la mesa, la carta no se juega
-            if (this.constructor.name == "Personaje" && this._juego.screenIsFull) {
+            if (this._name == "Personaje" && this._juego.screenIsFull) {
                 this.imagenjuego.x = this.iniX;
                 this.imagenjuego.y = this.iniY;
             }
@@ -38,7 +38,7 @@ export default class Card extends Phaser.GameObjects.Sprite {
                 this._juego.scene.input.setDraggable(this.imagenjuego, false);
                 this.imagenjuego.setActive(false);
                 this.imagenjuego.setScale(.2).setDepth(0);
-                let isStage = (this.constructor.name == "Escenario");
+                let isStage = (this._name == "Escenario");
                 this._juego.setCardOnScreen(this.imagenjuego, this._name, isStage, this._audiencemod);
                 if (isStage) {
                     if (this._juego.stage != null) {

@@ -12,7 +12,7 @@ export default class HudManager {
         // Escenario para jugar cartas
         let screen = this.scene.add.image(490, 180, 'screen');
         screen.setScale(.5);
-        this.gamearea = new Phaser.Geom.Rectangle(400, 180, screen.displayWidth, screen.displayHeight);
+        this.gamearea = new Phaser.Geom.Rectangle(400, 180, screen.displayWidth, screen.displayHeight - (screen.displayHeight/6));
 
         // HUD
         this.scene.add.image(500, 35, 'hud-background');

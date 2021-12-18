@@ -43,11 +43,13 @@ export default class Deck {
         this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'entrega-paquete', 'entrega-paquete', 'none', 1, new DeliveryEffect(this.juego)));
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'cementerio', 'cementerio', 'none', 0, new GenerateEffect(this.juego, 1, 1, 0)));
         this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'caida-repentina', 'caida-repentina', 'none', 0, new CaidaRepentinaEffect(this.juego)));
-        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'bandada-pajaros', 'bandada-pajaros', 'pajaros', 0, new GenerateEffect(this.juego, 2, 1, 0), nullEffect));
-        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'melanie-daniels', 'melanie-daniels', 'pajaros', 2, new MelanieEffect(this.juego), nullEffect));
-        this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'resultar-herido', 'resultar-herido', 'none', 0, new ResultarHeridoEffect(this.juego)));
-        this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'bodega-bay', 'bodega-bay', 'pajaros', 0, new GenerateEffect(this.juego, 0, 1, 0)));
-
+        this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'bandada-pajaros','bandada-pajaros','pajaros',0,new GenerateEffect(this.juego,2,1,0),nullEffect));
+        this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'melanie-daniels','melanie-daniels','pajaros',2,new MelanieEffect(this.juego),nullEffect));
+        this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'resultar-herido','resultar-herido','none',0,new ResultarHeridoEffect(this.juego)));
+        this.cardlist.push(new Escenario(this.juego,this.juego.scene,0,0,'bodega-bay','bodega-bay','pajaros',0,new GenerateEffect(this.juego,0,1,0)));
+        
+        // dejar esta linea al final siempre
+        this.shuffle();
     }
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {
@@ -78,5 +80,13 @@ export default class Deck {
     // Generar numero aleatorio
     randomIntFromInterval(min, max) { // min y max incluidos 
         return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+    shuffle(){
+        for(let i = 0; i < this.cardlist.length; i++){
+            let aux = this.cardlist[i];
+            let j = this.randomIntFromInterval(i,this.cardlist.length-1);
+            this.cardlist[i]=this.cardlist[j];
+            this.cardlist[j]=aux;
+        }
     }
 }
