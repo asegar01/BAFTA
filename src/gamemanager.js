@@ -37,12 +37,13 @@ export default class GameManager {
 
         // Creación del array para administrar el orden de las cartas jugadas
         this.occupied = Array(8).fill(false);
-        this.table = [];
-        this.cardsOnTableNames = [];
+        this.table = []; // las cartas que estan en juego
+        this.cardsOnTableNames = []; // el nombre de las cartas que estan en juego
+        this.cardsOnTableFocus=[]; // la cantidad de atencion de la audiencia que generan las cartas que estan en juego
         this.screenIsFull = false;
     }
 
-    setCardOnScreen(card, cardName, isStage) {
+    setCardOnScreen(card, cardName, isStage, audienceFocusAmount) {
         if (!isStage) {
             let i = 0;
             while (i < this.occupied.length && this.occupied[i]) i++;
@@ -59,6 +60,7 @@ export default class GameManager {
                 this.occupied[i] = true;
                 this.table.push(card);
                 this.cardsOnTableNames.push(cardName);
+                this.cardsOnTableFocus.push(audienceFocusAmount);
             }
         }
         else {

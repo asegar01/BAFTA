@@ -89,14 +89,14 @@ export class KillEffect extends Effect {
         this.isNormanBates = isNormanBates;
     }
     execute(i) {
+        let resourceGener;
         if (this.isNormanBates) {
-            let resourceGener = new GenerateEffect(this.scene, 2, 3, 0);
-            resourceGener.execute();
+            resourceGener = new GenerateEffect(this.scene, 2, 3, 0);
         }
         else {
-            let resourceGener = new GenerateEffect(this.scene, 1, 1, 0);
-            resourceGener.execute();
+            resourceGener = new GenerateEffect(this.scene, 1, 1, 0);
         }
+        resourceGener.execute();
         this.scene.onDead(this.scene.cardsOnTableNames[i]);
         this.scene.table[i].setVisible(false);
         this.scene.occupied[i] = false;
@@ -149,12 +149,45 @@ export class CaidaRepentinaEffect extends Effect {
         this.scene = scene;
     }
     execute(i) {
-        let effect;
+        let type=0;
         if (this.scene.cardsOnTableNames[i] == 'vieja-visillo' || this.scene.cardsOnTableNames[i] == 'abuelo-tacataca') {
-            effect = new GenerateEffect(this.scene, 1, 2, 0);
+            type=1;
         }
-        else effect = new GenerateEffect(this.scene, 0, 2, 0);
+        let effect=new GenerateEffect(this.scene, type, 2, 0);
         effect.execute();
+    }
+}
+
+export class MelanieEffect extends Effect{
+    constructor(scene){
+        super();
+        this.scene=scene;
+    }
+    execute(){
+        let pajarosFound=false;
+        let it=0, resource=0;
+        while(!pajarosFound&&it<this.scene.cardsOnTableNames.length){
+            if(this.scene.cardsOnTableNames[it]=='bandada-pajaros') pajarosFound=true;
+            it++;
+        }
+        if(pajarosFound)resource=2;
+        let effect=new GenerateEffect(this.scene,resource,1,0);
+        effect.execute();
+    }
+}
+
+export class ResultarHeridoEffect extends Effect{
+    constructor(scene){
+        super();
+        this.scene=scene;
+    }
+    execute(i){
+        let amount=this.scene.cardsOnTableFocus[i];
+        // el tipo de recurso es irrelevante ya que genera 0 del mismo.
+        // solo genera atencion de la audiencia
+        let effect=new GenerateEffect(this.scene,0,0,amount);
+        effect.execute();
+
     }
 }
 
