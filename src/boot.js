@@ -86,6 +86,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('echar-loteria', 'echar-loteria.png');
     this.load.image('entrega-paquete', 'entrega-paquete.png');
     this.load.image('cementerio', 'cementerio.png');
+    this.load.image('caida-repentina', 'caida-repentina.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -105,6 +106,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('echar-loteria-info', 'echar-loteria-info.png');
     this.load.image('entrega-paquete-info', 'entrega-paquete-info.png');
     this.load.image('cementerio-info', 'cementerio-info.png');
+    this.load.image('caida-repentina-info', 'caida-repentina-info.png');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')

@@ -120,26 +120,41 @@ export class CotillearEffect extends Effect {
 }
 
 export class MirarObraEffect extends Effect {
-    constructor(scene){
+    constructor(scene) {
         super();
         this.scene = scene;
     }
-    execute(i){
+    execute(i) {
         let amount = 1;
-        if(this.scene.cardsOnTableNames[i] == 'vieja-visillo' || this.scene.cardsOnTableNames[i] == 'abuelo-tacataca') amount = 2;
+        if (this.scene.cardsOnTableNames[i] == 'vieja-visillo' || this.scene.cardsOnTableNames[i] == 'abuelo-tacataca') amount = 2;
         let effect = new GenerateEffect(this.scene, 2, amount, 0);
         effect.execute();
     }
 }
 
-export class DeliveryEffect extends Effect{
-    constructor(scene){
+export class DeliveryEffect extends Effect {
+    constructor(scene) {
         super();
-        this.scene=scene;
+        this.scene = scene;
     }
-    execute(){
+    execute() {
         // Roba 2 cartas
         this.scene.deck.dealNcard(2, this.scene.hand);
+    }
+}
+
+export class CaidaRepentinaEffect extends Effect {
+    constructor(scene) {
+        super();
+        this.scene = scene;
+    }
+    execute(i) {
+        let effect;
+        if (this.scene.cardsOnTableNames[i] == 'vieja-visillo' || this.scene.cardsOnTableNames[i] == 'abuelo-tacataca') {
+            effect = new GenerateEffect(this.scene, 1, 2, 0);
+        }
+        else effect = new GenerateEffect(this.scene, 0, 2, 0);
+        effect.execute();
     }
 }
 
