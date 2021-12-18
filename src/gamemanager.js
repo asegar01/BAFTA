@@ -1,12 +1,13 @@
 import HudManager from "./hudmanager.js";
 import Deck from "./deck.js";
-import Escenario from "./escenario.js";
 import EventDispatcher from "./eventdispatcher.js";
 
 export default class GameManager {
     constructor(scene) {
         this.scene = scene;
         this.hud = new HudManager(this.scene, this);
+        this.occupiedHand = Array(7).fill(false); // las posiciones de hand ocupadas son true
+        this.cardsOnHandNames = Array(7).fill('none'); // los nombres de las cartas de hand
 
     }
     create() {
@@ -39,7 +40,7 @@ export default class GameManager {
         this.occupied = Array(8).fill(false);
         this.table = []; // las cartas que estan en juego
         this.cardsOnTableNames = []; // el nombre de las cartas que estan en juego
-        this.cardsOnTableFocus=[]; // la cantidad de atencion de la audiencia que generan las cartas que estan en juego
+        this.cardsOnTableFocus = []; // la cantidad de atencion de la audiencia que generan las cartas que estan en juego
         this.screenIsFull = false;
     }
 
@@ -106,6 +107,25 @@ export default class GameManager {
         this.emitter.emit("cotillear_played", name);
     }
 
+    dragStarted() {
+        this.emitter.emit("drag_started");
+    }
+
+    dragEnded() {
+        this.emitter.emit("drag_ended");
+    }
+
+    getFirstEmptyOnHand() {
+        let j = 0;
+        while (j < 7 && this.occupiedHand[j]) j++;
+        return j;
+    }
+
+    updateHandInfo(posOnHand, value, cardName) {
+        this.occupiedHand[posOnHand] = value;
+        this.cardsOnHandNames[posOnHand] = cardName;
+    }
+
     update() {
         if (this.audienceFocus <= 0) {
             this.gameover = -1;
@@ -123,6 +143,7 @@ export default class GameManager {
             i++;
         }
         this.hud.updatehud();
+        //console.log(this.hand[0].texture.key);
         //this.hud.updateTexts();
         //console.log(this.comedy);
         //console.log(this.drama);

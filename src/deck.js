@@ -43,26 +43,32 @@ export default class Deck {
         this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'entrega-paquete', 'entrega-paquete', 'none', 1, new DeliveryEffect(this.juego)));
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'cementerio', 'cementerio', 'none', 0, new GenerateEffect(this.juego, 1, 1, 0)));
         this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'caida-repentina', 'caida-repentina', 'none', 0, new CaidaRepentinaEffect(this.juego)));
-        this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'bandada-pajaros','bandada-pajaros','pajaros',0,new GenerateEffect(this.juego,2,1,0),nullEffect));
-        this.cardlist.push(new Personaje(this.juego,this.juego.scene,0,0,'melanie-daniels','melanie-daniels','pajaros',2,new MelanieEffect(this.juego),nullEffect));
-        this.cardlist.push(new Accion(this.juego,this.juego.scene,0,0,'resultar-herido','resultar-herido','none',0,new ResultarHeridoEffect(this.juego)));
-        this.cardlist.push(new Escenario(this.juego,this.juego.scene,0,0,'bodega-bay','bodega-bay','pajaros',0,new GenerateEffect(this.juego,0,1,0)));
-        
+        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'bandada-pajaros', 'bandada-pajaros', 'pajaros', 0, new GenerateEffect(this.juego, 2, 1, 0), nullEffect));
+        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'melanie-daniels', 'melanie-daniels', 'pajaros', 2, new MelanieEffect(this.juego), nullEffect));
+        this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'resultar-herido', 'resultar-herido', 'none', 0, new ResultarHeridoEffect(this.juego)));
+        this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'bodega-bay', 'bodega-bay', 'pajaros', 0, new GenerateEffect(this.juego, 0, 1, 0)));
+
     }
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {
             if (this.cardlist.length > 0) {
-                let posX = 180 + (100 * i);
+                let j = this.juego.getFirstEmptyOnHand();
+                let posX = 180 + (100 * j);
                 let posY = 400;
+                let cardName = this.cardlist[this.cardlist.length - 1].texture.key;
+                // actualiza la info de hand porque se introduce una carta
+                this.juego.updateHandInfo(j, true, cardName);
 
-                let imagen = this.juego.scene.add.image(posX, posY, this.cardlist[this.cardlist.length - 1].texture);
+                let imagen = this.juego.scene.add.sprite(posX, posY, this.cardlist[this.cardlist.length - 1].texture);
                 imagen.setInteractive().setScale(.3);
                 this.juego.scene.input.setDraggable(imagen);
                 imagen.objetopadre = this.cardlist[this.cardlist.length - 1];
                 this.cardlist[this.cardlist.length - 1].imagenjuego = imagen;
-
                 imagen.objetopadre.iniX = posX;
                 imagen.objetopadre.iniY = posY;
+
+                // se llama a la funcion que muestra la info de las cartas
+                this.cardlist[this.cardlist.length - 1].cartaInfo(imagen);
 
                 hand.push(imagen);
                 this.cardlist.pop();
