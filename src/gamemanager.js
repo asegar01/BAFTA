@@ -79,15 +79,6 @@ export default class GameManager {
             if (this.capricho != -1 && this.capricho != 3) this.audienceFocus -= 2;
             this.capricho = Math.floor((Math.random() * 3) + 0);
 
-            //reset de posicion de las cartas
-            for(let i = 0; i < this.hand.length; i++){
-                this.hand[i].x = 180 + (100 * i);
-            }
-            for(let i = 0; i < this.occupiedHand.length; i++) {
-                if(i<this.hand.length)this.occupiedHand[i]=true;
-                else this.occupiedHand[i]=false;
-            }
-
             // Robo de cartas
             this.deck.dealNcard(2, this.hand);
 
