@@ -44,7 +44,7 @@ export default class Deck {
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'campanario', 'campanario', 'vertigo', 0, new GenerateEffect(this.juego, 1, 1, 0)));
 
 
-        //this.shuffle(); // baraja las cartas
+        this.shuffle(); // baraja las cartas
     }
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {
@@ -73,7 +73,7 @@ export default class Deck {
             }
         }
     }
-    
+
     // Generar numero aleatorio
     randomIntFromInterval(min, max) { // min y max incluidos 
         return Math.floor(Math.random() * (max - min + 1) + min)

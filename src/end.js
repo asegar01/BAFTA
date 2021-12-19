@@ -33,8 +33,8 @@ export default class End extends Phaser.Scene {
     if (this.gameover !== -1) {
       this.victory = this.add.text(450, 50, "VICTORIA", { fontSize: '80px' }).setTint(0xADFF2F);
       if (this.movieCompleted != 'none') {
-        let movieTextX = 700, movieTextY = 150, posterX = 850, posterY = 350, posterScale = .2, movieCompletedX = 400;
-        this.victory = this.add.text(movieCompletedX, movieTextY, "¡Has completado\n una película\n de Hitchcock!", { fontSize: '30px' });
+        let movieTextX = 700, movieTextY = 150, posterX = 850, posterY = 350, posterScale = .2, movieCompletedX = 400, movieCompletedY = 250;
+        this.victory = this.add.text(movieCompletedX, movieCompletedY, "¡Has completado\n una película\n de Hitchcock!", { fontSize: '30px' });
         if (this.movieCompleted == 'psicosis') {
           this.victory = this.add.text(movieTextX, movieTextY, "PSICOSIS", { fontSize: '40px' });
           this.add.image(posterX, posterY, 'psicosis-poster').setScale(posterScale);
@@ -56,12 +56,12 @@ export default class End extends Phaser.Scene {
     }
     else {
       this.defeat = this.add.text(450, 50, "DERROTA", { fontSize: '80px' }).setTint(0xDC143C);
-      this.defeat = this.add.text(400, 150, "Has aburrido a la audiencia \ny se ha ido", { fontSize: '30px' });
+      this.defeat = this.add.text(400, 150, "Has aburrido a la audiencia \ny se ha ido.", { fontSize: '30px' });
       //this.defeat = this.add.text(400, 100, "y se han ido.", { fontSize: '40px' });
 
     }
 
-    this.add.text(600, 400, 'Pulsa cualquier tecla para volver a jugar')
+    this.add.text(550, 450, 'Pulsa cualquier tecla para volver a jugar.')
       .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
       .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 
