@@ -94,6 +94,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('comedia-trofeos', 'comedia-trofeos.png');
     this.load.image('drama-trofeos', 'drama-trofeos.png');
     this.load.image('suspense-trofeos', 'suspense-trofeos.png');
+    this.load.image('perro-escarbando', 'perro-escarbando.png');
+    this.load.image('madeleine-elster', 'madeleine-elster.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -118,6 +120,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('melanie-daniels-info', 'melanie-daniels-info.png');
     this.load.image('resultar-herido-info', 'resultar-herido-info.png');
     this.load.image('bodega-bay-info', 'bodega-bay-info.png');
+    this.load.image('perro-escarbando-info', 'perro-escarbando-info.png');
+    this.load.image('madeleine-elster-info', 'madeleine-elster-info.png');
     this.load.image('comedia-trofeos-info', 'comedia-trofeos-info.png');
     this.load.image('drama-trofeos-info', 'drama-trofeos-info.png');
     this.load.image('suspense-trofeos-info', 'suspense-trofeos-info.png');

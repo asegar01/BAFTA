@@ -50,8 +50,7 @@ export default class Deck {
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'comedia-trofeos', 'comedia-trofeos', 'trophies', 0, new TrophyEffect(this.juego, 0), nullEffect));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'drama-trofeos', 'drama-trofeos', 'trophies', 0, new TrophyEffect(this.juego, 1), nullEffect));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'suspense-trofeos', 'suspense-trofeos', 'trophies', 0, new TrophyEffect(this.juego, 2), nullEffect));
-
-
+        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'perro-escarbando', 'perro-escarbando', 'none', -1, new GenerateEffect(this.juego, 0, 2, 0), nullEffect)); 
 
         // dejar esta linea al final siempre
         this.shuffle(); // baraja las cartas

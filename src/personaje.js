@@ -30,14 +30,14 @@ export default class Personaje extends Card {
         if (characterName == 'jeff' && this._name == 'jeff') {
             this._chaEffect.execute();
         }
-        else if(characterName == 'vieja-visillo' && this._name == 'vieja-visillo') {
+        else if (characterName == 'vieja-visillo' && this._name == 'vieja-visillo') {
             this._chaEffect.execute();
         }
     }
 
     // Funcion para la cartas que generan un recurso por acto
     onNextAct() {
-        if (this._enjuego&&(this._name=='melanie-daniels'||this._name=='bandada-pajaros')) {
+        if (this._enjuego && (this._name == 'melanie-daniels' || this._name == 'bandada-pajaros')) {
             this._effect.execute();
         }
     }
