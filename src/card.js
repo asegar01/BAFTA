@@ -39,7 +39,8 @@ export default class Card extends Phaser.GameObjects.Sprite {
                 this.imagenjuego.setActive(false);
                 this.imagenjuego.setScale(.2).setDepth(0);
                 let isStage = (this.constructor.name == "Escenario");
-                this._juego.setCardOnScreen(this.imagenjuego, this._name, isStage, this._audiencemod);
+                if (this._family != 'trophies') this._juego.setCardOnScreen(this.imagenjuego, this._name, isStage, this._audiencemod);
+                else this.imagenjuego.setVisible(false); // para las cartas de transformar en trofeos
                 if (isStage) {
                     if (this._juego.stage != null) {
                         this._juego.stage._enjuego = false;
@@ -54,6 +55,7 @@ export default class Card extends Phaser.GameObjects.Sprite {
                 if (this._juego.audienceFocus > 10) this._juego.audienceFocus = 10;
 
                 this._juego.hud.updateTexts();
+                this._juego.updateMoviesCompleted(this._family);
             }
         }
         else // Si no es jugada, la carta vuelve a su posicion inicial

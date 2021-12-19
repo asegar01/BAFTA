@@ -43,39 +43,27 @@ export class GenerateEffect extends Effect {
 }
 
 export class TrophyEffect extends Effect {
-    constructor(scene, type, amount) {
+    constructor(scene, type) {
         super();
         this.scene = scene;
         this.type = type;
-        this.amount = amount;
+        //this.amount = amount;
 
     }
 
     execute() {
         switch (this.type) {
-            case 0:
-                if (this.scene.comedy - this.amount >= 0) this.scene.comedy -= this.amount;
-                else {
-                    this.amount = this.scene.comedy;
-                    this.scene.comedy = 0;
-                }
-                this.scene.trophies += this.amount;
+            case 0: // Comedy
+                this.scene.trophies += this.scene.comedy;
+                this.scene.comedy = 0;
                 break;
-            case 1:
-                if (this.scene.drama - this.amount >= 0) this.scene.drama -= this.amount;
-                else {
-                    this.amount = this.scene.drama;
-                    this.scene.drama = 0;
-                }
-                this.scene.trophies += this.amount;
+            case 1: // Drama
+                this.scene.trophies += this.scene.drama;
+                this.scene.drama = 0;
                 break;
-            case 2:
-                if (this.scene.suspense - this.amount >= 0) this.scene.suspense -= this.amount;
-                else {
-                    this.amount = this.scene.suspense;
-                    this.scene.suspense = 0;
-                }
-                this.scene.trophies += this.amount;
+            case 2: // Suspense
+                this.scene.trophies += this.scene.suspense;
+                this.scene.suspense = 0;
                 break;
         }
         // this.updateTexts();
@@ -149,43 +137,43 @@ export class CaidaRepentinaEffect extends Effect {
         this.scene = scene;
     }
     execute(i) {
-        let type=0;
+        let type = 0;
         if (this.scene.cardsOnTableNames[i] == 'vieja-visillo' || this.scene.cardsOnTableNames[i] == 'abuelo-tacataca') {
-            type=1;
+            type = 1;
         }
-        let effect=new GenerateEffect(this.scene, type, 2, 0);
+        let effect = new GenerateEffect(this.scene, type, 2, 0);
         effect.execute();
     }
 }
 
-export class MelanieEffect extends Effect{
-    constructor(scene){
+export class MelanieEffect extends Effect {
+    constructor(scene) {
         super();
-        this.scene=scene;
+        this.scene = scene;
     }
-    execute(){
-        let pajarosFound=false;
-        let it=0, resource=0;
-        while(!pajarosFound&&it<this.scene.cardsOnTableNames.length){
-            if(this.scene.cardsOnTableNames[it]=='bandada-pajaros') pajarosFound=true;
+    execute() {
+        let pajarosFound = false;
+        let it = 0, resource = 0;
+        while (!pajarosFound && it < this.scene.cardsOnTableNames.length) {
+            if (this.scene.cardsOnTableNames[it] == 'bandada-pajaros') pajarosFound = true;
             it++;
         }
-        if(pajarosFound)resource=2;
-        let effect=new GenerateEffect(this.scene,resource,1,0);
+        if (pajarosFound) resource = 2;
+        let effect = new GenerateEffect(this.scene, resource, 1, 0);
         effect.execute();
     }
 }
 
-export class ResultarHeridoEffect extends Effect{
-    constructor(scene){
+export class ResultarHeridoEffect extends Effect {
+    constructor(scene) {
         super();
-        this.scene=scene;
+        this.scene = scene;
     }
-    execute(i){
-        let amount=this.scene.cardsOnTableFocus[i];
+    execute(i) {
+        let amount = this.scene.cardsOnTableFocus[i];
         // el tipo de recurso es irrelevante ya que genera 0 del mismo.
         // solo genera atencion de la audiencia
-        let effect=new GenerateEffect(this.scene,0,0,amount);
+        let effect = new GenerateEffect(this.scene, 0, 0, amount);
         effect.execute();
 
     }

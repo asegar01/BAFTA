@@ -42,6 +42,9 @@ export default class GameManager {
         this.cardsOnTableNames = []; // el nombre de las cartas que estan en juego
         this.cardsOnTableFocus = []; // la cantidad de atencion de la audiencia que generan las cartas que estan en juego
         this.screenIsFull = false;
+
+        this.moviesCompleted = Array(4).fill(0); // guarda el numero de cartas jugadas que completan una pelicula de hitchcock
+        this.movieCompleted = 'none'; // la pelicula que se ha completado
     }
 
     setCardOnScreen(card, cardName, isStage, audienceFocusAmount) {
@@ -126,6 +129,29 @@ export default class GameManager {
         this.cardsOnHandNames[posOnHand] = cardName;
     }
 
+    updateMoviesCompleted(family) {
+        // solo se actualiza si todavia no se ha completado ninguna pelicula
+        if (this.movieCompleted == 'none') {
+            if (family == 'psicosis') {
+                this.moviesCompleted[0]++;
+                if (this.moviesCompleted[0] == 3) this.movieCompleted = 'psicosis';
+            }
+            else if (family == 'pajaros') {
+                this.moviesCompleted[1]++;
+                if (this.moviesCompleted[1] == 3) this.movieCompleted = 'pajaros';
+            }
+            else if (family == 'ventana-indiscreta') {
+                this.moviesCompleted[2]++;
+                if (this.moviesCompleted[2] == 3) this.movieCompleted = 'ventana-indiscreta';
+            }
+            else if (family == 'vertigo') {
+                this.moviesCompleted[3]++;
+                if (this.moviesCompleted[3] == 3) this.movieCompleted = 'vertigo';
+            }
+        }
+
+    }
+
     update() {
         if (this.audienceFocus <= 0) {
             this.gameover = -1;
@@ -133,7 +159,8 @@ export default class GameManager {
 
         // Pantalla de fin de juego
         if (this.gameover !== 0) {
-            this.scene.scene.start('end', this.gameover);
+            let data = [this.gameover, this.movieCompleted];
+            this.scene.scene.start('end', data);
         }
 
         let i = 0;
@@ -143,7 +170,6 @@ export default class GameManager {
             i++;
         }
         this.hud.updatehud();
-        //console.log(this.hand[0].texture.key);
         //this.hud.updateTexts();
         //console.log(this.comedy);
         //console.log(this.drama);

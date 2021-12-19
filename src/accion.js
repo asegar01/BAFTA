@@ -33,7 +33,7 @@ export default class Accion extends Card {
                         this.imagenjuego.setActive(false);
                         if (this._name == 'norman-bates') {
                             this.imagenjuego.setScale(.2).setDepth(0);
-                            this._juego.setCardOnScreen(this.imagenjuego, this._name, false);
+                            this._juego.setCardOnScreen(this.imagenjuego, this._name, false, this._audiencemod);
                         }
                         else {
                             this.imagenjuego.setVisible(false);
@@ -42,7 +42,7 @@ export default class Accion extends Card {
                         if (this._juego.audienceFocus > 10) this._juego.audienceFocus = 10;
 
                         this._juego.hud.updateTexts();
-
+                        this._juego.updateMoviesCompleted(this._family);
                     }
 
                 }

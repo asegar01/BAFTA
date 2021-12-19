@@ -87,10 +87,13 @@ export default class Boot extends Phaser.Scene {
     this.load.image('entrega-paquete', 'entrega-paquete.png');
     this.load.image('cementerio', 'cementerio.png');
     this.load.image('caida-repentina', 'caida-repentina.png');
-    this.load.image('bandada-pajaros','bandada-pajaros.png');
-    this.load.image('melanie-daniels','melanie-daniels.png');
-    this.load.image('resultar-herido','resultar-herido.png');
-    this.load.image('bodega-bay','bodega-bay.png');
+    this.load.image('bandada-pajaros', 'bandada-pajaros.png');
+    this.load.image('melanie-daniels', 'melanie-daniels.png');
+    this.load.image('resultar-herido', 'resultar-herido.png');
+    this.load.image('bodega-bay', 'bodega-bay.png');
+    this.load.image('comedia-trofeos', 'comedia-trofeos.png');
+    this.load.image('drama-trofeos', 'drama-trofeos.png');
+    this.load.image('suspense-trofeos', 'suspense-trofeos.png');
 
     // Carga de los carteles de info de las cartas
     this.load.setPath('assets/sprites/info-cartas/');
@@ -111,10 +114,20 @@ export default class Boot extends Phaser.Scene {
     this.load.image('entrega-paquete-info', 'entrega-paquete-info.png');
     this.load.image('cementerio-info', 'cementerio-info.png');
     this.load.image('caida-repentina-info', 'caida-repentina-info.png');
-    this.load.image('bandada-pajaros-info','bandada-pajaros-info.png');
-    this.load.image('melanie-daniels-info','melanie-daniels-info.png');
-    this.load.image('resultar-herido-info','resultar-herido-info.png');
-    this.load.image('bodega-bay-info','bodega-bay-info.png');
+    this.load.image('bandada-pajaros-info', 'bandada-pajaros-info.png');
+    this.load.image('melanie-daniels-info', 'melanie-daniels-info.png');
+    this.load.image('resultar-herido-info', 'resultar-herido-info.png');
+    this.load.image('bodega-bay-info', 'bodega-bay-info.png');
+    this.load.image('comedia-trofeos-info', 'comedia-trofeos-info.png');
+    this.load.image('drama-trofeos-info', 'drama-trofeos-info.png');
+    this.load.image('suspense-trofeos-info', 'suspense-trofeos-info.png');
+
+    // Carga de los carteles de las peliculas que se pueden completar
+    this.load.setPath('assets/sprites/carteles-peliculas/');
+    this.load.image('psicosis-poster', 'psicosis-poster.png');
+    this.load.image('pajaros-poster', 'pajaros-poster.png');
+    this.load.image('ventana-indiscreta-poster', 'ventana-indiscreta-poster.png');
+    this.load.image('vertigo-poster', 'vertigo-poster.png');
 
     // Banda sonora del juego
     this.load.setPath('./assets/audio')
