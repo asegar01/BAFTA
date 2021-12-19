@@ -179,3 +179,19 @@ export class ResultarHeridoEffect extends Effect {
     }
 }
 
+export class SuicidioEffect extends Effect {
+    constructor(scene) {
+        super();
+        this.scene = scene;
+    }
+    execute(i) {
+        if (this.scene.cardsOnTableNames[i] == 'madeleine') {
+            // se genera +2 de atencion de la audiencia
+            let effect = new GenerateEffect(this.scene, 0, 0, 2);
+            effect.execute();
+        }
+        let suicideEffect = new KillEffect(this.scene, false);
+        suicideEffect.execute(i);
+    }
+}
+

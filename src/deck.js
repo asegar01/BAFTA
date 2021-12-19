@@ -2,7 +2,7 @@ import Card from "./card.js";
 import Accion from "./accion.js";
 import Personaje from "./personaje.js";
 import Escenario from "./escenario.js";
-import { CaidaRepentinaEffect, CotillearEffect, DeliveryEffect, GenerateEffect, KillEffect, MelanieEffect, MirarObraEffect, ResultarHeridoEffect, TrophyEffect } from "./effects.js";
+import { CaidaRepentinaEffect, CotillearEffect, DeliveryEffect, GenerateEffect, KillEffect, MelanieEffect, MirarObraEffect, ResultarHeridoEffect, SuicidioEffect, TrophyEffect } from "./effects.js";
 
 export default class Deck {
     constructor(juego) {
@@ -38,9 +38,13 @@ export default class Deck {
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'comedia-trofeos', 'comedia-trofeos', 'trophies', 0, new TrophyEffect(this.juego, 0), nullEffect));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'drama-trofeos', 'drama-trofeos', 'trophies', 0, new TrophyEffect(this.juego, 1), nullEffect));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'suspense-trofeos', 'suspense-trofeos', 'trophies', 0, new TrophyEffect(this.juego, 2), nullEffect));
-        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'perro-escarbando', 'perro-escarbando', 'none', -1, new GenerateEffect(this.juego, 0, 2, 0), nullEffect)); 
+        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'perro-escarbando', 'perro-escarbando', 'ventana-indiscreta', -1, new GenerateEffect(this.juego, 0, 2, 0), nullEffect));
+        this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'madeleine', 'madeleine', 'vertigo', 2, nullEffect, new GenerateEffect(this.juego, 1, 2, 0)));
+        this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'suicidio', 'suicidio', 'vertigo', 1, new SuicidioEffect(this.juego)));
+        this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'campanario', 'campanario', 'vertigo', 0, new GenerateEffect(this.juego, 1, 1, 0)));
 
-        this.shuffle(); // baraja las cartas
+
+        //this.shuffle(); // baraja las cartas
     }
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {
