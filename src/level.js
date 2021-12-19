@@ -40,7 +40,6 @@ export default class Level extends Phaser.Scene {
 
     //Contruccion del juego
     this.juego.create();
-    let jgAux = this.juego;
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
       gameObject.x = dragX;
       gameObject.y = dragY;
@@ -49,14 +48,14 @@ export default class Level extends Phaser.Scene {
 
       // Desplazamiento de la carta seleccionada a la primera capa de visualización
       gameObject.setDepth(1);
-      jgAux.dragStarted();
+      this.scene.juego.dragStarted();
     });
 
     this.input.on('dragend', function (pointer, gameObject) {
       gameObject.objetopadre.onplayed();
       // Se devuelve la carta a la capa de visualizacion por defecto 
       gameObject.setDepth(0);
-      jgAux.dragEnded();
+      this.scene.juego.dragEnded();
     });
   }
 

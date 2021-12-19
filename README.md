@@ -106,7 +106,7 @@ La parte marrón oscuro es la mesa donde se juegan las cartas. El rectángulo ro
 ![5](https://user-images.githubusercontent.com/62616911/141502772-404785db-e2b6-4840-9977-39d989f1fcbf.png)
 
 #### DIAGRAMA DE HERENCIA
-![uml](https://user-images.githubusercontent.com/62616911/141502824-ddf6233c-330d-4bf4-93e7-d4c9d545c412.png)
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/62616911/146659107-3ef0f172-1fb6-41fd-b243-03c6aa37060b.png)
 
 Aparte de estas clases hay una clase Director que se encarga de:
 - Puntuación
