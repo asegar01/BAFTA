@@ -11,7 +11,7 @@ export default class GameManager {
         this.occupiedHand = Array(7).fill(false); // las posiciones de hand ocupadas son true
         this.cardsOnHandNames = Array(7).fill('none'); // los nombres de las cartas de hand
 
-        this.emitter = EventDispatcher.getInstance();
+        this.emitter = EventDispatcher.getInstance(); // emisor de eventos
         // Medidores de recursos
         this.comedy = 0;
         this.drama = 0;
@@ -30,7 +30,7 @@ export default class GameManager {
         // Construcción de Deck
         this.deck = new Deck(this);
 
-        this.stage = null;
+        this.stage = null; // por defecto no hay escenario
 
         // Construcción de mano
         this.hand = [];
@@ -47,6 +47,7 @@ export default class GameManager {
         this.movieCompleted = 'none'; // la pelicula que se ha completado
     }
 
+    // coloca la carta en la pantalla en el primer hueco libre
     setCardOnScreen(card, cardName, isStage, audienceFocusAmount) {
         if (!isStage) {
             let i = 0;
@@ -74,6 +75,7 @@ export default class GameManager {
         }
     }
 
+    // funcion para pasar de acto
     nextact() {
         if (this.numActo < 5 && this.hand.length <= 5) {
             // Emision del evento pasar de acto
@@ -110,25 +112,21 @@ export default class GameManager {
         this.emitter.emit("cotillear_played", name);
     }
 
-    dragStarted() {
-        this.emitter.emit("drag_started");
-    }
-
-    dragEnded() {
-        this.emitter.emit("drag_ended");
-    }
-
+    // devuelve el indice del primer hueco libre de hand
     getFirstEmptyOnHand() {
         let j = 0;
         while (j < 7 && this.occupiedHand[j]) j++;
         return j;
     }
 
+    // actualiza la info de hand
+    // se llama al robar y jugar cartas
     updateHandInfo(posOnHand, value, cardName) {
         this.occupiedHand[posOnHand] = value;
         this.cardsOnHandNames[posOnHand] = cardName;
     }
 
+    // actualiza el array que determina que pelicula se ha completado
     updateMoviesCompleted(family) {
         // solo se actualiza si todavia no se ha completado ninguna pelicula
         if (this.movieCompleted == 'none') {
@@ -170,9 +168,5 @@ export default class GameManager {
             i++;
         }
         this.hud.updatehud();
-        //this.hud.updateTexts();
-        //console.log(this.comedy);
-        //console.log(this.drama);
-        //console.log(this.suspense);
     }
 }

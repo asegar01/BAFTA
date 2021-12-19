@@ -34,7 +34,7 @@ export default class End extends Phaser.Scene {
     if (this.gameover !== -1) { // Victoria
       this.victory = this.add.text(450, 50, "VICTORIA", { fontSize: '80px' }).setTint(0xADFF2F);
       this.victory = this.add.text(400, 160, "Trofeos: " + this.trophies, { fontSize: '30px' });
-      if (this.movieCompleted != 'none') {
+      if (this.movieCompleted != 'none') { // si se ha completado alguna pelicula se muestra cual
         let movieTextX = 700, movieTextY = 150, posterX = 850, posterY = 350, posterScale = .2, movieCompletedX = 400, movieCompletedY = 250;
         this.victory = this.add.text(movieCompletedX, movieCompletedY, "¡Has completado\n una película\n de Hitchcock!", { fontSize: '30px' });
         if (this.movieCompleted == 'psicosis') {
@@ -59,8 +59,6 @@ export default class End extends Phaser.Scene {
     else { // Derrota
       this.defeat = this.add.text(450, 50, "DERROTA", { fontSize: '80px' }).setTint(0xDC143C);
       this.defeat = this.add.text(400, 150, "Has aburrido a la audiencia \ny se ha ido.", { fontSize: '30px' });
-      //this.defeat = this.add.text(400, 100, "y se han ido.", { fontSize: '40px' });
-
     }
 
     this.add.text(550, 450, 'Pulsa cualquier tecla para volver a jugar.')

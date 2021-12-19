@@ -24,7 +24,6 @@ export default class Boot extends Phaser.Scene {
     progressBox.fillRect(340, 230, 320, 50);
 
     this.load.on('progress', function (value) {
-      console.log(value);
       percentText.setText(parseInt(value * 100) + '%');
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
@@ -145,7 +144,6 @@ export default class Boot extends Phaser.Scene {
       console.log(file.src);
     });
     this.load.on('complete', function () {
-      console.log('complete');
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();

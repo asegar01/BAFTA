@@ -10,8 +10,8 @@ export default class Escenario extends Card {
         this._stageEffect = effect;
         this.emitter.on("next_act", this.onNextAct.bind(this));
     }
-
-
+    
+    // al pasar de acto se genera el recurso correspondiente
     onNextAct() {
         if (this._enjuego) {
             this._stageEffect.execute();

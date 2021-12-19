@@ -11,7 +11,7 @@ export default class Deck {
         this.createDeck();
     }
 
-    //toda la creacion de cartas aqui
+    // Aqui se crean todas las cartas
     createDeck() {
         let nullEffect = new GenerateEffect(this.juego, -1, 0, 0);
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'bates-motel', 'bates-motel', 'psicosis', 0, new GenerateEffect(this.juego, 2, 1, 0)));
@@ -43,9 +43,9 @@ export default class Deck {
         this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, 'suicidio', 'suicidio', 'vertigo', 1, new SuicidioEffect(this.juego)));
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'campanario', 'campanario', 'vertigo', 0, new GenerateEffect(this.juego, 1, 1, 0)));
 
-
         this.shuffle(); // baraja las cartas
     }
+    // funcion para robar cartas
     dealNcard(n, hand) {
         for (let i = 0; i < n; i++) {
             if (this.cardlist.length > 0) {

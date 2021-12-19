@@ -65,10 +65,12 @@ export default class Card extends Phaser.GameObjects.Sprite {
         }
     }
 
+    // comprueba si la carta esta sobre la papelera
     checktrash(auxrec) {
         return Phaser.Geom.Rectangle.Overlaps(this._juego.hud.trash_rect, auxrec);
     }
 
+    // comprueba si la carta esta sobre el area de juego
     checkboard(auxrec) {
         return Phaser.Geom.Rectangle.Overlaps(this._juego.hud.gamearea, auxrec);
     }

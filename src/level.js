@@ -49,14 +49,12 @@ export default class Level extends Phaser.Scene {
 
       // Desplazamiento de la carta seleccionada a la primera capa de visualización
       gameObject.setDepth(1);
-      this.scene.juego.dragStarted();
     });
 
     this.input.on('dragend', function (pointer, gameObject) {
       gameObject.objetopadre.onplayed();
       // Se devuelve la carta a la capa de visualizacion por defecto 
       gameObject.setDepth(0);
-      this.scene.juego.dragEnded();
     });
   }
 

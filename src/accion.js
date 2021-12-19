@@ -6,6 +6,7 @@ export default class Accion extends Card {
         this.actionEffect = effect;
     }
 
+    // override del onplayed de la clase Card
     onplayed() {
         let auxrec = new Phaser.Geom.Rectangle(this.x, this.y, this.imagenjuego.displayWidth, this.imagenjuego.displayHeight);
         let j = 0; // la posicion de la carta en cardsOnHandNames
@@ -48,7 +49,7 @@ export default class Accion extends Card {
                 }
                 i++;
             }
-            if (!found) {
+            if (!found) { // Si no es jugada, la carta vuelve a su posicion inicial
                 this.imagenjuego.x = this.iniX;
                 this.imagenjuego.y = this.iniY;
             }

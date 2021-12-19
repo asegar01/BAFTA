@@ -2,9 +2,9 @@ export default class Effect {
     constructor() {
 
     }
-    // execute(){}
 }
 
+// efecto de generar un recurso
 export class GenerateEffect extends Effect {
     constructor(scene, type, amount, audienceFocusAmount) {
         super();
@@ -42,6 +42,7 @@ export class GenerateEffect extends Effect {
     }
 }
 
+// efecto de transformar recurso a trofeos
 export class TrophyEffect extends Effect {
     constructor(scene, type) {
         super();
@@ -69,6 +70,8 @@ export class TrophyEffect extends Effect {
         // this.updateTexts();
     }
 }
+
+// Efectos especificos
 
 export class KillEffect extends Effect {
     constructor(scene, isNormanBates) {

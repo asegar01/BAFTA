@@ -13,10 +13,7 @@ export default class Personaje extends Card {
         this.emitter.on("next_act", this.onNextAct.bind(this));
     }
 
-    executeChaEffect() {
-        this._chaEffect.execute();
-    }
-
+    // Cuando una carta muere
     onDead(victim) {
         if (victim == this._name) {
             this._chaEffect.execute();

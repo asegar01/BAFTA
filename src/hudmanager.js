@@ -64,6 +64,7 @@ export default class HudManager {
         this.updateTexts();
     }
 
+    // funcion para crear el hud
     makehud(variable1, i, isMainResource, string1, string2) { // isMainResource es true para drama, comedia y suspense
         let icon_x0, icon_dx, text_x0, icon_y, text_y, scale;
         if (isMainResource) {
@@ -103,6 +104,7 @@ export default class HudManager {
         });
     }
 
+    // actualiza los textos del hud
     updateTexts() {
         this.scene.label[0].text = this.juego.drama;
         this.scene.label[1].text = this.juego.comedy;
@@ -129,14 +131,18 @@ export default class HudManager {
         this.scene.label[7].text = this.juego.numActo + '/5';
     }
 
+    // actualiza el color de la papelera
     updatehud() {
         if (this.juego.hand.length <= 5) this.trash_can.setTint(0x707070);
         else this.trash_can.setTint(0xffffff);
     }
 
+    // muestra el capricho a partir del acto 2
     caprichoSetVisible() {
         this.scene.hud[5].setVisible(true);
     }
+
+    // muestra el cartel de demasiadas cartas
     demasiadasCartasSetVisible() {
         this.scene.cartel[6].setVisible(true);
         this.scene.cartel[6].x = 850;
