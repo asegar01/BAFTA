@@ -159,7 +159,7 @@ export default class GameManager {
 
         // Pantalla de fin de juego
         if (this.gameover !== 0) {
-            let data = [this.gameover, this.movieCompleted];
+            let data = [this.gameover, this.movieCompleted, this.trophies];
             this.scene.scene.start('end', data);
         }
 

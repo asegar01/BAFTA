@@ -15,6 +15,7 @@ export default class End extends Phaser.Scene {
     //console.log(gameover);
     this.gameover = data[0];
     this.movieCompleted = data[1];
+    this.trophies = data[2];
   }
   /* init(gameover) {
     console.log(gameover);
@@ -30,8 +31,9 @@ export default class End extends Phaser.Scene {
     this.add.image(500, 250, 'finalScreen');
     console.log(this.gameover);
 
-    if (this.gameover !== -1) {
+    if (this.gameover !== -1) { // Victoria
       this.victory = this.add.text(450, 50, "VICTORIA", { fontSize: '80px' }).setTint(0xADFF2F);
+      this.victory = this.add.text(400, 160, "Trofeos: " + this.trophies, { fontSize: '30px' });
       if (this.movieCompleted != 'none') {
         let movieTextX = 700, movieTextY = 150, posterX = 850, posterY = 350, posterScale = .2, movieCompletedX = 400, movieCompletedY = 250;
         this.victory = this.add.text(movieCompletedX, movieCompletedY, "¡Has completado\n una película\n de Hitchcock!", { fontSize: '30px' });
@@ -54,7 +56,7 @@ export default class End extends Phaser.Scene {
       }
 
     }
-    else {
+    else { // Derrota
       this.defeat = this.add.text(450, 50, "DERROTA", { fontSize: '80px' }).setTint(0xDC143C);
       this.defeat = this.add.text(400, 150, "Has aburrido a la audiencia \ny se ha ido.", { fontSize: '30px' });
       //this.defeat = this.add.text(400, 100, "y se han ido.", { fontSize: '40px' });
