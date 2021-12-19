@@ -13,18 +13,6 @@ export default class Deck {
 
     //toda la creacion de cartas aqui
     createDeck() {
-        for (let i = 0; i < 0; i++) {
-            let comedyUp = new GenerateEffect(this.juego, 0, 1, 0);
-            this.cardlist.push(new Accion(this.juego, this.juego.scene, 0, 0, '', 'card1', '', 1, comedyUp));
-        }
-        for (let i = 0; i < 0; i++) {
-            let comedyUp = new GenerateEffect(this.juego, 0, 1, 0);
-            this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, '', 'card2', '', 1, comedyUp, ''));
-        }
-        for (let i = 0; i < 0; i++) {
-            let comedyUp = new GenerateEffect(this.juego, 0, 1, 0);
-            this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, '', 'card3', '', 1, comedyUp));
-        }
         let nullEffect = new GenerateEffect(this.juego, -1, 0, 0);
         this.cardlist.push(new Escenario(this.juego, this.juego.scene, 0, 0, 'bates-motel', 'bates-motel', 'psicosis', 0, new GenerateEffect(this.juego, 2, 1, 0)));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'marion-crane', 'marion-crane', 'psicosis', 2, nullEffect, new GenerateEffect(this.juego, 2, 2, 2)));
@@ -52,7 +40,6 @@ export default class Deck {
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'suspense-trofeos', 'suspense-trofeos', 'trophies', 0, new TrophyEffect(this.juego, 2), nullEffect));
         this.cardlist.push(new Personaje(this.juego, this.juego.scene, 0, 0, 'perro-escarbando', 'perro-escarbando', 'none', -1, new GenerateEffect(this.juego, 0, 2, 0), nullEffect)); 
 
-        // dejar esta linea al final siempre
         this.shuffle(); // baraja las cartas
     }
     dealNcard(n, hand) {
@@ -62,6 +49,7 @@ export default class Deck {
                 let posX = 180 + (100 * j);
                 let posY = 400;
                 let cardName = this.cardlist[this.cardlist.length - 1].texture.key;
+
                 // actualiza la info de hand porque se introduce una carta
                 this.juego.updateHandInfo(j, true, cardName);
 
@@ -81,10 +69,13 @@ export default class Deck {
             }
         }
     }
+    
     // Generar numero aleatorio
     randomIntFromInterval(min, max) { // min y max incluidos 
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
+
+    // Baraja las cartas
     shuffle() {
         for (let i = 0; i < this.cardlist.length; i++) {
             let aux = this.cardlist[i];

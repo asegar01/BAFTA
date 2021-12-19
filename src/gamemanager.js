@@ -6,11 +6,11 @@ export default class GameManager {
     constructor(scene) {
         this.scene = scene;
         this.hud = new HudManager(this.scene, this);
+    }
+    create() {
         this.occupiedHand = Array(7).fill(false); // las posiciones de hand ocupadas son true
         this.cardsOnHandNames = Array(7).fill('none'); // los nombres de las cartas de hand
 
-    }
-    create() {
         this.emitter = EventDispatcher.getInstance();
         // Medidores de recursos
         this.comedy = 0;

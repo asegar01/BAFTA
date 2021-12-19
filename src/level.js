@@ -40,6 +40,7 @@ export default class Level extends Phaser.Scene {
 
     //Contruccion del juego
     this.juego.create();
+    
     this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
       gameObject.x = dragX;
       gameObject.y = dragY;

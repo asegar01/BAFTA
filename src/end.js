@@ -56,12 +56,12 @@ export default class End extends Phaser.Scene {
     }
     else {
       this.defeat = this.add.text(450, 50, "DERROTA", { fontSize: '80px' }).setTint(0xDC143C);
-      this.defeat = this.add.text(400, 50, "Has aburrido a la audiencia \ny se ha ido", { fontSize: '30px' });
+      this.defeat = this.add.text(400, 150, "Has aburrido a la audiencia \ny se ha ido", { fontSize: '30px' });
       //this.defeat = this.add.text(400, 100, "y se han ido.", { fontSize: '40px' });
 
     }
 
-    this.add.text(500, 400, 'Se acabó!\nPulsa cualquier tecla para volver a jugar')
+    this.add.text(600, 400, 'Pulsa cualquier tecla para volver a jugar')
       .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
       .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 
