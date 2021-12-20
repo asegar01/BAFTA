@@ -32,7 +32,7 @@ export default class Level extends Phaser.Scene {
       loop: true,
       delay: 0,
     };
-    this.soundtrack = this.sound.add("theme", config);
+    if(this.soundtrack === undefined) this.soundtrack = this.sound.add("theme", config);
     this.soundtrack.play();
 
     // Variables donde guardar los distintos elementos del hud
