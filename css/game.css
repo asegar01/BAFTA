@@ -85,3 +85,12 @@ body
 {
     list-style: none;
 }
+
+.info
+{
+    margin-top: 2em;
+    margin-left: 2em;
+    width: 95vw;
+    height: 20vh;
+    align-content: center;
+}
