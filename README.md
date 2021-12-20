@@ -1,4 +1,6 @@
-# BAFTA
+# BAFTA - Grupo 10
+
+https://asegar01.github.io/BAFTA/
 
 ## RESUMEN
 ```sh
@@ -27,6 +29,8 @@ Comienzas en el primero de cinco actos. Los actos se suceden uno detrás de otro
 
 Cuando estés satisfecho con lo que has jugado simplemente pulsa en el botón de pasar de acto.
 Después de estas fases un nuevo acto comienza siguiendo el mismo esquema. Si consigues llegar al final del quinto acto sin aburrir a la audiencia tu película termina y consigues trofeos.
+![Untitled](https://user-images.githubusercontent.com/62616911/146831329-5f30eb5f-18e3-4296-a87f-6021c81a01ef.png)
+
 ## ASPECTOS GENERALES
 ### RELATO BREVE Y PARCIAL DE UNA PARTIDA TÍPICA
 El juego comienza con cinco cartas aleatorias a disposición del jugador, el cual podrá poner en juego las que considere oportunas. Tras esto, pasará al segundo acto y el jugador robará dos cartas aleatorias. A partir de este acto, la audiencia demandará un tipo de recurso en concreto -drama, suspense o comedia-, de manera que si al finalizar el acto no se han puesto en juego cartas correspondientes a ese recurso, el nivel de atención de la audiencia disminuirá. De nuevo, el jugador podrá poner en juego las cartas que quiera y pasará de acto. Existe un tipo de cartas las cuales, al ponerlas en juego, transforman la cantidad de recursos actual de un tipo en concreto en trofeos, los cuales determinan la puntuación final de la partida. La partida termina si el jugador logra completar el quinto acto, ganando y obteniendo una puntuación específica, o si la atención de la audiencia llega a cero, en cuyo caso se ha perdido.
@@ -115,3 +119,5 @@ Aparte de estas clases hay una clase Director que se encarga de:
 - Familias de cartas jugadas (así como número de cartas de esas familias que se han jugado)
 ## REFERENCIAS
 - Cultist Simulator: cartas de acción asociadas a personajes y su forma de interactuar debido a esto.
+## GESTIÓN
+https://www.pivotaltracker.com/n/projects/2535325
