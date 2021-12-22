@@ -1,7 +1,6 @@
 # BAFTA - Grupo 10
-
+![bafta](https://user-images.githubusercontent.com/82326232/147132975-aec4b2ef-039d-4b39-9e9a-1475ca780e71.png)
 https://asegar01.github.io/BAFTA/
-
 ## RESUMEN
 ```sh
               Juego de cartas y gestión de recursos donde debemos crear una película, dividida en actos, 
