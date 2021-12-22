@@ -39,7 +39,7 @@ El juego comienza con cinco cartas aleatorias a disposición del jugador, el cua
 #### MECÁNICAS BASE
   - Seleccionar cartas y ponerlas en juego: Las cartas se seleccionan dando click sobre ellas. Para ponerlas en juego solo habrá que cumplir con los requisitos -si los hay- y arrastrar la misma hasta el tablero de juego. En el momento en el que se suelta la carta se considera jugada.
   - Puntuación de trofeos de distintos tipos: Hay un contador que informa en todo momento de cuántos trofeos se han generado y de qué tipo.
-  - Atención de la audiencia: La atención de la audiencia se representa con un número comprendido entre 0 y 10. Si la atención está entre 8 y 10, ambos incluidos, el número de trofeos generados aumenta en +2 cada vez que se genere una cantidad de trofeos mayor o igual a uno. Si la atención está entre 1 y 3, ambos incluidos, el número de trofeos generados disminuye en -2 cada vez que se genere una cantidad de trofeos mayor o igual a uno. Si la atención de la audiencia llega en algún momento a 0 la partida se termina y se considera que el jugador ha perdido.
+  - Atención de la audiencia: La atención de la audiencia se representa con un número comprendido entre 0 y 10. Si la atención de la audiencia llega en algún momento a 0 la partida se termina y se considera que el jugador ha perdido.
   - Robar: Distintas situaciones o efectos pueden hacer que se robe, tales como pasar de acto y jugar determinadas cartas. Al robar, el jugador obtiene un número X de cartas aleatorias, dependiendo de la situación detonante. No se pueden tener más de cinco cartas en la mano al final del acto. Si se tienen más al final del acto se deben descartar tantas cartas como haga falta para llegar a cinco. Las cartas a descartar las selecciona el jugador.
   - Interacción entre recursos: Los recursos -drama, suspense y comedia- se afectan entre sí. Cuando se genera un recurso de un tipo se modifica la cantidad de otro en una medida igual a la jugada siguiendo el siguiente esquema:
 ![Untitled](https://user-images.githubusercontent.com/62616911/141502231-e04b0f7f-2a15-4995-aaf6-f95a8584c334.png)
@@ -83,6 +83,7 @@ Los personajes interaccionan con las cartas de acción de forma directa, produci
 Las cartas de acción son muy variadas y sirven para controlar la generación de recursos y su transformación en puntos de victoria -trofeos- u otros recursos. La estrategia idónea es jugar acciones que nos den trofeos al mismo tiempo que intentamos mantener la atención del público alta.
 Las cartas de acción pueden interaccionar con los otros dos tipos de cartas. De forma indirecta ocurre al generar recursos o transformarlos; de forma directa al poner o quitar cartas del tablero, cambiarlas a otras, etc.
 ### ESTETICA
+BAFTA está ambientado en una sala de cine de los años 60, donde se proyectaban únicamente películas en blanco y negro. Los colores de las cartas son más vivos respecto a los colores del fondo, los cuales son tonos de blancos y negros, para así poder diferenciar los objetos interactuables del escenario.
 #### LISTA DE PELICULAS
 ![listapelis](https://user-images.githubusercontent.com/62616911/141502405-4d3e7d89-590e-4fb5-9e54-1c0c425a1462.png)
 
@@ -119,5 +120,10 @@ Aparte de estas clases hay una clase Director que se encarga de:
 - Familias de cartas jugadas (así como número de cartas de esas familias que se han jugado)
 ## REFERENCIAS
 - Cultist Simulator: cartas de acción asociadas a personajes y su forma de interactuar debido a esto.
+## COMUNICACIÓN
+- Discord: Aplicación de comunicación por voz para realizar reuniones.
+- WhatsApp: Aplicación de comunicación por mensajes para resolver cualquier duda o problema durante el desarrollo y acordar las reuniones.
 ## GESTIÓN
+- Pivotal Tracker: Aplicación para gestionar el desarrollo del proyecto y llevar un seguimiento del mismo.
 https://www.pivotaltracker.com/n/projects/2535325
+- GitHub: Aplicación de control de versiones para poder tener actualizado el proyecto en todo momento.
